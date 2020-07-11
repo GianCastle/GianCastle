@@ -4,4 +4,6 @@
 - 👯 I’m looking to collaborate on ... NodeJS React Open Source projects, mostly related about Audio and Music
 - 💬 Ask me about ... React, Functional Programming and Garageband
 - 📫 How to reach me: ... @gian.castle on Instagram. @GianCastle everywhere else
+- You can read my [my blog](https://giancastle.com) and see what's on my mind
+
 
