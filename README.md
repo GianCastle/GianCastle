@@ -1,7 +1,6 @@
 - 🔭 I’m currently a Fullstack Software Developer @ Megsoft
-- 🌱 I’m currently learning ... 
+- 🌱 I’m currently learning ... Aurelia
 - 👯 I’m looking to collaborate on ... NodeJS React Open Source projects, mostly related about Audio and Music
-- 🤔 I’m looking for help with ... .NET
-- 💬 Ask me about ... React.js in general
+- 💬 Ask me about ... React, Functional Programming and Garageband
 - 📫 How to reach me: ... @gian.castle on Instagram. @GianCastle everywhere else
 
