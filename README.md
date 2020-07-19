@@ -12,7 +12,7 @@
 
 📫 How to reach me: ... @gian.castle on Instagram. @GianCastle everywhere else
 
-You can read my [my blog](https://giancastle.com) and see what's on my mind
+You can read my [my blog](https://giancastle.com) and see what's on my mind (spanish)
 
 ![GianCastle's github stats](https://github-readme-stats.vercel.app/api?username=giancastle)
 
