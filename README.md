@@ -4,7 +4,7 @@
 
 🔭 I’m currently a Fullstack Software Developer @ Megsoft
 
-🌱 I’m currently learning ... Aurelia
+🌱 I’m currently learning ... Music Development and Composition
 
 👯 I’m looking to collaborate on ... NodeJS React Open Source projects, mostly related about Audio and Music
 
