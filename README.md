@@ -2,13 +2,13 @@
 ## Helloow, I'm Gian
 📚 Facebook Developers Circle Lead in Santo Domingo
 
-🔭 I’m currently a Fullstack Software Developer @ Megsoft
+🔭 I’m currently a  Sr. Software Developer @ Megsoft
 
 🌱 I’m currently learning ... Music Development and Composition
 
 👯 I’m looking to collaborate on ... NodeJS React Open Source projects, mostly related about Audio and Music
 
-💬 Ask me about ... React, Functional Programming and Garageband
+💬 Ask me about ... React, Functional Programming and Music/Sound Composition with Garageband
 
 📫 How to reach me: ... @gian.castle on Instagram. @GianCastle everywhere else
 
