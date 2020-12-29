@@ -24,10 +24,6 @@ const MainAbout = styled.main`
   border-bottom: 1px solid rgba(255, 255, 255, 0.4);
 `;
 
-const Section = styled.section`
-  background-color: #0a0b0d;
-`;
-
 const HeroTitle = styled(SiteTitle)`
   text-transform: uppercase;
   font-weight: bold;
