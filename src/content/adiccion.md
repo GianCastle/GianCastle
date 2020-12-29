@@ -5,7 +5,7 @@ title: 'Adicción'
 date: 2020-12-28 00:00:00
 tags: ['Abstracto']
 draft: false
-image: img/addiccion.jpg
+image: img/adiccion.jpg
 ---
 
 ## Qué verguenza
