@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # GianCastle
 
 Sitio web personal donde comparto mi manera de pensar. 📖🤔
@@ -23,7 +22,7 @@ Sitio web personal donde comparto mi manera de pensar. 📖🤔
 
 📫  How to reach me: ... @gian.castle on Instagram. @GianCastle everywhere else
 
-You can read my [my blog](https://giancastle.com) and see what's on my mind (spanish)
+You can read my [my blog](https://giancastle.com) and see what's on my mind
 
 ![GianCastle's github stats](https://github-readme-stats.vercel.app/api?username=giancastle)
 
@@ -32,4 +31,3 @@ You can read my [my blog](https://giancastle.com) and see what's on my mind (spa
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png"></code>
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/5c058a388828bb5fde0bcafd4bc867b5bb3f26f3/topics/graphql/graphql.png"></code>
 <code><img height="20" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png"></code>
->>>>>>> f7fa5bd12d5ac37bd26f36b3de82b1ef8116e21b
