@@ -1,7 +1,7 @@
 ## Helloow, I'm Gian
 📚  Facebook Developers Circle Lead in Santo Domingo
 
-🔭  I’m currently a  Sr. Software Developer @ Megsoft
+🔭  I’m currently a  Sr. Fullstack Developer @ VirtualMind
 
 🌱  I’m currently learning ... Music Development and Composition
 
