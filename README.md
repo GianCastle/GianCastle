@@ -1,6 +1,6 @@
 ## Helloow, I'm Gian
 
-🧑🏾‍💻 Sr. React Developer @ VirtualMind
+🧑🏾‍💻 Sr. React Developer
 
 📚  Facebook Developers Circle Lead in Santo Domingo
 
