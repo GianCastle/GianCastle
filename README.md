@@ -1,8 +1,8 @@
 ## Helloow, I'm Gian
 
-🧑🏾‍💻 Sr. React Developer
+🧑🏾‍💻 Staff Frontend Engineer
 
-📚  Facebook Developers Circle Lead in Santo Domingo
+📚  Meta Developers Circle Lead in Santo Domingo
 
 📫  How to reach me:  @GianCastle everywhere else
 
