@@ -1,13 +1,12 @@
 ---
 layout: post
 author: Gian
-title: 'El Pesimista Elegido'
-date: 2023-02-10 00:00:00
+title: 'El Pessimista Elegido'
+date: 2021-01-03 22:05:00
 tags: ['Abstracto']
 draft: false
-image: img/pessimist.jpg
+image: img/pesimista.jpg
 ---
-
 El pesimista elegido,
 siempre ve la vida al revés,
 carga a sus espaldas un peso,
