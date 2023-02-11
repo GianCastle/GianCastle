@@ -2,7 +2,7 @@
 layout: post
 author: Gian
 title: 'El Pessimista Elegido'
-date: 2021-01-03 22:05:00
+date: 2023-02-10 22:05:00
 tags: ['Abstracto']
 draft: false
 image: img/pessimist.jpg
