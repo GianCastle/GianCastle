@@ -1,7 +1,7 @@
 ---
 layout: post
 author: Gian
-title: 'El Pessimista Elegido'
+title: 'El Pesimista Elegido'
 date: 2023-02-10 22:05:00
 tags: ['Abstracto']
 draft: false
@@ -11,7 +11,7 @@ El pesimista elegido, siempre ve la vida al revés, carga a sus espaldas un peso
 
 La tristeza lo envuelve, como una nube oscura y aunque quiere encontrar la luz, su mente se torna más insegura.
 
-Es fácil juzgarlo por su actitud, y decir que es un derrotado pero su visión del mundo es su virtud y a veces más acertada que lo imaginado.
+Es fácil juzgarlo por su actitud, y decir que es un derrotado pero su visión del mundo es su virtud y a veces más acertada de imaginado.
 
 La verdad es su estandarte y la honestidad su bandera, él no se engaña a sí mismo y lo que dice siempre lo piensa.
 
@@ -21,5 +21,4 @@ Quizás en su pesimismo, hay una lucha constante por encontrar la felicidad aunq
 
 No es fácil ser un pesimista, ni cargar con tanto dolor, pero su fortaleza es su vista y su corazón lleno de amor.
 
-Así que no juzguemos al elegido, que camina por el mundo al revés,
-tal vez no sepamos su sufrido y el tesoro que lleva en su ser.
+Así que no juzguemos al elegido, que camina por el mundo al revés, tal vez no sepamos su sufrido y el tesoro que lleva en su ser.
