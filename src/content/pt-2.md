@@ -1,3 +1,12 @@
+---
+layout: post
+author: Gian
+title: 'Pt.2'
+date: 2021-12-23 22:05:00
+tags: ['Inductivo']
+draft: false
+image: img/dark-sea.png
+---
 I'm a mess that's the best way to describe it
 I take no time to myself the only way I can fight it... When I'm alone it's like I'm staring into a mirror. Don't know the person inside it and that's never been any clearer
 
