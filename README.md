@@ -1,4 +1,4 @@
-## Helloow, I'm Gian
+## I'm Gian
 
 🧑🏾‍💻 Sr. Software Engineer
 
