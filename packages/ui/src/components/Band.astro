@@ -1,0 +1,42 @@
+---
+import type { HTMLTag } from 'astro/types';
+import { TONE, type Tone } from '../theme';
+
+const SIZE = {
+  regular: 'regular',
+  compact: 'compact',
+} as const;
+
+type Size = (typeof SIZE)[keyof typeof SIZE];
+
+interface Props {
+  as?: HTMLTag;
+  tone?: Tone;
+  size?: Size;
+  id?: string;
+  label?: string;
+}
+
+const { as: Tag = 'section', tone = TONE.plain, size = SIZE.regular, id, label } = Astro.props;
+---
+
+<Tag id={id} aria-label={label} data-tone={tone} class:list={['band', size]}>
+  <div class="inner">
+    <slot />
+  </div>
+</Tag>
+
+<style>
+  .band {
+    padding: clamp(4rem, 11vw, 9rem) var(--gutter);
+  }
+
+  .band.compact {
+    padding-block: clamp(2.5rem, 6vw, 4.5rem);
+  }
+
+  .inner {
+    max-width: 110rem;
+    margin-inline: auto;
+  }
+</style>

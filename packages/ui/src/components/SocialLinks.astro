@@ -1,0 +1,64 @@
+---
+import { NETWORK_LABEL, SOCIAL_LINKS, type SocialLink } from '../socials';
+import { NETWORK_ICON } from './icons';
+
+interface Props {
+  links?: readonly SocialLink[];
+}
+
+const { links = SOCIAL_LINKS } = Astro.props;
+---
+
+<ul class="socials">
+  {links.map(link => {
+    const icon = NETWORK_ICON[link.network];
+    return (
+      <li>
+        <a class="icon" href={link.href} aria-label={NETWORK_LABEL[link.network]} rel="me noopener">
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            fill={icon.stroked ? 'none' : 'currentColor'}
+            stroke={icon.stroked ? 'currentColor' : 'none'}
+            stroke-width="2.2"
+            stroke-linejoin="round"
+            set:html={icon.markup}
+          />
+        </a>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .icon {
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    transition:
+      background-color 150ms,
+      color 150ms;
+  }
+
+  .icon svg {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
+  .icon:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+</style>

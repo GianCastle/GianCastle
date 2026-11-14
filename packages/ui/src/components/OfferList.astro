@@ -1,0 +1,114 @@
+---
+import { DECAL_COLOR, DECAL_SHAPE } from '../decals';
+import Decal from './Decal.astro';
+import Heavy from './Heavy.astro';
+import Pill from './Pill.astro';
+
+interface Props {
+  items: readonly {
+    tag?: string;
+    title: string;
+    body: string;
+    featured?: boolean;
+    cta: { label: string; href: string; download?: boolean };
+  }[];
+}
+
+const CORNER_DECALS = {
+  featured: { triangle: DECAL_COLOR.teal, square: DECAL_COLOR.pink },
+  regular: { triangle: DECAL_COLOR.orange, square: DECAL_COLOR.teal },
+} as const;
+
+const { items } = Astro.props;
+---
+
+<ul class="offers">
+  {items.map(item => {
+    const decals = item.featured ? CORNER_DECALS.featured : CORNER_DECALS.regular;
+    return (
+      <li class:list={['sticker', item.featured && 'featured']}>
+        <span class="corner">
+          <Decal shape={DECAL_SHAPE.square} color={decals.square} size="0.9rem" />
+          <Decal shape={DECAL_SHAPE.triangle} color={decals.triangle} size="2.2rem" rotate={20} />
+        </span>
+        {item.tag && <p class="label tag">{item.tag}</p>}
+        <Heavy as="h3" size="figure">
+          {item.title}
+        </Heavy>
+        <p class="body">{item.body}</p>
+        <Pill href={item.cta.href} download={item.cta.download ?? false}>
+          {item.cta.label}
+        </Pill>
+      </li>
+    );
+  })}
+</ul>
+
+<style>
+  .offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin: 2.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .sticker {
+    --chip-bg: var(--fg);
+    --chip-fg: var(--bg);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    background: var(--raise);
+    border: 3px solid var(--fg);
+    outline: 3px solid var(--bg);
+    outline-offset: -9px;
+    rotate: 0.8deg;
+  }
+
+  .sticker:nth-child(odd) {
+    rotate: -1.2deg;
+  }
+
+  .featured {
+    --fg: var(--ink);
+    --accent-solid: var(--ink);
+    --on-accent: var(--frost);
+    --chip-bg: var(--ink);
+    --chip-fg: var(--frost);
+    background: var(--orange);
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .corner {
+    position: absolute;
+    right: clamp(1.25rem, 2.5vw, 2.25rem);
+    top: clamp(1.25rem, 2.5vw, 2.25rem);
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    padding: 0.45em 0.8em;
+    background: var(--chip-bg);
+    color: var(--chip-fg);
+  }
+
+  .body {
+    max-width: 34ch;
+    font-size: 1.15rem;
+  }
+
+  @media (max-width: 640px) {
+    .sticker,
+    .sticker:nth-child(odd) {
+      rotate: none;
+    }
+  }
+</style>

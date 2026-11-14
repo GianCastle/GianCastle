@@ -1,0 +1,60 @@
+---
+import type { HTMLTag } from 'astro/types';
+
+const SIZE = {
+  closer: 'closer',
+  statement: 'statement',
+  figure: 'figure',
+  title: 'title',
+  step: 'step',
+  verb: 'verb',
+  card: 'card',
+} as const;
+
+type Size = (typeof SIZE)[keyof typeof SIZE];
+
+interface Props {
+  as?: HTMLTag;
+  size?: Size;
+  id?: string;
+}
+
+const { as: Tag = 'p', size = SIZE.statement, id } = Astro.props;
+---
+
+<Tag id={id} class:list={['heavy', size]}>
+  <slot />
+</Tag>
+
+<style>
+  .closer {
+    font-size: clamp(3.6rem, 17vw, 19rem);
+  }
+
+  .statement {
+    font-size: clamp(3rem, 10.5vw, 11rem);
+    max-width: 22ch;
+  }
+
+  .figure {
+    font-size: clamp(2.6rem, 8.6vw, 9rem);
+  }
+
+  .title {
+    font-size: clamp(2.8rem, 8vw, 7.5rem);
+    max-width: 24ch;
+  }
+
+  .step {
+    font-size: clamp(2.4rem, 5.2vw, 5.5rem);
+  }
+
+  .verb {
+    font-size: clamp(3rem, 7.5vw, 8rem);
+  }
+
+  .card {
+    font-size: clamp(1.9rem, 3.4vw, 3rem);
+    line-height: 0.9;
+  }
+</style>

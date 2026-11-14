@@ -1,0 +1,22 @@
+---
+import { DECAL_COLOR_VAR, DECAL_SHAPE, type DecalColor, type DecalShape } from '../decals';
+
+interface Props {
+  shape?: DecalShape;
+  color?: DecalColor;
+  size?: string;
+  rotate?: number;
+}
+
+const { shape = DECAL_SHAPE.square, color, size = '0.6em', rotate = 0 } = Astro.props;
+const style = [
+  `width:${size}`,
+  `height:${size}`,
+  `rotate:${rotate}deg`,
+  color && `--decal-color:${DECAL_COLOR_VAR[color]}`,
+]
+  .filter(Boolean)
+  .join(';');
+---
+
+<i class:list={['decal', `decal-${shape}`]} style={style} aria-hidden="true"></i>

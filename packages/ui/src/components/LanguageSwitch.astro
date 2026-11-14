@@ -1,0 +1,36 @@
+---
+import { LOCALE_SHORT_LABEL, LOCALE_SWITCH_LABEL, type LocaleAlternate } from '../locale';
+
+interface Props {
+  alternate: LocaleAlternate;
+}
+
+const { alternate } = Astro.props;
+---
+
+<a
+  class="language-switch label"
+  href={alternate.href}
+  hreflang={alternate.locale}
+  lang={alternate.locale}
+  aria-label={LOCALE_SWITCH_LABEL[alternate.locale]}
+>
+  {LOCALE_SHORT_LABEL[alternate.locale]}
+</a>
+
+<style>
+  .language-switch {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.55em 0.95em;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .language-switch:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+</style>

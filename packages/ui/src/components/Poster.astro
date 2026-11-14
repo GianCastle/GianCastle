@@ -1,0 +1,376 @@
+---
+import { DECAL_COLOR, DECAL_SHAPE } from '../decals';
+import { TONE } from '../theme';
+import CastleMark from './CastleMark.astro';
+import Chevrons from './Chevrons.astro';
+import Dashes from './Dashes.astro';
+import Decal from './Decal.astro';
+
+interface Props {
+  lines: readonly string[];
+  sticker: string;
+  heading: string;
+}
+
+const GLYPH_WIDTH = 0.462;
+const STACKED_GLYPH_WIDTH = 0.45;
+
+const { lines, sticker, heading } = Astro.props;
+const chars = lines.join('').length;
+const longestLine = Math.max(...lines.map(line => line.length));
+const geometry = [
+  `--chars:${chars}`,
+  `--stacked-chars:${longestLine}`,
+  `--stacked-lines:${lines.length}`,
+  `--glyph:${GLYPH_WIDTH}`,
+  `--stacked-glyph:${STACKED_GLYPH_WIDTH}`,
+].join(';');
+
+const SHARDS = [
+  {
+    left: '13%',
+    top: '-2.4rem',
+    size: '1.7rem',
+    shape: DECAL_SHAPE.triangle,
+    color: DECAL_COLOR.orange,
+    rotate: 18,
+  },
+  {
+    left: '17.5%',
+    top: '-3.3rem',
+    size: '0.8rem',
+    shape: DECAL_SHAPE.square,
+    color: DECAL_COLOR.pink,
+    rotate: 0,
+  },
+  {
+    left: '11%',
+    top: '0.8rem',
+    size: '1rem',
+    shape: DECAL_SHAPE.square,
+    color: DECAL_COLOR.teal,
+    rotate: 0,
+  },
+  {
+    left: '70%',
+    top: '-1.9rem',
+    size: '1.2rem',
+    shape: DECAL_SHAPE.square,
+    color: DECAL_COLOR.orange,
+    rotate: 0,
+  },
+  {
+    left: '75%',
+    top: '0.4rem',
+    size: '1.9rem',
+    shape: DECAL_SHAPE.triangle,
+    color: DECAL_COLOR.teal,
+    rotate: -24,
+  },
+  {
+    left: '79.5%',
+    top: '2.2rem',
+    size: '0.7rem',
+    shape: DECAL_SHAPE.square,
+    color: DECAL_COLOR.pink,
+    rotate: 0,
+  },
+  {
+    left: '85%',
+    top: '-3rem',
+    size: '1.1rem',
+    shape: DECAL_SHAPE.triangle,
+    color: DECAL_COLOR.pink,
+    rotate: 160,
+  },
+] as const;
+---
+
+<header class="poster" data-tone={TONE.plain} style={geometry}>
+  <div class="tilt" aria-hidden="true">
+    <div class="half half-top" data-tone={TONE.contrast}>
+      <span class="word heavy">
+        {lines.map(line => (
+          <span class="line">{line}</span>
+        ))}
+      </span>
+    </div>
+    <div class="half half-bottom">
+      <span class="word heavy">
+        {lines.map(line => (
+          <span class="line">{line}</span>
+        ))}
+      </span>
+    </div>
+    <div class="seam">
+      <div class="halftone"></div>
+      {SHARDS.map(shard => (
+        <span class="shard" style={`left:${shard.left};top:${shard.top}`}>
+          <Decal shape={shard.shape} color={shard.color} size={shard.size} rotate={shard.rotate} />
+        </span>
+      ))}
+      <span class="arrows">
+        <Chevrons size="clamp(1rem, 2.4vw, 2.2rem)" />
+        <Dashes size="clamp(1.1rem, 2.6vw, 2.4rem)" />
+      </span>
+      <span class="mark" data-castle-host>
+        <CastleMark />
+      </span>
+      <span class="sticker">*{sticker}</span>
+    </div>
+  </div>
+  <h1 class="sr-only">{heading}</h1>
+  <div class="corner">
+    <slot name="corner" />
+  </div>
+  <div class="foot">
+    <p class="lede tagline">
+      <slot name="tagline" />
+    </p>
+    <slot name="actions" />
+  </div>
+</header>
+
+<style>
+  .poster {
+    --tilt: -8deg;
+    --stretch: 1.55;
+    --lines: 1;
+    --seam-cut: 0.4;
+    --word-size: min(calc(92vw / (var(--chars) * var(--glyph))), 30vh);
+    --word-line: calc(var(--word-size) * 0.8 * var(--stretch) * var(--lines));
+    --word-width: calc(var(--word-size) * var(--chars) * var(--glyph));
+    position: relative;
+    height: 100dvh;
+    min-height: 34rem;
+    overflow: hidden;
+  }
+
+  .tilt {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 300vmax;
+    height: 300vmax;
+    transform: translate(-50%, -50%) rotate(var(--tilt));
+  }
+
+  .half {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 50%;
+    overflow: hidden;
+  }
+
+  .half-top {
+    top: 0;
+  }
+
+  .half-bottom {
+    top: 50%;
+    background: var(--bg);
+    color: var(--word);
+  }
+
+  .word {
+    position: absolute;
+    left: 50%;
+    font-size: var(--word-size);
+    line-height: 0.8;
+    white-space: nowrap;
+    translate: -50% 0;
+    scale: 1 var(--stretch);
+    transform-origin: top;
+  }
+
+  .half-top .word {
+    top: calc(100% - var(--word-line) * var(--seam-cut));
+    animation: slide-left 900ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+  }
+
+  .half-bottom .word {
+    top: calc(var(--word-line) * var(--seam-cut) * -1);
+    animation: slide-right 900ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+  }
+
+  @keyframes slide-left {
+    from {
+      translate: -56% 0;
+    }
+  }
+
+  @keyframes slide-right {
+    from {
+      translate: -44% 0;
+    }
+  }
+
+  .seam {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: min(92vw, var(--word-width));
+    height: 0;
+    transform: translateX(-50%);
+  }
+
+  .halftone {
+    position: absolute;
+    left: 20%;
+    top: -4.5rem;
+    width: 50%;
+    height: 9rem;
+    background:
+      linear-gradient(var(--halftone-top), var(--halftone-top)) 0 0 / 100% 50% no-repeat,
+      linear-gradient(var(--halftone-bottom), var(--halftone-bottom)) 0 100% / 100% 50% no-repeat;
+    -webkit-mask-image:
+      radial-gradient(circle, #000 38%, transparent 40%),
+      radial-gradient(ellipse at center, #000 10%, transparent 68%);
+    -webkit-mask-size:
+      8px 8px,
+      100% 100%;
+    -webkit-mask-composite: source-in;
+    mask-image:
+      radial-gradient(circle, #000 38%, transparent 40%),
+      radial-gradient(ellipse at center, #000 10%, transparent 68%);
+    mask-size:
+      8px 8px,
+      100% 100%;
+    mask-composite: intersect;
+  }
+
+  .shard {
+    position: absolute;
+    display: flex;
+  }
+
+  .arrows {
+    position: absolute;
+    left: 1%;
+    top: calc(var(--word-line) * -0.5);
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+    color: var(--contrast-fg);
+  }
+
+  .sticker {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-50%, -50%) rotate(-2deg);
+    padding: 0.55em 1em 0.5em;
+    background: var(--pop-bg);
+    color: var(--pop-fg);
+    border: 2px solid var(--pop-fg);
+    outline: 2px solid var(--pop-bg);
+    font-weight: 800;
+    font-stretch: 112%;
+    font-size: clamp(0.8rem, 1.55vw, 1.5rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    animation: stamp 500ms 700ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
+  }
+
+  @keyframes stamp {
+    from {
+      opacity: 0;
+      transform: translate(-50%, -50%) rotate(-9deg) scale(1.6);
+    }
+  }
+
+  .mark {
+    position: absolute;
+    right: 1%;
+    top: calc(var(--word-line) * -0.52);
+    display: grid;
+    place-items: center;
+    width: calc(var(--word-size) * 0.34);
+    aspect-ratio: 1;
+    padding: calc(var(--word-size) * 0.085);
+    border-radius: 50%;
+    background: var(--mark-bg);
+    color: var(--mark-fg);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .corner {
+    position: absolute;
+    right: var(--gutter);
+    top: clamp(1rem, 3vh, 1.75rem);
+    color: var(--contrast-fg);
+  }
+
+  .foot {
+    position: absolute;
+    left: var(--gutter);
+    right: var(--gutter);
+    bottom: clamp(1.25rem, 4vh, 2.5rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 1rem 2rem;
+  }
+
+  .tagline {
+    max-width: 31ch;
+    margin: 0;
+  }
+
+  @media (max-width: 640px) {
+    .poster {
+      --tilt: -9deg;
+      --stretch: 1.25;
+      --lines: var(--stacked-lines);
+      --seam-cut: 0.5;
+      --word-size: min(calc(76vw / (var(--stacked-chars) * var(--stacked-glyph))), 20vh);
+      --word-width: calc(var(--word-size) * var(--stacked-chars) * var(--stacked-glyph));
+    }
+
+    .tilt {
+      top: 45%;
+    }
+
+    .line {
+      display: block;
+      text-align: center;
+    }
+
+    .shard {
+      scale: 0.55;
+    }
+
+    .halftone {
+      left: 10%;
+      width: 80%;
+    }
+
+    .arrows {
+      left: 0;
+      top: calc(var(--word-line) * -0.5 - 2.4rem);
+    }
+
+    .mark {
+      top: calc(var(--word-line) * 0.5 + 0.6rem);
+      right: 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .word,
+    .sticker {
+      animation: none;
+    }
+  }
+</style>

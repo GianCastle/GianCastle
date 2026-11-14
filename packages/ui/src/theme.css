@@ -1,0 +1,197 @@
+@import '@fontsource-variable/archivo/wdth.css';
+
+:root {
+  --ice: #dde8ee;
+  --frost: #e6eff3;
+  --ink: #121416;
+  --charcoal: #1b1e21;
+  --pitch: #0d0f10;
+  --orange: #f47b20;
+  --orange-bright: #f58a36;
+  --orange-deep: #a8430a;
+  --teal: #2bb3c0;
+  --teal-bright: #3cc4d1;
+  --teal-deep: #0e7480;
+  --pink: #ec5a8c;
+  --pink-deep: #b02a5c;
+
+  --plain-bg: var(--ice);
+  --plain-fg: var(--ink);
+  --plain-accent: var(--orange-deep);
+  --plain-accent-soft: var(--teal-deep);
+  --plain-tint-orange: var(--orange-deep);
+  --plain-tint-teal: var(--teal-deep);
+  --plain-tint-pink: var(--pink-deep);
+
+  --contrast-bg: var(--ink);
+  --contrast-fg: var(--frost);
+  --contrast-accent: var(--orange-bright);
+  --contrast-accent-soft: var(--teal-bright);
+  --contrast-tint-orange: var(--orange-bright);
+  --contrast-tint-teal: var(--teal-bright);
+  --contrast-tint-pink: var(--pink);
+
+  --accent-solid: var(--orange);
+  --on-accent: var(--ink);
+  --word: var(--ink);
+  --pop-bg: var(--orange);
+  --pop-fg: var(--ink);
+  --mark-bg: var(--pink);
+  --mark-fg: var(--ink);
+  --halftone-top: var(--frost);
+  --halftone-bottom: var(--ink);
+
+  --gutter: clamp(1.25rem, 3vw, 2.75rem);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --plain-bg: var(--charcoal);
+  --plain-fg: var(--frost);
+  --plain-accent: var(--orange-bright);
+  --plain-accent-soft: var(--teal-bright);
+  --plain-tint-orange: var(--orange-bright);
+  --plain-tint-teal: var(--teal-bright);
+  --plain-tint-pink: var(--pink);
+
+  --contrast-bg: var(--pitch);
+  --contrast-fg: var(--frost);
+
+  --on-accent: var(--pitch);
+  --word: var(--orange);
+  --pop-fg: var(--pitch);
+  --mark-fg: var(--pitch);
+  --halftone-bottom: var(--teal);
+
+  color-scheme: dark;
+}
+
+:root,
+[data-tone='plain'] {
+  --bg: var(--plain-bg);
+  --fg: var(--plain-fg);
+  --accent: var(--plain-accent);
+  --accent-soft: var(--plain-accent-soft);
+  --tint-orange: var(--plain-tint-orange);
+  --tint-teal: var(--plain-tint-teal);
+  --tint-pink: var(--plain-tint-pink);
+}
+
+[data-tone='contrast'] {
+  --bg: var(--contrast-bg);
+  --fg: var(--contrast-fg);
+  --accent: var(--contrast-accent);
+  --accent-soft: var(--contrast-accent-soft);
+  --tint-orange: var(--contrast-tint-orange);
+  --tint-teal: var(--contrast-tint-teal);
+  --tint-pink: var(--contrast-tint-pink);
+}
+
+:root,
+[data-tone] {
+  --muted: color-mix(in srgb, var(--fg) 68%, transparent);
+  --line: color-mix(in srgb, var(--fg) 22%, transparent);
+  --raise: color-mix(in srgb, var(--fg) 6%, var(--bg));
+}
+
+[data-tone] {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+@theme inline {
+  --color-canvas: var(--bg);
+  --color-surface: var(--raise);
+  --color-ink: var(--fg);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-accent: var(--accent);
+  --color-accent-ink: var(--on-accent);
+  --font-sans: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
+  --font-display: 'Archivo Variable', 'Arial Narrow', Arial, sans-serif;
+  --font-reading: 'Newsreader Variable', ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
+}
+
+@layer base {
+  html {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-size: 1.0625rem;
+    line-height: 1.45;
+  }
+
+  ::selection {
+    background: var(--accent-solid);
+    color: var(--on-accent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+}
+
+@layer components {
+  .heavy {
+    font-family: var(--font-display);
+    font-weight: 900;
+    font-stretch: 62%;
+    text-transform: uppercase;
+    letter-spacing: -0.03em;
+    line-height: 0.82;
+  }
+
+  .label {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 112%;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .lede {
+    font-size: clamp(1.35rem, 2.8vw, 2.5rem);
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+  }
+
+  .rule-top {
+    border-top: 3px solid currentColor;
+  }
+}
+
+@layer components {
+  .decal {
+    display: inline-block;
+    flex: none;
+    background: var(--decal-color, currentColor);
+  }
+
+  .decal-triangle {
+    clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  }
+
+  .decal-dash {
+    clip-path: polygon(0 0, 42% 0, 100% 100%, 58% 100%);
+  }
+
+  .decal-chevron {
+    clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 45% 50%);
+  }
+}

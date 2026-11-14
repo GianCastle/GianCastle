@@ -1,0 +1,24 @@
+---
+---
+
+<div class="actions">
+  <slot />
+</div>
+
+<style>
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem clamp(0.9rem, 1.6vw, 1.5rem);
+  }
+
+  .actions :global(a:not([class])) {
+    text-decoration: none;
+  }
+
+  .actions :global(a:not([class]):hover) {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+</style>

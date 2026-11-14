@@ -1,0 +1,30 @@
+{
+  "name": "@giancastle/ui",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "keywords": [
+    "astro-component"
+  ],
+  "scripts": {
+    "check": "astro check"
+  },
+  "exports": {
+    "./theme.css": "./src/theme.css",
+    "./sites": "./src/sites.ts",
+    "./socials": "./src/socials.ts",
+    "./theme": "./src/theme.ts",
+    "./locale": "./src/locale.ts",
+    "./stages": "./src/stages.ts",
+    "./decals": "./src/decals.ts",
+    "./components/*": "./src/components/*"
+  },
+  "dependencies": {
+    "@fontsource-variable/archivo": "^5.3.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "astro": "^7.4.13",
+    "typescript": "^5.9.3"
+  }
+}

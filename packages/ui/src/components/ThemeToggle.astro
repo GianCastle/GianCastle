@@ -1,0 +1,89 @@
+---
+import { LOCALE, type Locale } from '../locale';
+import { THEME, THEME_ATTRIBUTE, THEME_STORAGE_KEY } from '../theme';
+import { UI_COPY } from '../ui.labels';
+
+interface Props {
+  locale?: Locale;
+}
+
+const { locale = LOCALE.en } = Astro.props;
+const copy = UI_COPY[locale];
+const config = {
+  attribute: THEME_ATTRIBUTE,
+  storageKey: THEME_STORAGE_KEY,
+  themes: THEME,
+  labels: copy.theme,
+  switchLabels: {
+    [THEME.dark]: copy.switchTheme(copy.theme[THEME.dark]),
+    [THEME.light]: copy.switchTheme(copy.theme[THEME.light]),
+  },
+};
+---
+
+<button
+  type="button"
+  class="theme-toggle label"
+  data-theme-toggle
+  data-config={JSON.stringify(config)}
+>
+  <span class="dot" aria-hidden="true"></span>
+  <span data-theme-toggle-label>{copy.theme[THEME.dark]}</span>
+</button>
+
+<script>
+  const root = document.documentElement;
+
+  for (const button of document.querySelectorAll<HTMLButtonElement>('[data-theme-toggle]')) {
+    const config = JSON.parse(button.dataset.config ?? '{}');
+    const label = button.querySelector('[data-theme-toggle-label]');
+    const current = () => root.getAttribute(config.attribute) ?? config.themes.dark;
+    const opposite = (theme: string) =>
+      theme === config.themes.dark ? config.themes.light : config.themes.dark;
+
+    const render = () => {
+      const theme = current();
+      if (label) label.textContent = config.labels[theme];
+      button.setAttribute('aria-label', config.switchLabels[opposite(theme)]);
+    };
+
+    button.addEventListener('click', () => {
+      const next = opposite(current());
+      root.setAttribute(config.attribute, next);
+      try {
+        localStorage.setItem(config.storageKey, next);
+      } catch {}
+      document.dispatchEvent(new CustomEvent('themechange'));
+    });
+
+    document.addEventListener('themechange', render);
+    render();
+  }
+</script>
+
+<style>
+  .theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    padding: 0.55em 0.95em;
+    border: 2px solid currentColor;
+    border-radius: 999px;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+  }
+
+  .theme-toggle:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  .dot {
+    width: 0.7em;
+    height: 0.7em;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: inset -0.22em 0 0 currentColor;
+  }
+</style>
