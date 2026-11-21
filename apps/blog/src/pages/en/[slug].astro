@@ -1,0 +1,18 @@
+---
+import { LOCALE } from '@giancastle/ui/locale';
+import { getPublishedPosts, type Post } from '@/features/posts/posts.query';
+import PostView from '@/features/posts/views/PostView.astro';
+
+export const getStaticPaths = async () => {
+  const posts = await getPublishedPosts(LOCALE.en);
+  return posts.map(post => ({ params: { slug: post.slug }, props: { post } }));
+};
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<PostView post={post} />

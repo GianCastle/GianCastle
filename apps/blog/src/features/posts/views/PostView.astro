@@ -1,0 +1,84 @@
+---
+import Band from '@giancastle/ui/components/Band.astro';
+import Heavy from '@giancastle/ui/components/Heavy.astro';
+import { getImage, Image } from 'astro:assets';
+import { render } from 'astro:content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { routesFor } from '@/routes';
+import PostMeta from '../components/PostMeta.astro';
+import TagList from '../components/TagList.astro';
+import { buildPostJsonLd } from '../post.jsonld';
+import { excerpt } from '../posts.format';
+import { SITE_COPY } from '../posts.labels';
+import { getPostAlternate, type Post } from '../posts.query';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const copy = SITE_COPY[post.locale];
+const routes = routesFor(post.locale);
+const alternate = await getPostAlternate(post);
+const { Content } = await render(post);
+const socialImage = await getImage({
+  src: post.data.image,
+  width: 1200,
+  height: 630,
+  format: 'jpg',
+});
+const imageUrl = new URL(socialImage.src, Astro.site);
+const pageUrl = new URL(Astro.url.pathname, Astro.site);
+---
+
+<BaseLayout
+  locale={post.locale}
+  alternate={alternate}
+  title={post.data.title}
+  description={excerpt(post.body ?? '')}
+  image={imageUrl}
+  ogType="article"
+  jsonLd={buildPostJsonLd(post, pageUrl, imageUrl)}
+>
+  <article>
+    <Band as="header" tone="contrast" size="compact">
+      <div class="flex flex-col gap-6">
+        <TagList tags={post.data.tags} locale={post.locale} />
+        <Heavy as="h1" size="title">
+          {post.data.title}
+        </Heavy>
+        <PostMeta post={post} />
+      </div>
+    </Band>
+    <Band as="div" size="compact">
+      <Image
+        src={post.data.image}
+        alt=""
+        width={1600}
+        height={900}
+        loading="eager"
+        class="mx-auto aspect-[16/9] w-full max-w-5xl object-cover"
+      />
+      {post.data.translated && (
+        <p class="label mx-auto mt-10 w-full max-w-[42rem] text-muted">
+          {copy.translatedNote}{' '}
+          <a
+            href={alternate.href}
+            hreflang={alternate.locale}
+            class="text-accent underline underline-offset-4"
+          >
+            {copy.readOriginal}
+          </a>
+        </p>
+      )}
+      <div class="prose mx-auto mt-10 w-full max-w-[42rem]">
+        <Content />
+      </div>
+      <p class="rule-top mx-auto mt-16 w-full max-w-[42rem] pt-6">
+        <a href={routes.home} class="label no-underline hover:text-accent">
+          ← {copy.backHome}
+        </a>
+      </p>
+    </Band>
+  </article>
+</BaseLayout>

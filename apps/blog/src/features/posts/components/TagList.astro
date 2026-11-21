@@ -1,0 +1,26 @@
+---
+import type { Locale } from '@giancastle/ui/locale';
+import { routesFor } from '@/routes';
+import { tagSlug } from '../posts.format';
+
+interface Props {
+  tags: string[];
+  locale: Locale;
+}
+
+const { tags, locale } = Astro.props;
+const routes = routesFor(locale);
+---
+
+<ul class="flex flex-wrap gap-x-3 gap-y-1">
+  {tags.map(tag => (
+    <li>
+      <a
+        href={routes.tag(tagSlug(tag))}
+        class="label text-accent underline-offset-4 hover:underline"
+      >
+        {tag}
+      </a>
+    </li>
+  ))}
+</ul>

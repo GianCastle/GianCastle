@@ -1,0 +1,32 @@
+---
+import Band from '@giancastle/ui/components/Band.astro';
+import Heavy from '@giancastle/ui/components/Heavy.astro';
+import Kicker from '@giancastle/ui/components/Kicker.astro';
+import type { Locale } from '@giancastle/ui/locale';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import PostGrid from '../components/PostGrid.astro';
+import { SITE_COPY } from '../posts.labels';
+import type { Tag } from '../posts.query';
+
+interface Props {
+  locale: Locale;
+  tag: Tag;
+}
+
+const { locale, tag } = Astro.props;
+const copy = SITE_COPY[locale];
+---
+
+<BaseLayout locale={locale} title={tag.name}>
+  <Band tone="contrast" size="compact">
+    <Kicker>{copy.taggedWith}</Kicker>
+    <div class="mt-6">
+      <Heavy as="h1" size="title">
+        {tag.name}
+      </Heavy>
+    </div>
+  </Band>
+  <Band size="compact">
+    <PostGrid posts={tag.posts} />
+  </Band>
+</BaseLayout>

@@ -1,0 +1,30 @@
+---
+import Band from '@giancastle/ui/components/Band.astro';
+import Heavy from '@giancastle/ui/components/Heavy.astro';
+import Kicker from '@giancastle/ui/components/Kicker.astro';
+import Pill from '@giancastle/ui/components/Pill.astro';
+import type { Locale } from '@giancastle/ui/locale';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { routesFor } from '@/routes';
+import { SITE_COPY } from '../posts.labels';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = SITE_COPY[locale];
+---
+
+<BaseLayout locale={locale} title={copy.notFoundTitle}>
+  <Band>
+    <Kicker>404</Kicker>
+    <div class="mb-6 mt-6">
+      <Heavy as="h1" size="title">
+        {copy.notFoundTitle}
+      </Heavy>
+    </div>
+    <p class="lede mb-10">{copy.notFoundBody}</p>
+    <Pill href={routesFor(locale).home}>{copy.backHome}</Pill>
+  </Band>
+</BaseLayout>
