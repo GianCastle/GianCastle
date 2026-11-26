@@ -16,6 +16,7 @@ import SectionPlate from '@giancastle/ui/components/SectionPlate.astro';
 import VerbList from '@giancastle/ui/components/VerbList.astro';
 import StageProfile from '@giancastle/ui/components/StageProfile.astro';
 import type { Locale } from '@giancastle/ui/locale';
+import { plateSiteLinks } from '@giancastle/ui/site-plate';
 import { AUTHOR, SITE } from '@giancastle/ui/sites';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { buildProfileJsonLd } from '@/lib/seo/profile.jsonld';
@@ -46,7 +47,7 @@ const sections = HOME_SECTIONS.map(id => ({ id, label: nav.sectionLabels[id] }))
     </ActionRow>
   </Poster>
 
-  <SectionPlate sections={sections} labels={nav.labels} links={[closer.blog]} />
+  <SectionPlate sections={sections} labels={nav.labels} links={plateSiteLinks(SITE.web, locale)} />
 
   <main>
     <Band id={SECTION_ID.proof} tone="contrast" label={proof.label}>

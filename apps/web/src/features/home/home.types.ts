@@ -8,7 +8,7 @@ type Cta = { label: string; href: string; download?: boolean };
 
 export type HomeContent = {
   hero: { heading: string; sticker: string; role: string; tagline: string; cv?: Cta; cta: Cta };
-  nav: { labels: PlateLabels; sectionLabels: Record<SectionId, string> };
+  nav: { labels: Required<PlateLabels>; sectionLabels: Record<SectionId, string> };
   proof: { label: string; labels: RaceNumberLabels; items: readonly RaceNumber[] };
   value: {
     label: string;
