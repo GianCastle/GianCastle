@@ -150,6 +150,14 @@ const markers = stages.map((stage, index) => {
     list-style: none;
   }
 
+  .stages li {
+    container-type: inline-size;
+  }
+
+  .stages :global(h3) {
+    font-size: clamp(1.8rem, 19cqi, 5.5rem);
+  }
+
   .tag {
     display: inline-block;
     margin-bottom: 0.8rem;

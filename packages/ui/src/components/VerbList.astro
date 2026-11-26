@@ -37,6 +37,11 @@ const { items } = Astro.props;
 
   li {
     padding-top: 1.25rem;
+    container-type: inline-size;
+  }
+
+  .verb :global(.heavy) {
+    font-size: min(clamp(3rem, 7.5vw, 8rem), 20cqi);
   }
 
   .verb,

@@ -54,7 +54,7 @@ const [first] = items;
 
 <script>
   const REVEAL_AT = 0.5;
-  const CENTER_BAND = '-45% 0px -45% 0px';
+  const CENTER_LINE = '-50% 0px -50% 0px';
 
   for (const plate of document.querySelectorAll<HTMLElement>('[data-section-plate]')) {
     const toggle = plate.querySelector('button');
@@ -83,13 +83,17 @@ const [first] = items;
       write('name', link.querySelector('.label')?.textContent ?? '');
     };
 
+    const crossing = new Set<number>();
     const observer = new IntersectionObserver(
       entries => {
         for (const entry of entries) {
-          if (entry.isIntersecting) setCurrent(sections.indexOf(entry.target as HTMLElement));
+          const index = sections.indexOf(entry.target as HTMLElement);
+          if (entry.isIntersecting) crossing.add(index);
+          else crossing.delete(index);
         }
+        if (crossing.size > 0) setCurrent(Math.max(...crossing));
       },
-      { rootMargin: CENTER_BAND },
+      { rootMargin: CENTER_LINE },
     );
     for (const section of sections) if (section) observer.observe(section);
 
