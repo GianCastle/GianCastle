@@ -5,6 +5,7 @@ import { SITE, siteHref } from '@giancastle/ui/sites';
 import { TONE } from '@giancastle/ui/theme';
 import CatalogBrand from '@/features/catalog/components/CatalogBrand.astro';
 import EntryCard from '@/features/catalog/components/EntryCard.astro';
+import SiteFooter from '@/features/catalog/components/SiteFooter.astro';
 import { listEntries } from '@/features/catalog/catalog.query';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { SITE_COPY } from '@/site.labels';
@@ -40,6 +41,7 @@ const links = [
         ))}
       </ul>
       <p class="legend">{SITE_COPY.cover.legend}</p>
+      <SiteFooter />
     </main>
   </div>
 </BaseLayout>

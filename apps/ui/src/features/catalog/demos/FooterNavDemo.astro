@@ -1,0 +1,10 @@
+---
+import FooterNav from '@giancastle/ui/components/FooterNav.astro';
+import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
+import { SITE, SITE_DEFAULT_LOCALE } from '@giancastle/ui/sites';
+import { SAMPLE_PLATE_SECTIONS } from '../catalog.samples';
+---
+
+<FooterNav site={SITE.web} locale={SITE_DEFAULT_LOCALE[SITE.web]} sections={SAMPLE_PLATE_SECTIONS}>
+  <SocialLinks />
+</FooterNav>

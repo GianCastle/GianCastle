@@ -4,6 +4,7 @@ import { COMPONENT, FOUNDATION, type EntryId } from './catalog.entries';
 import CastleMarkDemo from './demos/CastleMarkDemo.astro';
 import ColorDemo from './demos/ColorDemo.astro';
 import DecalDemo from './demos/DecalDemo.astro';
+import FooterNavDemo from './demos/FooterNavDemo.astro';
 import MastheadDemo from './demos/MastheadDemo.astro';
 import MotionDemo from './demos/MotionDemo.astro';
 import PatternStripDemo from './demos/PatternStripDemo.astro';
@@ -35,4 +36,5 @@ export const ENTRY_DEMOS: Record<EntryId, EntryDemo> = {
   [COMPONENT.verbList]: { Demo: VerbListDemo, tone: TONE.plain },
   [COMPONENT.sticker]: { Demo: StickerDemo, tone: TONE.plain },
   [COMPONENT.castleMark]: { Demo: CastleMarkDemo, tone: TONE.contrast },
+  [COMPONENT.footerNav]: { Demo: FooterNavDemo, tone: TONE.contrast },
 };

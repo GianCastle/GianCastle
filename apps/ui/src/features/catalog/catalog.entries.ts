@@ -19,6 +19,7 @@ export const COMPONENT = {
   verbList: 'verb-list',
   sticker: 'sticker',
   castleMark: 'castle-mark',
+  footerNav: 'footer-nav',
 } as const;
 
 export type FoundationId = (typeof FOUNDATION)[keyof typeof FOUNDATION];
