@@ -21,6 +21,7 @@
     "./race-numbers": "./src/race-numbers.ts",
     "./section-plate": "./src/section-plate.ts",
     "./site-head": "./src/site-head.ts",
+    "./patterns": "./src/patterns.ts",
     "./components/*": "./src/components/*"
   },
   "dependencies": {
