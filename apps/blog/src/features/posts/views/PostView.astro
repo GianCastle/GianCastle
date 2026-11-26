@@ -3,6 +3,7 @@ import Band from '@giancastle/ui/components/Band.astro';
 import Heavy from '@giancastle/ui/components/Heavy.astro';
 import Sticker from '@giancastle/ui/components/Sticker.astro';
 import StickyLabel from '@giancastle/ui/components/StickyLabel.astro';
+import { OG_TYPE } from '@giancastle/ui/site-head';
 import { getImage, Image } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -39,7 +40,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site);
   title={post.data.title}
   description={excerpt(post.body ?? '')}
   image={imageUrl}
-  ogType="article"
+  ogType={OG_TYPE.article}
   jsonLd={buildPostJsonLd(post, pageUrl, imageUrl)}
 >
   <article>

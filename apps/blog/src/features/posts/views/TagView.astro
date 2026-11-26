@@ -6,7 +6,7 @@ import type { Locale } from '@giancastle/ui/locale';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PostGrid from '../components/PostGrid.astro';
 import { SITE_COPY } from '../posts.labels';
-import type { Tag } from '../posts.query';
+import { getTagAlternate, type Tag } from '../posts.query';
 
 interface Props {
   locale: Locale;
@@ -15,9 +15,10 @@ interface Props {
 
 const { locale, tag } = Astro.props;
 const copy = SITE_COPY[locale];
+const alternate = await getTagAlternate(tag, locale);
 ---
 
-<BaseLayout locale={locale} title={tag.name}>
+<BaseLayout locale={locale} alternate={alternate} title={tag.name}>
   <Band tone="contrast" size="compact">
     <Kicker>{copy.taggedWith}</Kicker>
     <div class="mt-6">

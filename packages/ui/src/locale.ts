@@ -28,4 +28,28 @@ export const otherLocale = (locale: Locale): Locale =>
 export const localizePath = (path: string, locale: Locale, defaultLocale: Locale) =>
   locale === defaultLocale ? path : `/${locale}${path}`;
 
-export type LocaleAlternate = { locale: Locale; href: string };
+export const OG_LOCALE: Record<Locale, string> = {
+  [LOCALE.en]: 'en_US',
+  [LOCALE.es]: 'es_DO',
+};
+
+export const ALTERNATE_KIND = {
+  equivalent: 'equivalent',
+  fallback: 'fallback',
+} as const;
+
+export type AlternateKind = (typeof ALTERNATE_KIND)[keyof typeof ALTERNATE_KIND];
+
+export type LocaleAlternate = { locale: Locale; href: string; kind: AlternateKind };
+
+export const equivalentPage = (locale: Locale, href: string): LocaleAlternate => ({
+  locale,
+  href,
+  kind: ALTERNATE_KIND.equivalent,
+});
+
+export const fallbackPage = (locale: Locale, href: string): LocaleAlternate => ({
+  locale,
+  href,
+  kind: ALTERNATE_KIND.fallback,
+});

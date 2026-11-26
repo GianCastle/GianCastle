@@ -1,5 +1,6 @@
 import {
   LOCALE,
+  equivalentPage,
   localizePath,
   otherLocale,
   type Locale,
@@ -37,5 +38,5 @@ export const sectionHref = (id: SectionId, locale: Locale) =>
 
 export const alternateFor = (page: Page, locale: Locale): LocaleAlternate => {
   const locale2 = otherLocale(locale);
-  return { locale: locale2, href: pagePath(page, locale2) };
+  return equivalentPage(locale2, pagePath(page, locale2));
 };

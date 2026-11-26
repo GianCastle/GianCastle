@@ -1,7 +1,14 @@
-import { LOCALES, otherLocale, type Locale, type LocaleAlternate } from '@giancastle/ui/locale';
+import {
+  LOCALES,
+  equivalentPage,
+  fallbackPage,
+  otherLocale,
+  type Locale,
+  type LocaleAlternate,
+} from '@giancastle/ui/locale';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { routesFor } from '@/routes';
-import { CATEGORIES, CATEGORY_LABEL } from './posts.categories';
+import { CATEGORIES, CATEGORY_LABEL, type Category } from './posts.categories';
 import { POSTS_COLLECTION } from './posts.constants';
 import { tagSlug } from './posts.format';
 
@@ -9,7 +16,7 @@ type Entry = CollectionEntry<typeof POSTS_COLLECTION>;
 
 export type Post = Entry & { locale: Locale; slug: string };
 
-export type Tag = { name: string; slug: string; posts: Post[] };
+export type Tag = { category: Category; name: string; slug: string; posts: Post[] };
 
 const isLocale = (value: string): value is Locale => LOCALES.some(locale => locale === value);
 
@@ -38,15 +45,29 @@ export const getPostAlternate = async (post: Post): Promise<LocaleAlternate> => 
   const counterpart = (await getAllPublished()).find(
     other => other.locale === locale && other.slug === post.slug,
   );
-  return { locale, href: counterpart ? routes.post(counterpart.slug) : routes.home };
+  return counterpart
+    ? equivalentPage(locale, routes.post(counterpart.slug))
+    : fallbackPage(locale, routes.home);
 };
 
 export const groupByCategory = (posts: Post[], locale: Locale): Tag[] =>
   CATEGORIES.map(category => {
     const name = CATEGORY_LABEL[locale][category];
     return {
+      category,
       name,
       slug: tagSlug(name),
       posts: posts.filter(post => post.data.category === category),
     };
   }).filter(tag => tag.posts.length > 0);
+
+export const getTagAlternate = async (tag: Tag, locale: Locale): Promise<LocaleAlternate> => {
+  const other = otherLocale(locale);
+  const routes = routesFor(other);
+  const counterpart = groupByCategory(await getPublishedPosts(other), other).find(
+    candidate => candidate.category === tag.category,
+  );
+  return counterpart
+    ? equivalentPage(other, routes.tag(counterpart.slug))
+    : fallbackPage(other, routes.home);
+};
