@@ -1,13 +1,19 @@
 ---
-import { PLATE_NUMBER_WIDTH, type PlateLabels, type PlateSection } from '../section-plate';
+import {
+  PLATE_NUMBER_WIDTH,
+  type PlateLabels,
+  type PlateLink,
+  type PlateSection,
+} from '../section-plate';
 import { TONE } from '../theme';
 
 interface Props {
   sections: readonly PlateSection[];
   labels: PlateLabels;
+  links?: readonly PlateLink[];
 }
 
-const { sections, labels } = Astro.props;
+const { sections, labels, links = [] } = Astro.props;
 const LIST_ID = 'section-plate-list';
 
 const items = sections.map((section, index) => ({
@@ -45,6 +51,12 @@ const [first] = items;
           <span class="label">{item.label}</span>
         </a>
       ))}
+      {links.map(link => (
+        <a class="extra" href={link.href}>
+          <span class="label">{link.label}</span>
+          <i class="arrow" aria-hidden="true" />
+        </a>
+      ))}
       <a class="heavy contact" href={labels.contact.href}>
         {labels.contact.label}
       </a>
@@ -54,7 +66,7 @@ const [first] = items;
 
 <script>
   const REVEAL_AT = 0.5;
-  const CENTER_LINE = '-50% 0px -50% 0px';
+  const CENTER_LINE = 0.5;
 
   for (const plate of document.querySelectorAll<HTMLElement>('[data-section-plate]')) {
     const toggle = plate.querySelector('button');
@@ -83,20 +95,6 @@ const [first] = items;
       write('name', link.querySelector('.label')?.textContent ?? '');
     };
 
-    const crossing = new Set<number>();
-    const observer = new IntersectionObserver(
-      entries => {
-        for (const entry of entries) {
-          const index = sections.indexOf(entry.target as HTMLElement);
-          if (entry.isIntersecting) crossing.add(index);
-          else crossing.delete(index);
-        }
-        if (crossing.size > 0) setCurrent(Math.max(...crossing));
-      },
-      { rootMargin: CENTER_LINE },
-    );
-    for (const section of sections) if (section) observer.observe(section);
-
     let queued = false;
     const reveal = () => {
       queued = false;
@@ -104,6 +102,11 @@ const [first] = items;
       plate.toggleAttribute('data-visible', visible);
       plate.inert = !visible;
       if (!visible) setOpen(false);
+      const line = innerHeight * CENTER_LINE;
+      const passed = sections.filter(
+        section => section && section.getBoundingClientRect().top <= line,
+      ).length;
+      setCurrent(Math.max(passed - 1, 0));
     };
     addEventListener(
       'scroll',
@@ -115,7 +118,6 @@ const [first] = items;
       { passive: true },
     );
     reveal();
-    setCurrent(0);
 
     toggle.addEventListener('click', () =>
       setOpen(toggle.getAttribute('aria-expanded') !== 'true'),
@@ -233,6 +235,17 @@ const [first] = items;
   .list a:hover {
     background: var(--accent-solid);
     color: var(--on-accent);
+  }
+
+  .list .extra {
+    justify-content: space-between;
+  }
+
+  .arrow {
+    width: 0.7rem;
+    height: 0.9rem;
+    background: currentColor;
+    clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 45% 50%);
   }
 
   .list .contact {
