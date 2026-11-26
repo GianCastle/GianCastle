@@ -1,0 +1,54 @@
+---
+import { PATTERN, PATTERN_PANELS } from '../patterns';
+import Chevrons from './Chevrons.astro';
+
+const columns = PATTERN_PANELS.map(panel => `${panel.span}fr`).join(' ');
+---
+
+<div class="strip" aria-hidden="true" style={`grid-template-columns:${columns}`}>
+  {PATTERN_PANELS.map(panel => (
+    <span class:list={['panel', panel.pattern]}>
+      {panel.pattern === PATTERN.chevrons && <Chevrons size="1.5rem" />}
+    </span>
+  ))}
+</div>
+
+<style>
+  .strip {
+    --stripe: 0.4rem;
+    --tooth: 1.25rem;
+    display: grid;
+    height: clamp(2.5rem, 5vw, 3.5rem);
+    overflow: hidden;
+  }
+
+  .solid {
+    background: var(--orange);
+  }
+
+  .waves {
+    background-color: var(--frost);
+    background-image: repeating-radial-gradient(
+      circle at 50% 100%,
+      var(--pitch) 0 var(--stripe),
+      var(--frost) var(--stripe) calc(var(--stripe) * 2)
+    );
+    background-size: clamp(3.5rem, 7vw, 5rem) 100%;
+  }
+
+  .zigzag {
+    background-color: var(--teal);
+    background-image:
+      linear-gradient(135deg, var(--pitch) 25%, transparent 25%),
+      linear-gradient(225deg, var(--pitch) 25%, transparent 25%);
+    background-size: var(--tooth) var(--tooth);
+  }
+
+  .chevrons {
+    display: grid;
+    place-items: center;
+    background: var(--pink);
+    color: var(--pitch);
+    line-height: 0;
+  }
+</style>

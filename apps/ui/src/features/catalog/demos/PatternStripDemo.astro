@@ -1,0 +1,28 @@
+---
+import PatternStrip from '@giancastle/ui/components/PatternStrip.astro';
+import { TONE } from '@giancastle/ui/theme';
+
+const BANDS = [
+  { tone: TONE.contrast, text: 'My results' },
+  { tone: TONE.plain, text: 'What I bring' },
+] as const;
+const [above, below] = BANDS;
+---
+
+<div class="band" data-tone={above.tone}>
+  <p class="heavy">{above.text}</p>
+</div>
+<PatternStrip />
+<div class="band" data-tone={below.tone}>
+  <p class="heavy">{below.text}</p>
+</div>
+
+<style>
+  .band {
+    padding: clamp(1.25rem, 3vw, 2.25rem);
+  }
+
+  .heavy {
+    font-size: clamp(2rem, 5vw, 3.5rem);
+  }
+</style>

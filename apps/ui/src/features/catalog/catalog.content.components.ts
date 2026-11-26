@@ -214,6 +214,25 @@ export const COMPONENT_DOCS: Record<ComponentId, EntryDoc> = {
       { name: 'rotate', type: 'number', description: 'Degrees. Defaults to 0.' },
     ],
   },
+  [COMPONENT.patternStrip]: {
+    title: 'Pattern strip',
+    lede: 'Four panels of paint where one section ends and the next begins.',
+    source: 'components/PatternStrip.astro',
+    notes: [
+      {
+        heading: 'Why it exists',
+        body: 'A team jersey breaks its lower panels into blocks: a solid color, waves, a zigzag, a row of arrows. The strip brings that to the edge between two bands, so a change of tone reads as a seam and not as a cut.',
+      },
+      {
+        heading: 'How it is drawn',
+        body: 'Every panel is a CSS gradient on a plain box, with the Chevrons component in the last one. No images. The panels and their widths are a typed list, so a new pattern is one entry and one class.',
+      },
+      {
+        heading: 'Leave it out when',
+        body: 'Both neighbours share a tone, or the page is short. It is the loudest divider in the system: twice on a long page is the limit.',
+      },
+    ],
+  },
   [COMPONENT.stageProfile]: {
     title: 'Stage profile',
     lede: 'A process drawn as the elevation chart of a race stage.',

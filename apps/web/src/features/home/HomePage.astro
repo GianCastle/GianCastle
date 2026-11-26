@@ -6,6 +6,7 @@ import Controls from '@giancastle/ui/components/Controls.astro';
 import Heavy from '@giancastle/ui/components/Heavy.astro';
 import Kicker from '@giancastle/ui/components/Kicker.astro';
 import OfferList from '@giancastle/ui/components/OfferList.astro';
+import PatternStrip from '@giancastle/ui/components/PatternStrip.astro';
 import Pill from '@giancastle/ui/components/Pill.astro';
 import Poster from '@giancastle/ui/components/Poster.astro';
 import SlantBars from '@giancastle/ui/components/SlantBars.astro';
@@ -53,6 +54,8 @@ const sections = HOME_SECTIONS.map(id => ({ id, label: nav.sectionLabels[id] }))
       <RaceNumbers items={proof.items} labels={proof.labels} />
     </Band>
 
+    <PatternStrip />
+
     <Band id={SECTION_ID.value} label={value.label}>
       <Heavy as="h2">
         {value.statement.map(line => (
@@ -72,6 +75,8 @@ const sections = HOME_SECTIONS.map(id => ({ id, label: nav.sectionLabels[id] }))
       </div>
       <StageProfile stages={process.items} finishLabel={process.finish} />
     </Band>
+
+    <PatternStrip />
 
     <Band id={SECTION_ID.ways} label={ways.label}>
       <Kicker as="h2">{ways.label}</Kicker>
