@@ -1,3 +1,4 @@
+import { DECAL_COLORS, type DecalColor } from '@giancastle/ui/decals';
 import { DATE_LOCALE, type Locale } from '@giancastle/ui/locale';
 import { EXCERPT_LENGTH, WORDS_PER_MINUTE } from './posts.constants';
 import { SITE_COPY } from './posts.labels';
@@ -34,3 +35,8 @@ export const tagSlug = (tag: string) =>
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/^-|-$/g, '');
+
+export const tagColor = (tag: string): DecalColor => {
+  const sum = [...tagSlug(tag)].reduce((total, char) => total + char.charCodeAt(0), 0);
+  return DECAL_COLORS[sum % DECAL_COLORS.length] ?? DECAL_COLORS[0];
+};

@@ -1,6 +1,8 @@
 ---
 import Band from '@giancastle/ui/components/Band.astro';
 import Heavy from '@giancastle/ui/components/Heavy.astro';
+import Sticker from '@giancastle/ui/components/Sticker.astro';
+import StickyLabel from '@giancastle/ui/components/StickyLabel.astro';
 import { getImage, Image } from 'astro:assets';
 import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
@@ -51,24 +53,26 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site);
       </div>
     </Band>
     <Band as="div" size="compact">
-      <Image
-        src={post.data.image}
-        alt=""
-        width={1600}
-        height={900}
-        loading="eager"
-        class="mx-auto aspect-[16/9] w-full max-w-5xl object-cover"
-      />
+      <div class="mx-auto w-full max-w-5xl">
+        <Sticker as="figure" tilt="right" padding="tight">
+          <Image
+            src={post.data.image}
+            alt=""
+            width={1600}
+            height={900}
+            loading="eager"
+            class="aspect-[16/9] w-full object-cover"
+          />
+        </Sticker>
+      </div>
       {post.data.translated && (
-        <p class="label mx-auto mt-10 w-full max-w-[42rem] text-muted">
-          {copy.translatedNote}{' '}
-          <a
-            href={alternate.href}
-            hreflang={alternate.locale}
-            class="text-accent underline underline-offset-4"
-          >
-            {copy.readOriginal}
-          </a>
+        <p class="mx-auto mt-10 w-full max-w-[42rem]">
+          <StickyLabel color="teal">
+            {copy.translatedNote}{' '}
+            <a href={alternate.href} hreflang={alternate.locale}>
+              {copy.readOriginal}
+            </a>
+          </StickyLabel>
         </p>
       )}
       <div class="prose mx-auto mt-10 w-full max-w-[42rem]">

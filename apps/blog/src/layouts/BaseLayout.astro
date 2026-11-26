@@ -21,9 +21,10 @@ interface Props {
   image?: URL;
   jsonLd?: Record<string, unknown>;
   ogType?: 'website' | 'article';
+  masthead?: boolean;
 }
 
-const { locale, title, image, jsonLd, ogType = 'website' } = Astro.props;
+const { locale, title, image, jsonLd, ogType = 'website', masthead = true } = Astro.props;
 const copy = SITE_COPY[locale];
 const routes = routesFor(locale);
 const { description = copy.description } = Astro.props;
@@ -72,13 +73,15 @@ const navLinks = [
     >
       {copy.skipToContent}
     </a>
-    <Masthead
-      wordmark={AUTHOR.handle}
-      href={routes.home}
-      links={navLinks}
-      locale={locale}
-      alternate={alternate}
-    />
+    {masthead && (
+      <Masthead
+        wordmark={AUTHOR.handle}
+        href={routes.home}
+        links={navLinks}
+        locale={locale}
+        alternate={alternate}
+      />
+    )}
     <main id="content">
       <slot />
     </main>

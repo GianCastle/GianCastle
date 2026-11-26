@@ -1,0 +1,42 @@
+---
+import Heavy from '@giancastle/ui/components/Heavy.astro';
+import Sticker from '@giancastle/ui/components/Sticker.astro';
+import { Image } from 'astro:assets';
+import { routesFor } from '@/routes';
+import { excerpt } from '../posts.format';
+import type { Post } from '../posts.query';
+import PostMeta from './PostMeta.astro';
+import TagList from './TagList.astro';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const href = routesFor(post.locale).post(post.slug);
+---
+
+<Sticker as="article">
+  <div class="group grid gap-6 pt-12 md:grid-cols-[1.2fr_1fr] md:items-end md:gap-10 md:pt-0">
+    <a href={href} tabindex="-1" aria-hidden="true" class="block overflow-hidden">
+      <Image
+        src={post.data.image}
+        alt=""
+        width={1200}
+        height={800}
+        loading="eager"
+        class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+      />
+    </a>
+    <div class="flex flex-col gap-4 md:pt-12">
+      <TagList tags={post.data.tags} locale={post.locale} />
+      <a href={href} class="no-underline hover:text-accent">
+        <Heavy as="h2" size="title">
+          {post.data.title}
+        </Heavy>
+      </a>
+      <p class="text-xl text-muted">{excerpt(post.body ?? '')}</p>
+      <PostMeta post={post} />
+    </div>
+  </div>
+</Sticker>

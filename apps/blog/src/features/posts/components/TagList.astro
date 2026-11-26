@@ -1,7 +1,8 @@
 ---
+import { DECAL_TINT_VAR } from '@giancastle/ui/decals';
 import type { Locale } from '@giancastle/ui/locale';
 import { routesFor } from '@/routes';
-import { tagSlug } from '../posts.format';
+import { tagColor, tagSlug } from '../posts.format';
 
 interface Props {
   tags: string[];
@@ -17,7 +18,8 @@ const routes = routesFor(locale);
     <li>
       <a
         href={routes.tag(tagSlug(tag))}
-        class="label text-accent underline-offset-4 hover:underline"
+        class="label underline-offset-4 hover:underline"
+        style={`color:${DECAL_TINT_VAR[tagColor(tag)]}`}
       >
         {tag}
       </a>

@@ -18,6 +18,8 @@ type SiteCopy = {
   closerTagline: string;
   translatedNote: string;
   readOriginal: string;
+  posterSticker: string;
+  readPosts: string;
   readingTime: (minutes: number) => string;
 };
 
@@ -36,10 +38,12 @@ export const SITE_COPY: Record<Locale, SiteCopy> = {
     skipToContent: 'Saltar al contenido',
     notFoundTitle: 'Giro equivocado',
     notFoundBody: 'Puede que la entrada haya cambiado de lugar.',
-    closerTitle: 'Gracias por leer',
+    closerTitle: 'Gracias',
     closerTagline: 'Escribo cuando la cabeza pesa. Lo demás lo construyo.',
     translatedNote: 'Traducido del inglés.',
     readOriginal: 'Leer el original',
+    posterSticker: 'Blog personal',
+    readPosts: 'Leer',
     readingTime: minutes => `${minutes} min de lectura`,
   },
   [LOCALE.en]: {
@@ -56,10 +60,12 @@ export const SITE_COPY: Record<Locale, SiteCopy> = {
     skipToContent: 'Skip to content',
     notFoundTitle: 'Wrong turn',
     notFoundBody: 'The post may have moved.',
-    closerTitle: 'Thanks for reading',
+    closerTitle: 'Thanks',
     closerTagline: 'I write when my head gets heavy. The rest I build.',
     translatedNote: 'Translated from Spanish.',
     readOriginal: 'Read the original',
+    posterSticker: 'Personal blog',
+    readPosts: 'Read',
     readingTime: minutes => `${minutes} min read`,
   },
 };

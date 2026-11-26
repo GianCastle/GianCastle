@@ -9,40 +9,31 @@ import TagList from './TagList.astro';
 
 interface Props {
   post: Post;
-  featured?: boolean;
 }
 
-const { post, featured = false } = Astro.props;
+const { post } = Astro.props;
 const href = routesFor(post.locale).post(post.slug);
 ---
 
-<article
-  lang={post.locale}
-  class:list={[
-    'group flex flex-col gap-5',
-    featured && 'md:grid md:grid-cols-[1.25fr_1fr] md:items-end md:gap-10',
-  ]}
->
+<article class="group flex flex-col gap-5">
   <a href={href} tabindex="-1" aria-hidden="true" class="block overflow-hidden bg-surface">
     <Image
       src={post.data.image}
       alt=""
-      width={featured ? 1200 : 720}
-      height={featured ? 800 : 480}
-      loading={featured ? 'eager' : 'lazy'}
-      class="aspect-[3/2] w-full object-cover grayscale transition duration-500 group-hover:grayscale-0"
+      width={720}
+      height={480}
+      loading="lazy"
+      class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
     />
   </a>
   <div class="rule-top flex flex-col gap-4 pt-4">
     <TagList tags={post.data.tags} locale={post.locale} />
     <a href={href} class="no-underline hover:text-accent">
-      <Heavy as="h2" size={featured ? 'title' : 'card'}>
+      <Heavy as="h2" size="card">
         {post.data.title}
       </Heavy>
     </a>
-    <p class:list={['text-muted', featured ? 'text-xl' : 'text-base']}>
-      {excerpt(post.body ?? '')}
-    </p>
+    <p class="text-base text-muted">{excerpt(post.body ?? '')}</p>
     <PostMeta post={post} />
   </div>
 </article>
