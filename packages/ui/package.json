@@ -18,6 +18,7 @@
     "./locale": "./src/locale.ts",
     "./stages": "./src/stages.ts",
     "./decals": "./src/decals.ts",
+    "./race-numbers": "./src/race-numbers.ts",
     "./components/*": "./src/components/*"
   },
   "dependencies": {

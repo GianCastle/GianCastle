@@ -9,7 +9,7 @@ import OfferList from '@giancastle/ui/components/OfferList.astro';
 import Pill from '@giancastle/ui/components/Pill.astro';
 import Poster from '@giancastle/ui/components/Poster.astro';
 import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
-import StatementList from '@giancastle/ui/components/StatementList.astro';
+import RaceNumbers from '@giancastle/ui/components/RaceNumbers.astro';
 import VerbList from '@giancastle/ui/components/VerbList.astro';
 import StageProfile from '@giancastle/ui/components/StageProfile.astro';
 import type { Locale } from '@giancastle/ui/locale';
@@ -42,7 +42,7 @@ const alternate = alternateFor(PAGE.home, locale);
   <main>
     <Band id={SECTION_ID.proof} tone="contrast" label={proof.label}>
       <Kicker as="h2">{proof.label}</Kicker>
-      <StatementList items={proof.items} />
+      <RaceNumbers items={proof.items} labels={proof.labels} />
     </Band>
 
     <Band id={SECTION_ID.value} label={value.label}>
