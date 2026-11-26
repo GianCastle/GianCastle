@@ -1,0 +1,101 @@
+---
+import LanguageSwitch from '@giancastle/ui/components/LanguageSwitch.astro';
+import Pill from '@giancastle/ui/components/Pill.astro';
+import type { Locale } from '@giancastle/ui/locale';
+import { HOME_CONTENT } from '@/features/home/home.content';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { CV_PDF_PATH, PAGE, alternateFor, pagePath } from '@/routes';
+import CvSection from './components/CvSection.astro';
+import { CV_CONTENT, CV_IDENTITY } from './cv.data';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const cv = CV_CONTENT[locale];
+const skills = HOME_CONTENT[locale].toolbox.groups;
+const alternate = alternateFor(PAGE.cv, locale);
+---
+
+<BaseLayout locale={locale} alternate={alternate} title={cv.labels.pageTitle} forceTheme="light">
+  <div class="mx-auto flex w-full max-w-[50rem] items-center justify-between gap-4 px-6 pt-8 print:hidden">
+    <a href={pagePath(PAGE.home, locale)} class="label hover:text-accent">
+      ← {cv.labels.home}
+    </a>
+    <div class="flex items-center gap-2">
+      <LanguageSwitch alternate={alternate} />
+      <Pill href={CV_PDF_PATH[locale]} variant="solid" download>
+        {cv.labels.download}
+      </Pill>
+    </div>
+  </div>
+  <main class="mx-auto w-full max-w-[50rem] px-6 py-10 text-[0.82rem] leading-snug print:max-w-none print:p-0">
+    <header>
+      <h1 class="heavy text-6xl">{CV_IDENTITY.name}</h1>
+      <p class="mt-3 text-base">{cv.title}</p>
+      <p class="mt-2 flex flex-wrap gap-x-4 gap-y-1 text-[0.75rem] text-muted">
+        <span>{cv.location}</span>
+        {CV_IDENTITY.links.map(link => (
+          <a href={link.href}>{link.label}</a>
+        ))}
+      </p>
+    </header>
+
+    <CvSection title={cv.labels.summary}>
+      <p>{cv.summary}</p>
+    </CvSection>
+
+    <CvSection title={cv.labels.skills}>
+      <dl class="grid gap-y-1.5">
+        {skills.map(group => (
+          <div class="grid gap-x-4 sm:grid-cols-[11rem_1fr] print:grid-cols-[11rem_1fr]">
+            <dt class="font-medium">{group.name}</dt>
+            <dd class="text-muted">{group.items.join(', ')}</dd>
+          </div>
+        ))}
+      </dl>
+    </CvSection>
+
+    <CvSection title={cv.labels.experience}>
+      <ol class="flex flex-col gap-5">
+        {cv.experience.map(job => (
+          <li class="break-inside-avoid-page">
+            <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+              <h3 class="text-[0.95rem] font-semibold">
+                {job.role} <span class="font-normal text-muted">· {job.organization}</span>
+              </h3>
+              <p class="text-[0.75rem] text-muted">
+                {job.period} · {job.place}
+              </p>
+            </div>
+            <ul class="mt-1.5 list-disc space-y-1 pl-4">
+              {job.highlights.map(highlight => (
+                <li>{highlight}</li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </CvSection>
+
+    <CvSection title={cv.labels.education}>
+      <ul class="grid gap-1">
+        {cv.education.map(item => (
+          <li>
+            <span class="font-medium">{item.title}</span>
+            <span class="text-muted"> · {item.place}</span>
+          </li>
+        ))}
+      </ul>
+    </CvSection>
+
+    <CvSection title={cv.labels.community}>
+      <ul class="grid gap-1">
+        {cv.community.map(item => (
+          <li>{item}</li>
+        ))}
+      </ul>
+    </CvSection>
+  </main>
+</BaseLayout>

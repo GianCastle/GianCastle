@@ -1,0 +1,21 @@
+---
+import Band from '@giancastle/ui/components/Band.astro';
+import Heavy from '@giancastle/ui/components/Heavy.astro';
+import Kicker from '@giancastle/ui/components/Kicker.astro';
+import Masthead from '@giancastle/ui/components/Masthead.astro';
+import Pill from '@giancastle/ui/components/Pill.astro';
+import { AUTHOR } from '@giancastle/ui/sites';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { PAGE } from '@/routes';
+---
+
+<BaseLayout title="Wrong turn">
+  <Masthead wordmark={AUTHOR.handle} href={PAGE.home} />
+  <Band as="main">
+    <Kicker>404</Kicker>
+    <div class="mb-10 mt-6">
+      <Heavy as="h1">Wrong turn.</Heavy>
+    </div>
+    <Pill href={PAGE.home}>Back home</Pill>
+  </Band>
+</BaseLayout>

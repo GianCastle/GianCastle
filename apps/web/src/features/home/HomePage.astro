@@ -1,0 +1,88 @@
+---
+import ActionRow from '@giancastle/ui/components/ActionRow.astro';
+import Band from '@giancastle/ui/components/Band.astro';
+import Closer from '@giancastle/ui/components/Closer.astro';
+import Controls from '@giancastle/ui/components/Controls.astro';
+import Heavy from '@giancastle/ui/components/Heavy.astro';
+import Kicker from '@giancastle/ui/components/Kicker.astro';
+import OfferList from '@giancastle/ui/components/OfferList.astro';
+import Pill from '@giancastle/ui/components/Pill.astro';
+import Poster from '@giancastle/ui/components/Poster.astro';
+import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
+import StatementList from '@giancastle/ui/components/StatementList.astro';
+import VerbList from '@giancastle/ui/components/VerbList.astro';
+import StageProfile from '@giancastle/ui/components/StageProfile.astro';
+import type { Locale } from '@giancastle/ui/locale';
+import { AUTHOR } from '@giancastle/ui/sites';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { buildProfileJsonLd } from '@/lib/seo/profile.jsonld';
+import { PAGE, SECTION_ID, alternateFor } from '@/routes';
+import { HOME_CONTENT } from './home.content';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const { hero, proof, value, process, ways, closer } = HOME_CONTENT[locale];
+const alternate = alternateFor(PAGE.home, locale);
+---
+
+<BaseLayout locale={locale} alternate={alternate} jsonLd={buildProfileJsonLd(locale)}>
+  <Poster lines={AUTHOR.wordmarkLines} sticker={hero.sticker} heading={hero.heading}>
+    <Controls slot="corner" locale={locale} alternate={alternate} />
+    <Fragment slot="tagline">{hero.tagline}</Fragment>
+    <ActionRow slot="actions">
+      <SocialLinks />
+      <a href={hero.cv.href}>{hero.cv.label}</a>
+      <Pill href={hero.cta.href}>{hero.cta.label}</Pill>
+    </ActionRow>
+  </Poster>
+
+  <main>
+    <Band id={SECTION_ID.proof} tone="contrast" label={proof.label}>
+      <Kicker as="h2">{proof.label}</Kicker>
+      <StatementList items={proof.items} />
+    </Band>
+
+    <Band id={SECTION_ID.value} label={value.label}>
+      <Heavy as="h2">
+        {value.statement.map(line => (
+          <span class="block">{line}</span>
+        ))}
+      </Heavy>
+      <VerbList items={value.items} />
+    </Band>
+
+    <Band id={SECTION_ID.process} tone="contrast" label={process.label}>
+      <Kicker>{process.label}</Kicker>
+      <div class="mt-5">
+        <Heavy as="h2" size="title">
+          <span class="block">{process.headline.lead}</span>
+          <span class="block text-accent">{process.headline.accent}</span>
+        </Heavy>
+      </div>
+      <StageProfile stages={process.items} finishLabel={process.finish} />
+    </Band>
+
+    <Band id={SECTION_ID.ways} label={ways.label}>
+      <Kicker as="h2">{ways.label}</Kicker>
+      <OfferList items={ways.items} />
+    </Band>
+  </main>
+
+  <Closer
+    title={closer.title}
+    tagline={closer.tagline}
+    note={closer.note}
+    colophon={closer.colophon}
+  >
+    <ActionRow>
+      <SocialLinks />
+      <a href={closer.blog.href}>{closer.blog.label}</a>
+      <Pill href={closer.cv.href} download>
+        {closer.cv.label}
+      </Pill>
+    </ActionRow>
+  </Closer>
+</BaseLayout>
