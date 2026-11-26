@@ -2,7 +2,7 @@ import { DECAL_COLOR } from '@giancastle/ui/decals';
 import { LOCALE } from '@giancastle/ui/locale';
 import { STAGE_OWNER } from '@giancastle/ui/stages';
 import { AUTHOR, SITES } from '@giancastle/ui/sites';
-import { CV_PDF_PATH, PAGE, SECTION_ID, pagePath, sectionHref } from '@/routes';
+import { CV_PDF_PATH, CV_PUBLISHED, PAGE, SECTION_ID, pagePath, sectionHref } from '@/routes';
 import { AI_STACK_LINE, CONTACT_HREF, HAS_EMAIL, STACK_LINE, TOOLBOX_ITEMS } from './home.shared';
 import type { HomeContent } from './home.types';
 
@@ -33,7 +33,7 @@ export const HOME_ES: HomeContent = {
     sticker: AUTHOR.name,
     tagline:
       'senior product engineer. Uso IA para entregar en semanas lo que los equipos planifican para un año.',
-    cv: { label: 'CV', href: pagePath(PAGE.cv, locale) },
+    cv: CV_PUBLISHED ? { label: 'CV', href: pagePath(PAGE.cv, locale) } : undefined,
     cta: { label: 'Ver las pruebas', href: sectionHref(SECTION_ID.proof, locale) },
   },
   nav: {
@@ -202,7 +202,9 @@ export const HOME_ES: HomeContent = {
         tag: 'Puesto a tiempo completo',
         title: 'Contrátame',
         body: 'Un puesto fijo en tu equipo. Me integro como ingeniero senior o staff y entrego producto desde el primer día.',
-        cta: { label: 'Descargar CV', href: CV_PDF_PATH[locale], download: true },
+        cta: CV_PUBLISHED
+          ? { label: 'Descargar CV', href: CV_PDF_PATH[locale], download: true }
+          : { label: 'Escríbeme', href: CONTACT_HREF },
       },
     ],
   },
@@ -210,7 +212,9 @@ export const HOME_ES: HomeContent = {
     title: 'A rodar',
     tagline: 'Estoy disponible. Cuéntame qué hay en tu roadmap.',
     blog: { label: 'Blog', href: `${SITES.blog}/` },
-    cv: { label: 'Descargar CV', href: CV_PDF_PATH[locale], download: true },
+    cv: CV_PUBLISHED
+      ? { label: 'Descargar CV', href: CV_PDF_PATH[locale], download: true }
+      : undefined,
     note: `${AI_STACK_LINE}, desarrollo guiado por specs. ${STACK_LINE}. Santo Domingo. Remoto. Casi siempre fuera antes del amanecer.`,
     colophon: 'Cuadro: Astro. Grupo: TypeScript. Pintura: de una Scott Foil RC.',
   },

@@ -7,7 +7,7 @@ type Cta = { label: string; href: string; download?: boolean };
 
 export type HomeContent = {
   profile: { role: string; focus: string; description: string; knowsAbout: readonly string[] };
-  hero: { heading: string; sticker: string; tagline: string; cv: Cta; cta: Cta };
+  hero: { heading: string; sticker: string; tagline: string; cv?: Cta; cta: Cta };
   nav: { labels: PlateLabels; sections: readonly PlateSection[] };
   proof: { label: string; labels: RaceNumberLabels; items: readonly RaceNumber[] };
   value: {
@@ -25,6 +25,6 @@ export type HomeContent = {
     label: string;
     items: readonly { tag: string; title: string; body: string; featured?: boolean; cta: Cta }[];
   };
-  closer: { title: string; tagline: string; blog: Cta; cv: Cta; note: string; colophon: string };
+  closer: { title: string; tagline: string; blog: Cta; cv?: Cta; note: string; colophon: string };
   toolbox: { label: string; groups: readonly { name: string; items: readonly string[] }[] };
 };

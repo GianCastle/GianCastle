@@ -2,7 +2,7 @@ import { DECAL_COLOR } from '@giancastle/ui/decals';
 import { LOCALE } from '@giancastle/ui/locale';
 import { STAGE_OWNER } from '@giancastle/ui/stages';
 import { AUTHOR, SITES } from '@giancastle/ui/sites';
-import { CV_PDF_PATH, PAGE, SECTION_ID, pagePath, sectionHref } from '@/routes';
+import { CV_PDF_PATH, CV_PUBLISHED, PAGE, SECTION_ID, pagePath, sectionHref } from '@/routes';
 import { AI_STACK_LINE, CONTACT_HREF, HAS_EMAIL, STACK_LINE, TOOLBOX_ITEMS } from './home.shared';
 import type { HomeContent } from './home.types';
 
@@ -32,7 +32,7 @@ export const HOME_EN: HomeContent = {
     heading: `${AUTHOR.name}, senior product engineer`,
     sticker: AUTHOR.name,
     tagline: 'senior product engineer. I use AI to ship in weeks what teams plan for a year.',
-    cv: { label: 'CV', href: pagePath(PAGE.cv, locale) },
+    cv: CV_PUBLISHED ? { label: 'CV', href: pagePath(PAGE.cv, locale) } : undefined,
     cta: { label: 'See the proof', href: sectionHref(SECTION_ID.proof, locale) },
   },
   nav: {
@@ -201,7 +201,9 @@ export const HOME_EN: HomeContent = {
         tag: 'Full-time role',
         title: 'Hire me',
         body: 'A permanent seat on your team. I join as a senior or staff engineer and ship product from day one.',
-        cta: { label: 'Download CV', href: CV_PDF_PATH[locale], download: true },
+        cta: CV_PUBLISHED
+          ? { label: 'Download CV', href: CV_PDF_PATH[locale], download: true }
+          : { label: 'Email me', href: CONTACT_HREF },
       },
     ],
   },
@@ -209,7 +211,9 @@ export const HOME_EN: HomeContent = {
     title: 'Let’s ship',
     tagline: 'I’m open. Tell me what’s on your roadmap.',
     blog: { label: 'Blog', href: `${SITES.blog}/en/` },
-    cv: { label: 'Download CV', href: CV_PDF_PATH[locale], download: true },
+    cv: CV_PUBLISHED
+      ? { label: 'Download CV', href: CV_PDF_PATH[locale], download: true }
+      : undefined,
     note: `${AI_STACK_LINE}, spec-driven development. ${STACK_LINE}. Santo Domingo. Remote. Usually out before sunrise.`,
     colophon: 'Frame: Astro. Groupset: TypeScript. Paint: off a Scott Foil RC.',
   },
