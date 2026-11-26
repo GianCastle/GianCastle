@@ -48,6 +48,14 @@ export const HOME_EN: HomeContent = {
         color: DECAL_COLOR.teal,
       },
       {
+        sector: 'Healthtech',
+        number: '1',
+        caption: 'recording in, one clinical note out',
+        title: 'An AI harness for clinical notes',
+        body: 'I built the AI service harness that turns a recorded audio or video session into clinical notes, inside a HIPAA-compliant product for patients and clinicians.',
+        color: DECAL_COLOR.pink,
+      },
+      {
         sector: 'Streaming',
         number: '3',
         caption: 'feeds that learn',

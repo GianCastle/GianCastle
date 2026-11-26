@@ -49,6 +49,14 @@ export const HOME_ES: HomeContent = {
         color: DECAL_COLOR.teal,
       },
       {
+        sector: 'Salud digital',
+        number: '1',
+        caption: 'grabación entra, una nota clínica sale',
+        title: 'Un harness de IA para notas clínicas',
+        body: 'Construí el harness de IA que convierte una sesión grabada en audio o video en notas clínicas, dentro de un producto para pacientes y clínicos que cumple con HIPAA.',
+        color: DECAL_COLOR.pink,
+      },
+      {
         sector: 'Streaming',
         number: '3',
         caption: 'feeds que aprenden',
