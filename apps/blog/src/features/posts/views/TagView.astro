@@ -5,7 +5,7 @@ import Kicker from '@giancastle/ui/components/Kicker.astro';
 import type { Locale } from '@giancastle/ui/locale';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import PostGrid from '../components/PostGrid.astro';
-import { SITE_COPY } from '../posts.labels';
+import { POSTS_COPY } from '../posts.labels';
 import { getTagAlternate, type Tag } from '../posts.query';
 
 interface Props {
@@ -14,7 +14,7 @@ interface Props {
 }
 
 const { locale, tag } = Astro.props;
-const copy = SITE_COPY[locale];
+const copy = POSTS_COPY[locale];
 const alternate = await getTagAlternate(tag, locale);
 ---
 

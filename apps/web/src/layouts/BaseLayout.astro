@@ -5,7 +5,7 @@ import type { Locale, LocaleAlternate } from '@giancastle/ui/locale';
 import { OG_TYPE } from '@giancastle/ui/site-head';
 import { AUTHOR } from '@giancastle/ui/sites';
 import type { Theme } from '@giancastle/ui/theme';
-import { HOME_CONTENT } from '@/features/home/home.content';
+import { PROFILE_CONTENT } from '@/features/profile/profile.content';
 import { DEFAULT_LOCALE } from '@/i18n';
 import { LLMS_PATH } from '@/routes';
 
@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { locale = DEFAULT_LOCALE, alternate, title, forceTheme, jsonLd } = Astro.props;
-const { profile } = HOME_CONTENT[locale];
+const { profile } = PROFILE_CONTENT[locale];
 
 const siteTitle = `${AUTHOR.name} · ${profile.role}`;
 const pageTitle = title ? `${title} · ${AUTHOR.name}` : siteTitle;

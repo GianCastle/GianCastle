@@ -6,11 +6,12 @@ import Kicker from '@giancastle/ui/components/Kicker.astro';
 import Pill from '@giancastle/ui/components/Pill.astro';
 import Poster from '@giancastle/ui/components/Poster.astro';
 import { equivalentPage, otherLocale, type Locale } from '@giancastle/ui/locale';
-import { AUTHOR } from '@giancastle/ui/sites';
+import { AUTHOR, SITE, siteHref } from '@giancastle/ui/sites';
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import { routesFor, WEB_HOME } from '@/routes';
+import { routesFor } from '@/routes';
 import PostGrid from '../components/PostGrid.astro';
-import { SITE_COPY } from '../posts.labels';
+import { SITE_COPY } from '@/site.labels';
+import { POSTS_COPY } from '../posts.labels';
 import { getPublishedPosts } from '../posts.query';
 
 const POSTS_ID = 'posts';
@@ -20,7 +21,8 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const copy = SITE_COPY[locale];
+const site = SITE_COPY[locale];
+const copy = POSTS_COPY[locale];
 const routes = routesFor(locale);
 const alternate = equivalentPage(otherLocale(locale), routesFor(otherLocale(locale)).home);
 const posts = await getPublishedPosts(locale);
@@ -29,14 +31,14 @@ const posts = await getPublishedPosts(locale);
 <BaseLayout locale={locale} alternate={alternate} masthead={false}>
   <Poster
     lines={AUTHOR.wordmarkLines}
-    eyebrow={copy.lockupLead}
-    heading={`${copy.lockupLead} ${copy.title}`}
+    eyebrow={site.lockupLead}
+    heading={`${site.lockupLead} ${site.title}`}
   >
     <Controls slot="corner" locale={locale} alternate={alternate} />
-    <Fragment slot="tagline">{copy.statement}</Fragment>
+    <Fragment slot="tagline">{site.statement}</Fragment>
     <ActionRow slot="actions">
-      <a href={routes.rss}>{copy.navRss}</a>
-      <a href={WEB_HOME[locale]}>{copy.about}</a>
+      <a href={routes.rss}>{site.navRss}</a>
+      <a href={siteHref(SITE.web, locale)}>{site.about}</a>
       <Pill href={`#${POSTS_ID}`}>{copy.readPosts}</Pill>
     </ActionRow>
   </Poster>

@@ -6,25 +6,27 @@ import Pill from '@giancastle/ui/components/Pill.astro';
 import type { Locale } from '@giancastle/ui/locale';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { routesFor } from '@/routes';
-import { SITE_COPY } from '../posts.labels';
+import { SITE_COPY } from '@/site.labels';
+import { POSTS_COPY } from '../posts.labels';
 
 interface Props {
   locale: Locale;
 }
 
 const { locale } = Astro.props;
-const copy = SITE_COPY[locale];
+const site = SITE_COPY[locale];
+const copy = POSTS_COPY[locale];
 ---
 
-<BaseLayout locale={locale} title={copy.notFoundTitle}>
+<BaseLayout locale={locale} title={site.notFoundTitle}>
   <Band>
     <Kicker>404</Kicker>
     <div class="mb-6 mt-6">
       <Heavy as="h1" size="title">
-        {copy.notFoundTitle}
+        {site.notFoundTitle}
       </Heavy>
     </div>
-    <p class="lede mb-10">{copy.notFoundBody}</p>
+    <p class="lede mb-10">{site.notFoundBody}</p>
     <Pill href={routesFor(locale).home}>{copy.backHome}</Pill>
   </Band>
 </BaseLayout>

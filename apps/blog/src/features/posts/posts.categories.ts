@@ -1,5 +1,6 @@
 import { DECAL_COLOR, type DecalColor } from '@giancastle/ui/decals';
 import { LOCALE, type Locale } from '@giancastle/ui/locale';
+import { routesFor } from '@/routes';
 
 export const CATEGORY = {
   verses: 'verses',
@@ -12,7 +13,14 @@ export const CATEGORY = {
 
 export type Category = (typeof CATEGORY)[keyof typeof CATEGORY];
 
-export const CATEGORIES = Object.values(CATEGORY) as [Category, ...Category[]];
+export const CATEGORIES = [
+  CATEGORY.verses,
+  CATEGORY.essays,
+  CATEGORY.opinion,
+  CATEGORY.bodyAndMind,
+  CATEGORY.engineering,
+  CATEGORY.stories,
+] as const;
 
 export const CATEGORY_LABEL: Record<Locale, Record<Category, string>> = {
   [LOCALE.es]: {
@@ -32,6 +40,28 @@ export const CATEGORY_LABEL: Record<Locale, Record<Category, string>> = {
     [CATEGORY.stories]: 'Stories',
   },
 };
+
+export const CATEGORY_SLUG: Record<Locale, Record<Category, string>> = {
+  [LOCALE.es]: {
+    [CATEGORY.verses]: 'versos',
+    [CATEGORY.essays]: 'ensayos',
+    [CATEGORY.opinion]: 'opinion',
+    [CATEGORY.bodyAndMind]: 'cuerpo-y-mente',
+    [CATEGORY.engineering]: 'ingenieria',
+    [CATEGORY.stories]: 'relatos',
+  },
+  [LOCALE.en]: {
+    [CATEGORY.verses]: 'verses',
+    [CATEGORY.essays]: 'essays',
+    [CATEGORY.opinion]: 'opinion',
+    [CATEGORY.bodyAndMind]: 'body-and-mind',
+    [CATEGORY.engineering]: 'engineering',
+    [CATEGORY.stories]: 'stories',
+  },
+};
+
+export const categoryHref = (category: Category, locale: Locale) =>
+  routesFor(locale).tag(CATEGORY_SLUG[locale][category]);
 
 export const CATEGORY_COLOR: Record<Category, DecalColor> = {
   [CATEGORY.verses]: DECAL_COLOR.pink,

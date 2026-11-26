@@ -1,14 +1,14 @@
 import type { DecalColor } from '@giancastle/ui/decals';
 import type { RaceNumber, RaceNumberLabels } from '@giancastle/ui/race-numbers';
-import type { PlateLabels, PlateSection } from '@giancastle/ui/section-plate';
+import type { PlateLabels } from '@giancastle/ui/section-plate';
+import type { SectionId } from '@/routes';
 import type { Stage } from '@giancastle/ui/stages';
 
 type Cta = { label: string; href: string; download?: boolean };
 
 export type HomeContent = {
-  profile: { role: string; focus: string; description: string; knowsAbout: readonly string[] };
   hero: { heading: string; sticker: string; tagline: string; cv?: Cta; cta: Cta };
-  nav: { labels: PlateLabels; sections: readonly PlateSection[] };
+  nav: { labels: PlateLabels; sectionLabels: Record<SectionId, string> };
   proof: { label: string; labels: RaceNumberLabels; items: readonly RaceNumber[] };
   value: {
     label: string;
@@ -26,5 +26,4 @@ export type HomeContent = {
     items: readonly { tag: string; title: string; body: string; featured?: boolean; cta: Cta }[];
   };
   closer: { title: string; tagline: string; blog: Cta; cv?: Cta; note: string; colophon: string };
-  toolbox: { label: string; groups: readonly { name: string; items: readonly string[] }[] };
 };

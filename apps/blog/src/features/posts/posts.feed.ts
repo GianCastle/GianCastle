@@ -1,15 +1,12 @@
 import rss from '@astrojs/rss';
 import type { Locale } from '@giancastle/ui/locale';
 import type { APIContext } from 'astro';
-import { routesFor } from '@/routes';
+import { SITE_COPY } from '@/site.labels';
 import { CATEGORY_LABEL } from './posts.categories';
-import { excerpt } from './posts.format';
-import { SITE_COPY } from './posts.labels';
 import { getPublishedPosts } from './posts.query';
 
 export const buildFeed = async (locale: Locale, context: APIContext) => {
   const posts = await getPublishedPosts(locale);
-  const routes = routesFor(locale);
   return rss({
     title: SITE_COPY[locale].title,
     description: SITE_COPY[locale].description,
@@ -18,9 +15,9 @@ export const buildFeed = async (locale: Locale, context: APIContext) => {
     items: posts.map(post => ({
       title: post.data.title,
       pubDate: post.data.date,
-      description: excerpt(post.body ?? ''),
+      description: post.excerpt,
       categories: [CATEGORY_LABEL[locale][post.data.category]],
-      link: routes.post(post.slug),
+      link: post.href,
     })),
   });
 };

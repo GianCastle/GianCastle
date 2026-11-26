@@ -17,7 +17,7 @@ import type { Locale } from '@giancastle/ui/locale';
 import { AUTHOR } from '@giancastle/ui/sites';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { buildProfileJsonLd } from '@/lib/seo/profile.jsonld';
-import { PAGE, SECTION_ID, alternateFor } from '@/routes';
+import { HOME_SECTIONS, PAGE, SECTION_ID, alternateFor } from '@/routes';
 import { HOME_CONTENT } from './home.content';
 
 interface Props {
@@ -27,6 +27,7 @@ interface Props {
 const { locale } = Astro.props;
 const { hero, nav, proof, value, process, ways, closer } = HOME_CONTENT[locale];
 const alternate = alternateFor(PAGE.home, locale);
+const sections = HOME_SECTIONS.map(id => ({ id, label: nav.sectionLabels[id] }));
 ---
 
 <BaseLayout locale={locale} alternate={alternate} jsonLd={buildProfileJsonLd(locale)}>
@@ -40,7 +41,7 @@ const alternate = alternateFor(PAGE.home, locale);
     </ActionRow>
   </Poster>
 
-  <SectionPlate sections={nav.sections} labels={nav.labels} links={[closer.blog]} />
+  <SectionPlate sections={sections} labels={nav.labels} links={[closer.blog]} />
 
   <main>
     <Band id={SECTION_ID.proof} tone="contrast" label={proof.label}>

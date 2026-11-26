@@ -13,10 +13,10 @@ import {
   type LocaleAlternate,
 } from '@giancastle/ui/locale';
 import { OG_TYPE, type OgType } from '@giancastle/ui/site-head';
-import { AUTHOR } from '@giancastle/ui/sites';
-import { SITE_COPY } from '@/features/posts/posts.labels';
+import { AUTHOR, SITE, siteHref } from '@giancastle/ui/sites';
+import { SITE_COPY } from '@/site.labels';
 import { DEFAULT_LOCALE } from '@/i18n';
-import { routesFor, WEB_HOME } from '@/routes';
+import { routesFor } from '@/routes';
 
 interface Props {
   locale: Locale;
@@ -41,7 +41,7 @@ const year = new Date().getFullYear();
 const navLinks = [
   { label: copy.navBlog, href: routes.home },
   { label: copy.navRss, href: routes.rss },
-  { label: copy.about, href: WEB_HOME[locale] },
+  { label: copy.about, href: siteHref(SITE.web, locale) },
 ];
 ---
 
@@ -91,7 +91,7 @@ const navLinks = [
       <ActionRow>
         <SocialLinks />
         <a href={routes.rss}>{copy.navRss}</a>
-        <Pill href={WEB_HOME[locale]}>{copy.about}</Pill>
+        <Pill href={siteHref(SITE.web, locale)}>{copy.about}</Pill>
       </ActionRow>
     </Closer>
   </body>

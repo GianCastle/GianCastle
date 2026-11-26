@@ -1,33 +1,14 @@
 import { DECAL_COLOR } from '@giancastle/ui/decals';
 import { LOCALE } from '@giancastle/ui/locale';
 import { STAGE_OWNER } from '@giancastle/ui/stages';
-import { AUTHOR, SITES } from '@giancastle/ui/sites';
+import { AUTHOR, SITE, siteHref } from '@giancastle/ui/sites';
 import { CV_PDF_PATH, CV_PUBLISHED, PAGE, SECTION_ID, pagePath, sectionHref } from '@/routes';
-import { AI_STACK_LINE, CONTACT_HREF, HAS_EMAIL, STACK_LINE, TOOLBOX_ITEMS } from './home.shared';
+import { AI_STACK_LINE, CONTACT_HREF, STACK_LINE } from './home.shared';
 import type { HomeContent } from './home.types';
 
 const locale = LOCALE.en;
 
 export const HOME_EN: HomeContent = {
-  profile: {
-    role: 'Senior Product Engineer',
-    focus: 'Product engineering with AI-multiplied delivery',
-    description:
-      'Giancarlos Castillo is a senior product engineer with 10+ years of experience who uses AI agents to ship in weeks what teams plan for a year, and builds the workflows and harnesses that let a whole team do the same.',
-    knowsAbout: [
-      'Product engineering',
-      'AI engineering',
-      'Agentic workflow design',
-      'Agent harness engineering',
-      'Spec-driven development',
-      'Model Context Protocol',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Node.js',
-      'AWS',
-    ],
-  },
   hero: {
     heading: `${AUTHOR.name}, senior product engineer`,
     sticker: AUTHOR.name,
@@ -39,14 +20,14 @@ export const HOME_EN: HomeContent = {
     labels: {
       nav: 'Sections',
       position: (current, total) => `Section ${current} of ${total}`,
-      contact: { label: HAS_EMAIL ? 'Email me' : 'Reach me on GitHub', href: CONTACT_HREF },
+      contact: { label: 'Email me', href: CONTACT_HREF },
     },
-    sections: [
-      { id: SECTION_ID.proof, label: 'Results' },
-      { id: SECTION_ID.value, label: 'What I bring' },
-      { id: SECTION_ID.process, label: 'How I work' },
-      { id: SECTION_ID.ways, label: 'Work with me' },
-    ],
+    sectionLabels: {
+      [SECTION_ID.proof]: 'Results',
+      [SECTION_ID.value]: 'What I bring',
+      [SECTION_ID.process]: 'How I work',
+      [SECTION_ID.ways]: 'Work with me',
+    },
   },
   proof: {
     label: 'My results, race after race',
@@ -195,7 +176,7 @@ export const HOME_EN: HomeContent = {
         featured: true,
         title: 'Book me',
         body: 'A project with a start and an end. I build the feature or set up the agent workflow in your codebase, then hand it over to your team.',
-        cta: { label: HAS_EMAIL ? 'Email me' : 'Reach me on GitHub', href: CONTACT_HREF },
+        cta: { label: 'Email me', href: CONTACT_HREF },
       },
       {
         tag: 'Full-time role',
@@ -210,23 +191,11 @@ export const HOME_EN: HomeContent = {
   closer: {
     title: 'Let’s ship',
     tagline: 'I’m open. Tell me what’s on your roadmap.',
-    blog: { label: 'Blog', href: `${SITES.blog}/en/` },
+    blog: { label: 'Blog', href: siteHref(SITE.blog, locale) },
     cv: CV_PUBLISHED
       ? { label: 'Download CV', href: CV_PDF_PATH[locale], download: true }
       : undefined,
     note: `${AI_STACK_LINE}, spec-driven development. ${STACK_LINE}. Santo Domingo. Remote. Usually out before sunrise.`,
     colophon: 'Frame: Astro. Groupset: TypeScript. Paint: off a Scott Foil RC.',
-  },
-  toolbox: {
-    label: 'Toolbox',
-    groups: [
-      {
-        name: 'AI-augmented development',
-        items: [...TOOLBOX_ITEMS.ai, 'Spec-driven development', 'Harness development'],
-      },
-      { name: 'Frontend and full-stack', items: TOOLBOX_ITEMS.frontend },
-      { name: 'Backend and data', items: TOOLBOX_ITEMS.backend },
-      { name: 'Cloud and delivery', items: TOOLBOX_ITEMS.cloud },
-    ],
   },
 };
