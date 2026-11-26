@@ -13,12 +13,18 @@ interface Props {
 }
 
 const { entry } = Astro.props;
-const { Demo, tone, bleed } = ENTRY_DEMOS[entry.id];
+const { Demo, tone, bleed, showsSections } = ENTRY_DEMOS[entry.id];
 const { previous, next } = getNeighbours(entry.id);
 const anchors = SITE_COPY.anchors;
+const sectionIds = [
+  ENTRY_ANCHOR.demo,
+  ENTRY_ANCHOR.notes,
+  ...(entry.props ? [ENTRY_ANCHOR.props] : []),
+];
+const sections = showsSections ? sectionIds.map(id => ({ id, label: anchors[id] })) : undefined;
 ---
 
-<EntryLayout title={entry.title} description={entry.lede} current={entry.id}>
+<EntryLayout title={entry.title} description={entry.lede} current={entry.id} sections={sections}>
   <article class="entry" data-decal={entry.color}>
     <header>
       <p class="label chip stage">

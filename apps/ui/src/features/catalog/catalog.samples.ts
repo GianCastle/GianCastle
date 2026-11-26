@@ -1,7 +1,6 @@
 import { DECAL_COLOR } from '@giancastle/ui/decals';
 import type { RaceNumber, RaceNumberLabels } from '@giancastle/ui/race-numbers';
-import type { PlateLabels, PlateSection } from '@giancastle/ui/section-plate';
-import { SITES, SITE } from '@giancastle/ui/sites';
+import type { PlateSection } from '@giancastle/ui/section-plate';
 import { STAGE_OWNER, type Stage } from '@giancastle/ui/stages';
 import { ENTRY_ANCHOR } from '@/routes';
 import { SITE_COPY } from '@/site.labels';
@@ -43,12 +42,6 @@ export const SAMPLE_PLATE_SECTIONS: readonly PlateSection[] = [
   { id: ENTRY_ANCHOR.notes, label: SITE_COPY.anchors[ENTRY_ANCHOR.notes] },
   { id: ENTRY_ANCHOR.props, label: SITE_COPY.anchors[ENTRY_ANCHOR.props] },
 ];
-
-export const SAMPLE_PLATE_LABELS: PlateLabels = {
-  nav: 'Sections of this page',
-  position: (current, total) => `Section ${current} of ${total}`,
-  contact: { label: 'giancastle.com', href: SITES[SITE.web] },
-};
 
 export const SAMPLE_HEADLINE = { lead: 'People decide.', accent: 'Agents do the work.' } as const;
 

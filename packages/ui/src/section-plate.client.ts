@@ -67,19 +67,23 @@ const initSectionPlate = (plate: HTMLElement) => {
   const list = plate.querySelector('nav');
   const links = [...plate.querySelectorAll<HTMLAnchorElement>(has(PLATE_ATTR.link))];
   const sections = links
-    .map(link => document.getElementById(link.hash.slice(1)))
+    .map(link => document.getElementById(decodeURIComponent(link.hash.slice(1))))
     .filter(section => section !== null);
   const [firstSection] = sections;
-  if (!toggle || !list || !firstSection) return;
+  if (!toggle || !list) return;
 
   const setOpen = createDisclosure(plate, toggle, list);
   const setCurrent = createCurrentMarker(plate, links);
 
   onScrollFrame(() => {
-    const visible = firstSection.getBoundingClientRect().top < innerHeight * REVEAL_AT;
+    const revealLine = innerHeight * REVEAL_AT;
+    const visible = firstSection
+      ? firstSection.getBoundingClientRect().top < revealLine
+      : scrollY > revealLine;
     plate.toggleAttribute(PLATE_ATTR.visible, visible);
     plate.inert = !visible;
     if (!visible) setOpen(false);
+    if (!firstSection) return;
 
     const line = innerHeight * CENTER_LINE;
     const passed = sections.filter(section => section.getBoundingClientRect().top <= line).length;

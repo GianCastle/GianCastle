@@ -1,21 +1,25 @@
 ---
+import type { PlateSection } from '@giancastle/ui/section-plate';
 import { TONE } from '@giancastle/ui/theme';
 import CatalogNav from '@/features/catalog/components/CatalogNav.astro';
 import type { EntryId } from '@/features/catalog/catalog.entries';
 import SiteFooter from '@/features/catalog/components/SiteFooter.astro';
+import SitePlate from '@/features/catalog/components/SitePlate.astro';
 import BaseLayout from './BaseLayout.astro';
 
 interface Props {
   title: string;
   description: string;
   current: EntryId;
+  sections?: readonly PlateSection[];
 }
 
-const { title, description, current } = Astro.props;
+const { title, description, current, sections } = Astro.props;
 ---
 
 <BaseLayout title={title} description={description}>
   <div class="shell" data-tone={TONE.contrast}>
+    <SitePlate sections={sections} />
     <CatalogNav current={current} />
     <main class="content">
       <slot />
