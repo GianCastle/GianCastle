@@ -8,13 +8,19 @@ import {
 } from '@giancastle/ui/locale';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { routesFor } from '@/routes';
-import { CATEGORIES, CATEGORY_LABEL, type Category } from './posts.categories';
+import { CATEGORIES, CATEGORY_LABEL, CATEGORY_SLUG, type Category } from './posts.categories';
 import { POSTS_COLLECTION } from './posts.constants';
-import { tagSlug } from './posts.format';
+import { excerpt, readingMinutes } from './posts.format';
 
 type Entry = CollectionEntry<typeof POSTS_COLLECTION>;
 
-export type Post = Entry & { locale: Locale; slug: string };
+export type Post = Entry & {
+  locale: Locale;
+  slug: string;
+  href: string;
+  excerpt: string;
+  readingMinutes: number;
+};
 
 export type Tag = { category: Category; name: string; slug: string; posts: Post[] };
 
@@ -23,7 +29,16 @@ const isLocale = (value: string): value is Locale => LOCALES.some(locale => loca
 const toPost = (entry: Entry): Post => {
   const [folder = '', ...rest] = entry.id.split('/');
   if (!isLocale(folder)) throw new Error(`Post "${entry.id}" is not inside a locale folder`);
-  return { ...entry, locale: folder, slug: rest.join('/') };
+  const slug = rest.join('/');
+  const body = entry.body ?? '';
+  return {
+    ...entry,
+    locale: folder,
+    slug,
+    href: routesFor(folder).post(slug),
+    excerpt: excerpt(body),
+    readingMinutes: readingMinutes(body),
+  };
 };
 
 const byNewest = (a: Post, b: Post) => b.data.date.getTime() - a.data.date.getTime();
@@ -45,9 +60,7 @@ export const getPostAlternate = async (post: Post): Promise<LocaleAlternate> => 
   const counterpart = (await getAllPublished()).find(
     other => other.locale === locale && other.slug === post.slug,
   );
-  return counterpart
-    ? equivalentPage(locale, routes.post(counterpart.slug))
-    : fallbackPage(locale, routes.home);
+  return counterpart ? equivalentPage(locale, counterpart.href) : fallbackPage(locale, routes.home);
 };
 
 export const groupByCategory = (posts: Post[], locale: Locale): Tag[] =>
@@ -56,7 +69,7 @@ export const groupByCategory = (posts: Post[], locale: Locale): Tag[] =>
     return {
       category,
       name,
-      slug: tagSlug(name),
+      slug: CATEGORY_SLUG[locale][category],
       posts: posts.filter(post => post.data.category === category),
     };
   }).filter(tag => tag.posts.length > 0);

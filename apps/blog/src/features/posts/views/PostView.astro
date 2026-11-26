@@ -11,8 +11,7 @@ import { routesFor } from '@/routes';
 import PostMeta from '../components/PostMeta.astro';
 import CategoryLabel from '../components/CategoryLabel.astro';
 import { buildPostJsonLd } from '../post.jsonld';
-import { excerpt } from '../posts.format';
-import { SITE_COPY } from '../posts.labels';
+import { POSTS_COPY } from '../posts.labels';
 import { getPostAlternate, type Post } from '../posts.query';
 
 interface Props {
@@ -20,7 +19,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const copy = SITE_COPY[post.locale];
+const copy = POSTS_COPY[post.locale];
 const routes = routesFor(post.locale);
 const alternate = await getPostAlternate(post);
 const { Content } = await render(post);
@@ -38,7 +37,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site);
   locale={post.locale}
   alternate={alternate}
   title={post.data.title}
-  description={excerpt(post.body ?? '')}
+  description={post.excerpt}
   image={imageUrl}
   ogType={OG_TYPE.article}
   jsonLd={buildPostJsonLd(post, pageUrl, imageUrl)}

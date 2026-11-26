@@ -1,6 +1,6 @@
 import { DATE_LOCALE, type Locale } from '@giancastle/ui/locale';
 import { EXCERPT_LENGTH, WORDS_PER_MINUTE } from './posts.constants';
-import { SITE_COPY } from './posts.labels';
+import { POSTS_COPY } from './posts.labels';
 
 const stripMarkdown = (markdown: string) =>
   markdown
@@ -15,8 +15,8 @@ const stripMarkdown = (markdown: string) =>
 export const readingMinutes = (markdown: string) =>
   Math.max(1, Math.round(stripMarkdown(markdown).split(' ').length / WORDS_PER_MINUTE));
 
-export const formatReadingTime = (markdown: string, locale: Locale) =>
-  SITE_COPY[locale].readingTime(readingMinutes(markdown));
+export const formatReadingTime = (minutes: number, locale: Locale) =>
+  POSTS_COPY[locale].readingTime(minutes);
 
 export const excerpt = (markdown: string, length = EXCERPT_LENGTH) => {
   const text = stripMarkdown(markdown);
@@ -26,11 +26,3 @@ export const excerpt = (markdown: string, length = EXCERPT_LENGTH) => {
 
 export const formatDate = (date: Date, locale: Locale) =>
   new Intl.DateTimeFormat(DATE_LOCALE[locale], { dateStyle: 'long', timeZone: 'UTC' }).format(date);
-
-export const tagSlug = (tag: string) =>
-  tag
-    .normalize('NFD')
-    .replace(/[̀-ͯ]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, '-')
-    .replace(/^-|-$/g, '');

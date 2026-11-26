@@ -2,8 +2,6 @@
 import Heavy from '@giancastle/ui/components/Heavy.astro';
 import Sticker from '@giancastle/ui/components/Sticker.astro';
 import { Image } from 'astro:assets';
-import { routesFor } from '@/routes';
-import { excerpt } from '../posts.format';
 import type { Post } from '../posts.query';
 import PostMeta from './PostMeta.astro';
 import CategoryLabel from './CategoryLabel.astro';
@@ -13,7 +11,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const href = routesFor(post.locale).post(post.slug);
+const { href } = post;
 ---
 
 <Sticker as="article">
@@ -35,7 +33,7 @@ const href = routesFor(post.locale).post(post.slug);
           {post.data.title}
         </Heavy>
       </a>
-      <p class="text-xl text-muted">{excerpt(post.body ?? '')}</p>
+      <p class="text-xl text-muted">{post.excerpt}</p>
       <PostMeta post={post} />
     </div>
   </div>

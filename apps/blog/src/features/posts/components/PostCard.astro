@@ -1,9 +1,7 @@
 ---
 import Heavy from '@giancastle/ui/components/Heavy.astro';
 import { Image } from 'astro:assets';
-import { routesFor } from '@/routes';
 import { CATEGORY_COLOR } from '../posts.categories';
-import { excerpt } from '../posts.format';
 import type { Post } from '../posts.query';
 import CategoryLabel from './CategoryLabel.astro';
 import PostMeta from './PostMeta.astro';
@@ -14,7 +12,7 @@ interface Props {
 }
 
 const { post, wide = false } = Astro.props;
-const href = routesFor(post.locale).post(post.slug);
+const { href } = post;
 const { category } = post.data;
 ---
 
@@ -38,7 +36,7 @@ const { category } = post.data;
         {post.data.title}
       </Heavy>
     </a>
-    <p class:list={['text-muted', wide ? 'text-xl' : 'text-base']}>{excerpt(post.body ?? '')}</p>
+    <p class:list={['text-muted', wide ? 'text-xl' : 'text-base']}>{post.excerpt}</p>
     <PostMeta post={post} />
   </div>
 </article>
