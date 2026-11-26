@@ -1,0 +1,33 @@
+---
+import '@/styles/global.css';
+import SiteHead from '@giancastle/ui/components/SiteHead.astro';
+import { SITE, SITE_DEFAULT_LOCALE } from '@giancastle/ui/sites';
+import { SITE_COPY } from '@/site.labels';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description = SITE_COPY.description } = Astro.props;
+const locale = SITE_DEFAULT_LOCALE[SITE.ui];
+const pageTitle = title
+  ? `${title} · ${SITE_COPY.name}`
+  : `${SITE_COPY.name} · ${SITE_COPY.strapline}`;
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <SiteHead
+      locale={locale}
+      defaultLocale={locale}
+      title={pageTitle}
+      description={description}
+      siteName={SITE_COPY.name}
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

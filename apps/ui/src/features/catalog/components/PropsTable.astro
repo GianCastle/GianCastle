@@ -1,0 +1,82 @@
+---
+import type { PropDoc } from '../catalog.types';
+import { SITE_COPY } from '@/site.labels';
+
+interface Props {
+  items: readonly PropDoc[];
+}
+
+const { items } = Astro.props;
+const copy = SITE_COPY.props;
+---
+
+<div class="scroll">
+  <table>
+    <thead>
+      <tr class="label">
+        <th scope="col">{copy.name}</th>
+        <th scope="col">{copy.type}</th>
+        <th scope="col">{copy.description}</th>
+      </tr>
+    </thead>
+    <tbody>
+      {items.map(item => (
+        <tr>
+          <th scope="row">
+            <code>{item.name}</code>
+            {item.required && <span class="label required">{copy.required}</span>}
+          </th>
+          <td>
+            <code class="type">{item.type}</code>
+          </td>
+          <td>{item.description}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .scroll {
+    overflow-x: auto;
+  }
+
+  table {
+    width: 100%;
+    min-width: 34rem;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  thead th {
+    padding: 0 1rem 0.6rem 0;
+    color: var(--muted);
+    font-size: 0.6875rem;
+  }
+
+  tbody th,
+  td {
+    padding: 0.8rem 1rem 0.8rem 0;
+    border-top: 2px solid var(--line);
+    vertical-align: top;
+    font-weight: 400;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--accent);
+  }
+
+  .type {
+    color: var(--fg);
+  }
+
+  .required {
+    display: block;
+    margin-top: 0.3rem;
+    color: var(--muted);
+    font-size: 0.5625rem;
+  }
+</style>

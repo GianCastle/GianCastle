@@ -1,0 +1,46 @@
+---
+import { TONE } from '@giancastle/ui/theme';
+import CatalogNav from '@/features/catalog/components/CatalogNav.astro';
+import type { EntryId } from '@/features/catalog/catalog.entries';
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  current: EntryId;
+}
+
+const { title, description, current } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="shell" data-tone={TONE.contrast}>
+    <CatalogNav current={current} />
+    <main class="content">
+      <slot />
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .shell {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 100vh;
+  }
+
+  .content {
+    min-width: 0;
+    padding: 2rem var(--gutter) 4rem;
+  }
+
+  @media (min-width: 64rem) {
+    .shell {
+      grid-template-columns: 17.5rem minmax(0, 1fr);
+    }
+
+    .content {
+      padding-top: 2.5rem;
+    }
+  }
+</style>

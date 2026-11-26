@@ -1,0 +1,16 @@
+---
+import Pill from '@giancastle/ui/components/Pill.astro';
+import { TONE } from '@giancastle/ui/theme';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { HOME_PATH } from '@/routes';
+import { SITE_COPY } from '@/site.labels';
+
+const copy = SITE_COPY.notFound;
+---
+
+<BaseLayout title={copy.title}>
+  <main class="min-h-screen p-[var(--gutter)]" data-tone={TONE.contrast}>
+    <h1 class="heavy mb-10 mt-6 text-[clamp(3rem,12vw,9rem)]">{copy.heading}</h1>
+    <Pill href={HOME_PATH}>{copy.back}</Pill>
+  </main>
+</BaseLayout>

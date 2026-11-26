@@ -1,0 +1,146 @@
+---
+import ThemeToggle from '@giancastle/ui/components/ThemeToggle.astro';
+import { ENTRY_KINDS, type EntryId } from '../catalog.entries';
+import { listEntriesByKind } from '../catalog.query';
+import { SITE_COPY } from '@/site.labels';
+import CatalogBrand from './CatalogBrand.astro';
+
+interface Props {
+  current: EntryId;
+}
+
+const { current } = Astro.props;
+const groups = ENTRY_KINDS.map(kind => ({
+  title: SITE_COPY.kinds[kind],
+  entries: listEntriesByKind(kind),
+}));
+---
+
+<aside class="rail">
+  <div class="top">
+    <CatalogBrand />
+    <ThemeToggle />
+  </div>
+  <nav class="groups" aria-label={SITE_COPY.nav.label}>
+    {groups.map(group => (
+      <div class="group">
+        <p class="label title">{group.title}</p>
+        <ul>
+          {group.entries.map(entry => (
+            <li>
+              <a
+                href={entry.href}
+                aria-current={entry.id === current ? 'page' : undefined}
+                data-decal={entry.color}
+              >
+                <span class="number">{entry.number}</span>
+                {entry.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </nav>
+</aside>
+
+<style>
+  .rail {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.5rem var(--gutter) 0;
+    min-width: 0;
+  }
+
+  .top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .groups {
+    display: flex;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .title {
+    margin-bottom: 0.5rem;
+    color: var(--muted);
+    font-size: 0.6875rem;
+  }
+
+  ul {
+    display: flex;
+    gap: 0.25rem;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-height: 2.75rem;
+    padding: 0 0.6rem;
+    color: var(--fg);
+    font-size: 0.95rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .number {
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+  }
+
+  a:hover {
+    color: var(--accent);
+  }
+
+  a[aria-current] {
+    background: var(--decal);
+    color: var(--on-accent);
+    font-weight: 800;
+  }
+
+  a[aria-current] .number {
+    color: inherit;
+  }
+
+  @media (min-width: 64rem) {
+    .rail {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      overflow-y: auto;
+      padding: 2rem 1.75rem;
+      gap: 1.75rem;
+      border-right: 2px solid var(--line);
+    }
+
+    .top {
+      flex-direction: column;
+    }
+
+    .groups {
+      flex-direction: column;
+      overflow: visible;
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+
+    ul {
+      flex-direction: column;
+      gap: 0;
+    }
+
+    a {
+      min-height: 2.25rem;
+      margin: 0 -0.6rem;
+    }
+  }
+</style>

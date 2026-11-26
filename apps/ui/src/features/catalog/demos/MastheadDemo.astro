@@ -1,0 +1,13 @@
+---
+import Masthead from '@giancastle/ui/components/Masthead.astro';
+import { AUTHOR } from '@giancastle/ui/sites';
+import { ENTRY_ANCHOR } from '@/routes';
+
+const anchor = `#${ENTRY_ANCHOR.demo}`;
+const links = [
+  { label: 'Posts', href: anchor },
+  { label: 'About', href: anchor },
+];
+---
+
+<Masthead wordmark={AUTHOR.handle} eyebrow="The blog of" href={anchor} links={links} />

@@ -1,0 +1,23 @@
+{
+  "name": "@giancastle/ui-site",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@tailwindcss/vite": "^4.3.5",
+    "tailwindcss": "^4.3.5",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.6",
+    "@giancastle/ui": "workspace:*",
+    "astro": "^7.4.13"
+  }
+}

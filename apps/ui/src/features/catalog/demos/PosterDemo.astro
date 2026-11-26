@@ -1,0 +1,25 @@
+---
+import Poster from '@giancastle/ui/components/Poster.astro';
+import { AUTHOR } from '@giancastle/ui/sites';
+
+const FIT_ATTR = 'data-fit-viewport';
+---
+
+<div {...{ [FIT_ATTR]: '' }}>
+  <Poster lines={AUTHOR.wordmarkLines} sticker={AUTHOR.name} heading={AUTHOR.brand} headingTag="p">
+    <span slot="tagline" class="serif-line">
+      Senior Product Engineer.
+    </span>
+  </Poster>
+</div>
+
+<script define:vars={{ FIT_ATTR }} is:inline>
+  for (const box of document.querySelectorAll(`[${FIT_ATTR}]`)) {
+    const frame = box.parentElement;
+    const fit = () => {
+      box.style.zoom = String(frame.clientWidth / document.documentElement.clientWidth);
+    };
+    new ResizeObserver(fit).observe(frame);
+    addEventListener('resize', fit);
+  }
+</script>

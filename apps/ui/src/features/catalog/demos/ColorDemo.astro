@@ -1,0 +1,132 @@
+---
+import { TONE } from '@giancastle/ui/theme';
+import { COLOR_GROUPS } from '../color.tokens';
+
+const TONES = Object.values(TONE);
+const VALUE_ATTR = 'data-token-value';
+---
+
+<div class="groups">
+  {COLOR_GROUPS.map(group => (
+    <section>
+      <h3 class="label title">{group.title}</h3>
+      <ul>
+        {group.tokens.map(color => (
+          <li>
+            <i class="swatch" style={`background:var(${color.token})`} />
+            <p class="name">
+              <strong>{color.name}</strong>
+              <code>{color.token}</code>
+              <code class="value" {...{ [VALUE_ATTR]: color.token }} />
+            </p>
+            <p class="role">{color.role}</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+  <section>
+    <h3 class="label title">Tones</h3>
+    <div class="tones">
+      {TONES.map(tone => (
+        <div class="tone" data-tone={tone}>
+          <code>data-tone="{tone}"</code>
+          <p class="heavy">Same parts.</p>
+          <p class="accent">Accent text reads --accent.</p>
+        </div>
+      ))}
+    </div>
+  </section>
+</div>
+
+<script define:vars={{ VALUE_ATTR }} is:inline>
+  const styles = getComputedStyle(document.documentElement);
+  for (const target of document.querySelectorAll(`[${VALUE_ATTR}]`)) {
+    target.textContent = styles.getPropertyValue(target.getAttribute(VALUE_ATTR)).trim();
+  }
+</script>
+
+<style>
+  .groups {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .title {
+    margin-bottom: 0.75rem;
+    color: var(--muted);
+  }
+
+  li {
+    display: grid;
+    grid-template-columns: 4.5rem minmax(0, 1fr);
+    align-items: center;
+    gap: 0.5rem 1.25rem;
+    padding: 0.9rem 0;
+    border-top: 2px solid var(--line);
+  }
+
+  .swatch {
+    grid-row: span 2;
+    align-self: stretch;
+    min-height: 3.5rem;
+    border: 2px solid var(--line);
+  }
+
+  .name {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .role {
+    color: var(--muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .tones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    gap: 1rem;
+  }
+
+  .tone {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem;
+    border: 2px solid var(--line);
+  }
+
+  .tone .heavy {
+    font-size: 2.75rem;
+  }
+
+  .accent {
+    color: var(--accent);
+  }
+
+  @media (min-width: 48rem) {
+    li {
+      grid-template-columns: 6rem 15rem minmax(0, 1fr);
+    }
+
+    .swatch {
+      grid-row: auto;
+    }
+
+    .name {
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+  }
+</style>

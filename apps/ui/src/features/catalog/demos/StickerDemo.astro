@@ -1,0 +1,36 @@
+---
+import Sticker from '@giancastle/ui/components/Sticker.astro';
+
+const STICKERS = [
+  { featured: true, tilt: 'left', tag: 'Featured', text: 'The one option you want chosen.' },
+  { featured: false, tilt: 'right', tag: 'Regular', text: 'Everything else in the group.' },
+] as const;
+---
+
+<div class="pair">
+  {STICKERS.map(sticker => (
+    <Sticker featured={sticker.featured} tilt={sticker.tilt}>
+      <p class="label chip tag">{sticker.tag}</p>
+      <p class="heavy text">{sticker.text}</p>
+    </Sticker>
+  ))}
+</div>
+
+<style>
+  .pair {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 2rem;
+    padding: 0.5rem;
+  }
+
+  .tag {
+    width: fit-content;
+    margin-bottom: 1rem;
+  }
+
+  .text {
+    font-size: clamp(1.8rem, 3.4vw, 2.75rem);
+    line-height: 0.9;
+  }
+</style>

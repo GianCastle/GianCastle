@@ -1,0 +1,29 @@
+---
+import { AUTHOR } from '@giancastle/ui/sites';
+import { HOME_PATH } from '@/routes';
+import { SITE_COPY } from '@/site.labels';
+---
+
+<a class="brand" href={HOME_PATH}>
+  <span class="heavy name">{AUTHOR.brand}</span>
+  <span class="serif-line strap">{SITE_COPY.strapline}</span>
+</a>
+
+<style>
+  .brand {
+    display: inline-flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .name {
+    font-size: 2.5rem;
+  }
+
+  .strap {
+    font-size: 1.25rem;
+    color: var(--accent);
+  }
+</style>

@@ -1,12 +1,13 @@
 # giancastle.com
 
-Two static Astro sites in one pnpm workspace, deployed to Cloudflare Workers static assets.
+Three static Astro sites in one pnpm workspace, deployed to Cloudflare Workers static assets.
 
-| App           | Domain              | What it is                                                         |
-| ------------- | ------------------- | ------------------------------------------------------------------ |
-| `apps/web`    | giancastle.com      | Business page, sanitized CV, `llms.txt`                            |
-| `apps/blog`   | blog.giancastle.com | Personal blog, markdown posts, Sveltia CMS at `/admin/`            |
-| `packages/ui` |                     | Theme tokens, site constants and the component system used by both |
+| App           | Domain              | What it is                                                        |
+| ------------- | ------------------- | ----------------------------------------------------------------- |
+| `apps/web`    | giancastle.com      | Business page, sanitized CV, `llms.txt`                           |
+| `apps/blog`   | blog.giancastle.com | Personal blog, markdown posts, Sveltia CMS at `/admin/`           |
+| `apps/ui`     | ui.giancastle.com   | The design language: foundations and components, each with a demo |
+| `packages/ui` |                     | Theme tokens, site constants and the component system used by all |
 
 ## Run
 
@@ -16,7 +17,8 @@ Node 24 and pnpm 10.
 pnpm install
 pnpm dev:web    # http://localhost:4321
 pnpm dev:blog   # http://localhost:4322
-pnpm check      # astro check on both apps
+pnpm dev:ui     # http://localhost:4321, or the next free port
+pnpm check      # astro check on every app
 pnpm build
 ```
 
@@ -29,6 +31,10 @@ Both sites are in English and Spanish. The business site opens in English with S
 Posts are markdown files in `apps/blog/src/content/posts/es` and `apps/blog/src/content/posts/en`. A post and its translation share the same filename, and cover images live in the shared `img` folder next to those two. Set `translated: true` on the version that is a translation so the page links back to the original. Each post has one `category` from the list in `apps/blog/src/features/posts/posts.categories.ts`, and `draft: true` keeps it off the live site. The frontmatter is validated by `apps/blog/src/content.config.ts` and the build fails on an unknown or missing field.
 
 To edit in the browser, open `/admin/index.html`. Locally, choose "Work with Local Repository" in a Chromium browser. In production, sign in with a GitHub fine-grained token that has Contents read and write on this repo.
+
+## Design language site
+
+`apps/ui` documents `packages/ui` with the real components. Every entry is listed in `apps/ui/src/features/catalog/catalog.entries.ts`, and its text, props and demo are typed records keyed by that list, so adding an entry without documenting it fails the type check. The props tables are written by hand in `catalog.content.components.ts`: update them when a component's props change.
 
 ## CV
 

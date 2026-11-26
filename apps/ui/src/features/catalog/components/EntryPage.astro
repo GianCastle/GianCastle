@@ -1,0 +1,169 @@
+---
+import { getNeighbours } from '../catalog.query';
+import { ENTRY_DEMOS } from '../catalog.demos';
+import type { Entry } from '../catalog.types';
+import EntryLayout from '@/layouts/EntryLayout.astro';
+import { ENTRY_ANCHOR, sourceHref } from '@/routes';
+import { SITE_COPY } from '@/site.labels';
+import EntryPager from './EntryPager.astro';
+import PropsTable from './PropsTable.astro';
+
+interface Props {
+  entry: Entry;
+}
+
+const { entry } = Astro.props;
+const { Demo, tone, bleed } = ENTRY_DEMOS[entry.id];
+const { previous, next } = getNeighbours(entry.id);
+const anchors = SITE_COPY.anchors;
+---
+
+<EntryLayout title={entry.title} description={entry.lede} current={entry.id}>
+  <article class="entry" data-decal={entry.color}>
+    <header>
+      <p class="label chip stage">
+        {SITE_COPY.stage(entry.number)} · {SITE_COPY.kind[entry.kind]}
+      </p>
+      <h1 class="heavy title">{entry.title}</h1>
+      <p class="serif-line lede">{entry.lede}</p>
+    </header>
+
+    <section id={ENTRY_ANCHOR.demo} aria-labelledby="demo-title">
+      <h2 id="demo-title" class="label heading">
+        {anchors[ENTRY_ANCHOR.demo]}
+      </h2>
+      <div class:list={['demo', bleed && 'bleed']} data-tone={tone}>
+        <Demo />
+      </div>
+    </section>
+
+    <section id={ENTRY_ANCHOR.notes} aria-labelledby="notes-title">
+      <h2 id="notes-title" class="label heading">
+        {anchors[ENTRY_ANCHOR.notes]}
+      </h2>
+      <div class="notes">
+        {entry.notes.map(note => (
+          <div class="note rule-top">
+            <h3 class="label">{note.heading}</h3>
+            <p>{note.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    {entry.props && (
+      <section id={ENTRY_ANCHOR.props} aria-labelledby="props-title">
+        <h2 id="props-title" class="label heading">
+          {anchors[ENTRY_ANCHOR.props]}
+        </h2>
+        <PropsTable items={entry.props} />
+      </section>
+    )}
+
+    {entry.source && (
+      <p class="source">
+        <span class="label">{SITE_COPY.nav.source}</span>
+        <a href={sourceHref(entry.source)}>
+          <code>packages/ui/src/{entry.source}</code>
+        </a>
+      </p>
+    )}
+
+    <EntryPager previous={previous} next={next} />
+  </article>
+</EntryLayout>
+
+<style>
+  .entry {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 68rem;
+  }
+
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.9rem;
+  }
+
+  .stage {
+    --chip-bg: var(--decal);
+    --chip-fg: var(--on-accent);
+    font-size: 0.6875rem;
+  }
+
+  .title {
+    font-size: clamp(2.2rem, 11.5vw, 6.5rem);
+  }
+
+  .lede {
+    max-width: 34ch;
+    font-size: clamp(1.3rem, 2.4vw, 1.75rem);
+    line-height: 1.25;
+    color: var(--muted);
+  }
+
+  section {
+    scroll-margin-top: 1.5rem;
+  }
+
+  .heading {
+    margin-bottom: 1rem;
+    color: var(--muted);
+  }
+
+  .demo {
+    padding: clamp(1.25rem, 3vw, 2.5rem);
+    border: 2px solid var(--line);
+    overflow: hidden;
+  }
+
+  .bleed {
+    padding: 0;
+  }
+
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+    gap: 2rem;
+  }
+
+  .note {
+    padding-top: 0.75rem;
+    border-color: var(--decal);
+  }
+
+  .note h3 {
+    margin-bottom: 0.6rem;
+  }
+
+  .note p {
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .source {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.75rem;
+    color: var(--muted);
+  }
+
+  .source code {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    overflow-wrap: anywhere;
+  }
+
+  .source a {
+    min-width: 0;
+  }
+
+  .source a {
+    color: var(--accent);
+  }
+</style>
