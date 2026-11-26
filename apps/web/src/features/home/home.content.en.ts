@@ -35,6 +35,19 @@ export const HOME_EN: HomeContent = {
     cv: { label: 'CV', href: pagePath(PAGE.cv, locale) },
     cta: { label: 'See the proof', href: sectionHref(SECTION_ID.proof, locale) },
   },
+  nav: {
+    labels: {
+      nav: 'Sections',
+      position: (current, total) => `Section ${current} of ${total}`,
+      contact: { label: HAS_EMAIL ? 'Email me' : 'Reach me on GitHub', href: CONTACT_HREF },
+    },
+    sections: [
+      { id: SECTION_ID.proof, label: 'Results' },
+      { id: SECTION_ID.value, label: 'What I bring' },
+      { id: SECTION_ID.process, label: 'How I work' },
+      { id: SECTION_ID.ways, label: 'Work with me' },
+    ],
+  },
   proof: {
     label: 'My results, race after race',
     labels: { turnOver: 'Turn over', turnBack: 'Back to the number' },

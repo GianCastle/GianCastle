@@ -1,0 +1,247 @@
+---
+import { PLATE_NUMBER_WIDTH, type PlateLabels, type PlateSection } from '../section-plate';
+import { TONE } from '../theme';
+
+interface Props {
+  sections: readonly PlateSection[];
+  labels: PlateLabels;
+}
+
+const { sections, labels } = Astro.props;
+const LIST_ID = 'section-plate-list';
+
+const items = sections.map((section, index) => ({
+  ...section,
+  number: String(index + 1).padStart(PLATE_NUMBER_WIDTH, '0'),
+  position: labels.position(index + 1, sections.length),
+}));
+const [first] = items;
+---
+
+{first && (
+  <div class="plate" data-section-plate data-tone={TONE.contrast} inert>
+    <button class="toggle" type="button" aria-expanded="false" aria-controls={LIST_ID}>
+      <span class="heavy number" data-plate-number>
+        {first.number}
+      </span>
+      <span class="info">
+        <span class="label position" data-plate-position>
+          {first.position}
+        </span>
+        <span class="label name" data-plate-name>
+          {first.label}
+        </span>
+      </span>
+    </button>
+    <nav id={LIST_ID} class="list" aria-label={labels.nav} hidden>
+      {items.map(item => (
+        <a
+          href={`#${item.id}`}
+          data-plate-link
+          data-number={item.number}
+          data-position={item.position}
+        >
+          <span class="heavy">{item.number}</span>
+          <span class="label">{item.label}</span>
+        </a>
+      ))}
+      <a class="heavy contact" href={labels.contact.href}>
+        {labels.contact.label}
+      </a>
+    </nav>
+  </div>
+)}
+
+<script>
+  const REVEAL_AT = 0.5;
+  const CENTER_BAND = '-45% 0px -45% 0px';
+
+  for (const plate of document.querySelectorAll<HTMLElement>('[data-section-plate]')) {
+    const toggle = plate.querySelector('button');
+    const list = plate.querySelector('nav');
+    const links = [...plate.querySelectorAll<HTMLAnchorElement>('[data-plate-link]')];
+    const sections = links.map(link => document.getElementById(link.hash.slice(1)));
+    const [firstSection] = sections;
+    if (!toggle || !list || !firstSection) continue;
+
+    const setOpen = (open: boolean) => {
+      toggle.setAttribute('aria-expanded', String(open));
+      list.hidden = !open;
+    };
+
+    const setCurrent = (index: number) => {
+      const link = links[index];
+      if (!link) return;
+      for (const other of links) other.removeAttribute('aria-current');
+      link.setAttribute('aria-current', 'true');
+      const write = (name: string, text: string) => {
+        const target = plate.querySelector(`[data-plate-${name}]`);
+        if (target) target.textContent = text;
+      };
+      write('number', link.dataset.number ?? '');
+      write('position', link.dataset.position ?? '');
+      write('name', link.querySelector('.label')?.textContent ?? '');
+    };
+
+    const observer = new IntersectionObserver(
+      entries => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) setCurrent(sections.indexOf(entry.target as HTMLElement));
+        }
+      },
+      { rootMargin: CENTER_BAND },
+    );
+    for (const section of sections) if (section) observer.observe(section);
+
+    let queued = false;
+    const reveal = () => {
+      queued = false;
+      const visible = firstSection.getBoundingClientRect().top < innerHeight * REVEAL_AT;
+      plate.toggleAttribute('data-visible', visible);
+      plate.inert = !visible;
+      if (!visible) setOpen(false);
+    };
+    addEventListener(
+      'scroll',
+      () => {
+        if (queued) return;
+        queued = true;
+        requestAnimationFrame(reveal);
+      },
+      { passive: true },
+    );
+    reveal();
+    setCurrent(0);
+
+    toggle.addEventListener('click', () =>
+      setOpen(toggle.getAttribute('aria-expanded') !== 'true'),
+    );
+    list.addEventListener('click', event => {
+      if ((event.target as Element).closest('a')) setOpen(false);
+    });
+    plate.addEventListener('keydown', event => {
+      if (event.key !== 'Escape') return;
+      setOpen(false);
+      toggle.focus();
+    });
+    document.addEventListener('click', event => {
+      if (!plate.contains(event.target as Node)) setOpen(false);
+    });
+  }
+</script>
+
+<style>
+  .plate {
+    position: fixed;
+    right: var(--gutter);
+    top: 1rem;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    opacity: 0;
+    translate: 0 -150%;
+    rotate: 1.5deg;
+    transition:
+      opacity 250ms,
+      translate 350ms cubic-bezier(0.2, 0.9, 0.2, 1);
+  }
+
+  .plate[data-visible] {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  .toggle {
+    display: flex;
+    align-items: stretch;
+    min-height: 3.5rem;
+    padding: 0;
+    border: 0;
+    background: var(--fg);
+    color: var(--bg);
+    font: inherit;
+    text-align: left;
+    cursor: pointer;
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+
+  .toggle:focus-visible,
+  .list a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 3px;
+  }
+
+  .number {
+    display: flex;
+    align-items: center;
+    padding: 0 0.85rem;
+    font-size: 2.5rem;
+    line-height: 1;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.15rem;
+    padding: 0 1rem;
+    background: var(--accent-solid);
+    color: var(--on-accent);
+  }
+
+  .position {
+    font-size: 0.56rem;
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    width: min(18.75rem, calc(100vw - 2 * var(--gutter)));
+    margin-top: 0.6rem;
+    background: var(--fg);
+    color: var(--bg);
+    box-shadow: 0 0 0 3px var(--bg);
+  }
+
+  .list[hidden] {
+    display: none;
+  }
+
+  .list a {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    min-height: 3.25rem;
+    padding: 0 1rem;
+    border-bottom: 2px solid var(--bg);
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .list a .heavy {
+    width: 2.1rem;
+    font-size: 1.9rem;
+    line-height: 1;
+  }
+
+  .list a[aria-current],
+  .list a:hover {
+    background: var(--accent-solid);
+    color: var(--on-accent);
+  }
+
+  .list .contact {
+    justify-content: center;
+    border-bottom: 0;
+    background: var(--mark-bg);
+    color: var(--mark-fg);
+    font-size: 1.6rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .plate {
+      transition: none;
+    }
+  }
+</style>

@@ -1,5 +1,6 @@
 import type { DecalColor } from '@giancastle/ui/decals';
 import type { RaceNumber, RaceNumberLabels } from '@giancastle/ui/race-numbers';
+import type { PlateLabels, PlateSection } from '@giancastle/ui/section-plate';
 import type { Stage } from '@giancastle/ui/stages';
 
 type Cta = { label: string; href: string; download?: boolean };
@@ -7,6 +8,7 @@ type Cta = { label: string; href: string; download?: boolean };
 export type HomeContent = {
   profile: { role: string; focus: string; description: string; knowsAbout: readonly string[] };
   hero: { heading: string; sticker: string; tagline: string; cv: Cta; cta: Cta };
+  nav: { labels: PlateLabels; sections: readonly PlateSection[] };
   proof: { label: string; labels: RaceNumberLabels; items: readonly RaceNumber[] };
   value: {
     label: string;
