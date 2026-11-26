@@ -14,6 +14,7 @@ export const COMPONENT = {
   poster: 'poster',
   masthead: 'masthead',
   decal: 'decal',
+  patternStrip: 'pattern-strip',
   stageProfile: 'stage-profile',
   verbList: 'verb-list',
   sticker: 'sticker',

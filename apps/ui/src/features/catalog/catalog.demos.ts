@@ -6,6 +6,7 @@ import ColorDemo from './demos/ColorDemo.astro';
 import DecalDemo from './demos/DecalDemo.astro';
 import MastheadDemo from './demos/MastheadDemo.astro';
 import MotionDemo from './demos/MotionDemo.astro';
+import PatternStripDemo from './demos/PatternStripDemo.astro';
 import PosterDemo from './demos/PosterDemo.astro';
 import RaceNumbersDemo from './demos/RaceNumbersDemo.astro';
 import SectionPlateDemo from './demos/SectionPlateDemo.astro';
@@ -29,6 +30,7 @@ export const ENTRY_DEMOS: Record<EntryId, EntryDemo> = {
   [COMPONENT.poster]: { Demo: PosterDemo, tone: TONE.plain, bleed: true },
   [COMPONENT.masthead]: { Demo: MastheadDemo, tone: TONE.contrast, bleed: true },
   [COMPONENT.decal]: { Demo: DecalDemo, tone: TONE.plain },
+  [COMPONENT.patternStrip]: { Demo: PatternStripDemo, tone: TONE.contrast, bleed: true },
   [COMPONENT.stageProfile]: { Demo: StageProfileDemo, tone: TONE.contrast },
   [COMPONENT.verbList]: { Demo: VerbListDemo, tone: TONE.plain },
   [COMPONENT.sticker]: { Demo: StickerDemo, tone: TONE.plain },
