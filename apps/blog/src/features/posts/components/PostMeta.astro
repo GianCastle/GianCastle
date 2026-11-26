@@ -1,0 +1,16 @@
+---
+import { formatDate, formatReadingTime } from '../posts.format';
+import type { Post } from '../posts.query';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+---
+
+<p class="label text-muted">
+  <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date, post.locale)}</time>
+  <span aria-hidden="true"> · </span>
+  {formatReadingTime(post.body ?? '', post.locale)}
+</p>

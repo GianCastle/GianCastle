@@ -1,0 +1,22 @@
+---
+import type { Post } from '../posts.query';
+import FeaturedPost from './FeaturedPost.astro';
+import PostCard from './PostCard.astro';
+
+interface Props {
+  posts: Post[];
+  featureFirst?: boolean;
+}
+
+const { posts, featureFirst = false } = Astro.props;
+const [first, ...rest] = posts;
+const featured = featureFirst ? first : undefined;
+const gridPosts = featureFirst ? rest : posts;
+---
+
+{featured && <FeaturedPost post={featured} />}
+<div class="grid gap-x-10 gap-y-16 pt-16 sm:grid-cols-2 lg:grid-cols-3">
+  {gridPosts.map(post => (
+    <PostCard post={post} />
+  ))}
+</div>

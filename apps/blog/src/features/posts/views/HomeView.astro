@@ -1,0 +1,45 @@
+---
+import ActionRow from '@giancastle/ui/components/ActionRow.astro';
+import Band from '@giancastle/ui/components/Band.astro';
+import Controls from '@giancastle/ui/components/Controls.astro';
+import Kicker from '@giancastle/ui/components/Kicker.astro';
+import Pill from '@giancastle/ui/components/Pill.astro';
+import Poster from '@giancastle/ui/components/Poster.astro';
+import { otherLocale, type Locale } from '@giancastle/ui/locale';
+import { AUTHOR } from '@giancastle/ui/sites';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { routesFor, WEB_HOME } from '@/routes';
+import PostGrid from '../components/PostGrid.astro';
+import { SITE_COPY } from '../posts.labels';
+import { getPublishedPosts } from '../posts.query';
+
+const POSTS_ID = 'posts';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const copy = SITE_COPY[locale];
+const routes = routesFor(locale);
+const alternate = { locale: otherLocale(locale), href: routesFor(otherLocale(locale)).home };
+const posts = await getPublishedPosts(locale);
+---
+
+<BaseLayout locale={locale} alternate={alternate} masthead={false}>
+  <Poster lines={AUTHOR.wordmarkLines} sticker={copy.posterSticker} heading={copy.title}>
+    <Controls slot="corner" locale={locale} alternate={alternate} />
+    <Fragment slot="tagline">{copy.statement}</Fragment>
+    <ActionRow slot="actions">
+      <a href={routes.rss}>{copy.navRss}</a>
+      <a href={WEB_HOME[locale]}>{copy.about}</a>
+      <Pill href={`#${POSTS_ID}`}>{copy.readPosts}</Pill>
+    </ActionRow>
+  </Poster>
+  <Band id={POSTS_ID} size="compact" label={copy.latest}>
+    <Kicker as="h2">{copy.latest}</Kicker>
+    <div class="mt-8">
+      <PostGrid posts={posts} featureFirst />
+    </div>
+  </Band>
+</BaseLayout>

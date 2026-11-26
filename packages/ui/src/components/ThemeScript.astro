@@ -1,0 +1,29 @@
+---
+import { DEFAULT_THEME, THEME_ATTRIBUTE, THEME_STORAGE_KEY, type Theme } from '../theme';
+
+interface Props {
+  force?: Theme;
+}
+
+const { force } = Astro.props;
+const config = {
+  attribute: THEME_ATTRIBUTE,
+  storageKey: THEME_STORAGE_KEY,
+  fallback: DEFAULT_THEME,
+  force,
+};
+---
+
+<script is:inline define:vars={{ config }}>
+  const readStored = () => {
+    try {
+      return localStorage.getItem(config.storageKey);
+    } catch {
+      return null;
+    }
+  };
+  document.documentElement.setAttribute(
+    config.attribute,
+    config.force ?? readStored() ?? config.fallback,
+  );
+</script>

@@ -1,0 +1,54 @@
+---
+const GATE_CLIP_ID = `castle-gate-${Math.random().toString(36).slice(2, 8)}`;
+---
+
+<svg class="castle" viewBox="0 0 22 20" aria-hidden="true" fill="currentColor">
+  <defs>
+    <clipPath id={GATE_CLIP_ID}>
+      <path d="M7.5 20v-5.5a3.5 3.5 0 0 1 7 0V20z"></path>
+    </clipPath>
+  </defs>
+  <path d="M0 20V5h3V0h3v3h3.5V0h3v3H16V0h3v5h3v15h-7.5v-5.5a3.5 3.5 0 0 0-7 0V20z"></path>
+  <g clip-path={`url(#${GATE_CLIP_ID})`}>
+    <g class="gate">
+      <rect x="8.4" y="11" width="0.9" height="9"></rect>
+      <rect x="10.55" y="11" width="0.9" height="9"></rect>
+      <rect x="12.7" y="11" width="0.9" height="9"></rect>
+      <rect x="7.5" y="13.4" width="7" height="0.8"></rect>
+      <rect x="7.5" y="16.4" width="7" height="0.8"></rect>
+    </g>
+  </g>
+</svg>
+
+<style>
+  .castle {
+    --gate-raised: -9.5px;
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .gate {
+    translate: 0 var(--gate-raised);
+    transition: translate 700ms cubic-bezier(0.3, 0, 0.2, 1);
+    animation: gate-open 1100ms 1400ms cubic-bezier(0.3, 0, 0.2, 1) backwards;
+  }
+
+  .castle:hover .gate,
+  :global([data-castle-host]:hover) .gate {
+    translate: 0 0;
+  }
+
+  @keyframes gate-open {
+    from {
+      translate: 0 0;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gate {
+      animation: none;
+      transition: none;
+    }
+  }
+</style>

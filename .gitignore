@@ -2,15 +2,14 @@
 # Node.js-Specific Ignores
 # =========================
 
-# Build directory
-public/
+# Build output
+dist/
+.astro/
+.wrangler/
 
 # IntelliJ
 
 .idea
-
-# Gatsby cache
-.cache/
 
 # Logs
 logs

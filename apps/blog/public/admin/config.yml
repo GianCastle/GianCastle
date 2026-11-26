@@ -1,0 +1,45 @@
+# yaml-language-server: $schema=https://unpkg.com/@sveltia/cms/schema/sveltia-cms.json
+backend:
+  name: github
+  repo: GianCastle/GianCastle
+  branch: master
+  auth_methods: [token]
+
+site_url: https://blog.giancastle.com
+media_folder: /apps/blog/src/content/posts/img
+public_folder: ../img
+
+i18n:
+  structure: multiple_folders
+  locales: [es, en]
+  default_locale: es
+
+collections:
+  - name: posts
+    label: Entradas
+    label_singular: Entrada
+    folder: apps/blog/src/content/posts
+    extension: md
+    format: yaml-frontmatter
+    create: true
+    slug: '{{slug}}'
+    i18n: true
+    sortable_fields: [date, title]
+    fields:
+      - { name: title, label: Título, widget: string, i18n: true }
+      - {
+          name: date,
+          label: Fecha,
+          widget: datetime,
+          format: 'YYYY-MM-DD HH:mm:ss',
+          i18n: duplicate,
+        }
+      - name: tags
+        label: Etiquetas
+        widget: list
+        i18n: true
+        field: { name: tag, label: Etiqueta, widget: string }
+      - { name: draft, label: Borrador, widget: boolean, default: false, i18n: duplicate }
+      - { name: translated, label: Es una traducción, widget: boolean, default: false, i18n: true }
+      - { name: image, label: Portada, widget: image, i18n: duplicate }
+      - { name: body, label: Contenido, widget: markdown, i18n: true }

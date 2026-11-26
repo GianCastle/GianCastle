@@ -1,0 +1,39 @@
+---
+import Heavy from '@giancastle/ui/components/Heavy.astro';
+import { Image } from 'astro:assets';
+import { routesFor } from '@/routes';
+import { excerpt } from '../posts.format';
+import type { Post } from '../posts.query';
+import PostMeta from './PostMeta.astro';
+import TagList from './TagList.astro';
+
+interface Props {
+  post: Post;
+}
+
+const { post } = Astro.props;
+const href = routesFor(post.locale).post(post.slug);
+---
+
+<article class="group flex flex-col gap-5">
+  <a href={href} tabindex="-1" aria-hidden="true" class="block overflow-hidden bg-surface">
+    <Image
+      src={post.data.image}
+      alt=""
+      width={720}
+      height={480}
+      loading="lazy"
+      class="aspect-[3/2] w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+    />
+  </a>
+  <div class="rule-top flex flex-col gap-4 pt-4">
+    <TagList tags={post.data.tags} locale={post.locale} />
+    <a href={href} class="no-underline hover:text-accent">
+      <Heavy as="h2" size="card">
+        {post.data.title}
+      </Heavy>
+    </a>
+    <p class="text-base text-muted">{excerpt(post.body ?? '')}</p>
+    <PostMeta post={post} />
+  </div>
+</article>

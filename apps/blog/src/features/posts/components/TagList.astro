@@ -1,0 +1,28 @@
+---
+import { DECAL_TINT_VAR } from '@giancastle/ui/decals';
+import type { Locale } from '@giancastle/ui/locale';
+import { routesFor } from '@/routes';
+import { tagColor, tagSlug } from '../posts.format';
+
+interface Props {
+  tags: string[];
+  locale: Locale;
+}
+
+const { tags, locale } = Astro.props;
+const routes = routesFor(locale);
+---
+
+<ul class="flex flex-wrap gap-x-3 gap-y-1">
+  {tags.map(tag => (
+    <li>
+      <a
+        href={routes.tag(tagSlug(tag))}
+        class="label underline-offset-4 hover:underline"
+        style={`color:${DECAL_TINT_VAR[tagColor(tag)]}`}
+      >
+        {tag}
+      </a>
+    </li>
+  ))}
+</ul>

@@ -1,0 +1,92 @@
+---
+import { LOCALE, type Locale, type LocaleAlternate } from '../locale';
+import { TONE } from '../theme';
+import { UI_COPY } from '../ui.labels';
+import CastleMark from './CastleMark.astro';
+import Controls from './Controls.astro';
+
+interface Props {
+  wordmark: string;
+  href: string;
+  links?: readonly { label: string; href: string }[];
+  locale?: Locale;
+  alternate?: LocaleAlternate;
+}
+
+const { wordmark, href, links = [], locale = LOCALE.en, alternate } = Astro.props;
+---
+
+<header class="masthead" data-tone={TONE.contrast}>
+  <a class="brand" href={href} data-castle-host>
+    <span class="heavy wordmark">{wordmark}</span>
+    <span class="badge">
+      <CastleMark />
+    </span>
+  </a>
+  <nav aria-label={UI_COPY[locale].primaryNav}>
+    {links.map(link => (
+      <a class="label" href={link.href}>
+        {link.label}
+      </a>
+    ))}
+    <Controls locale={locale} alternate={alternate} />
+  </nav>
+</header>
+
+<style>
+  .masthead {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem 2rem;
+    padding: 1rem var(--gutter);
+  }
+
+  .brand {
+    position: relative;
+    display: inline-block;
+    margin: 0.45rem 1.6rem 0.2rem 0;
+    text-decoration: none;
+    rotate: -5deg;
+  }
+
+  .wordmark {
+    display: block;
+    font-size: 2.6rem;
+    line-height: 0.82;
+    color: transparent;
+    background: linear-gradient(to bottom, var(--fg) 0 46%, var(--orange) 46% 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  .badge {
+    position: absolute;
+    right: -1.5rem;
+    top: -0.75rem;
+    display: grid;
+    place-items: center;
+    width: 1.75rem;
+    aspect-ratio: 1;
+    padding: 0.42rem;
+    border-radius: 50%;
+    background: var(--mark-bg);
+    color: var(--mark-fg);
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  nav a.label {
+    text-decoration: none;
+  }
+
+  nav a.label:hover {
+    color: var(--accent);
+  }
+</style>

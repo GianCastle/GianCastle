@@ -1,0 +1,60 @@
+---
+const VARIANT = {
+  accent: 'accent',
+  solid: 'solid',
+  outline: 'outline',
+} as const;
+
+type Variant = (typeof VARIANT)[keyof typeof VARIANT];
+
+interface Props {
+  href: string;
+  variant?: Variant;
+  download?: boolean;
+}
+
+const { href, variant = VARIANT.accent, download = false } = Astro.props;
+---
+
+<a href={href} download={download} class:list={['pill', variant]}>
+  <slot />
+</a>
+
+<style>
+  .pill {
+    display: inline-block;
+    padding: 0.6em 1.5em;
+    border: 2px solid transparent;
+    border-radius: 999px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      background-color 150ms,
+      color 150ms;
+  }
+
+  .accent {
+    background: var(--accent-solid);
+    color: var(--on-accent);
+  }
+
+  .solid {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  .outline {
+    border-color: currentColor;
+  }
+
+  .pill:hover {
+    background: transparent;
+    border-color: currentColor;
+    color: var(--fg);
+  }
+
+  .outline:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+</style>

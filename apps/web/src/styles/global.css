@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+@import '@giancastle/ui/theme.css';
+
+@page {
+  size: A4;
+  margin: 14mm;
+}
+
+@media print {
+  :root[data-theme] {
+    --plain-bg: #fff;
+  }
+}

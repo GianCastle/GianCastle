@@ -1,0 +1,24 @@
+---
+import { DECAL_COLORS } from '../decals';
+import Decal from './Decal.astro';
+
+interface Props {
+  size?: string;
+}
+
+const { size = '0.6em' } = Astro.props;
+---
+
+<span class="chips" aria-hidden="true">
+  {DECAL_COLORS.map(color => (
+    <Decal color={color} size={size} />
+  ))}
+</span>
+
+<style>
+  .chips {
+    display: inline-flex;
+    gap: 0.22em;
+    vertical-align: baseline;
+  }
+</style>

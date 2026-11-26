@@ -1,0 +1,28 @@
+---
+import { DECAL_SHAPE } from '../decals';
+import Decal from './Decal.astro';
+
+interface Props {
+  size?: string;
+  count?: number;
+}
+
+const { size = '0.9em', count = 4 } = Astro.props;
+const items = Array.from({ length: count });
+---
+
+<span class="dashes" style={`--dash-size:${size}`} aria-hidden="true">
+  {items.map(() => (
+    <Decal shape={DECAL_SHAPE.dash} size={size} />
+  ))}
+</span>
+
+<style>
+  .dashes {
+    display: inline-flex;
+  }
+
+  .dashes :global(.decal + .decal) {
+    margin-left: calc(var(--dash-size) * -0.45);
+  }
+</style>

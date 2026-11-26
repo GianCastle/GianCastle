@@ -1,0 +1,53 @@
+---
+import '@/styles/global.css';
+import HeadAlternates from '@giancastle/ui/components/HeadAlternates.astro';
+import ThemeScript from '@giancastle/ui/components/ThemeScript.astro';
+import type { Locale, LocaleAlternate } from '@giancastle/ui/locale';
+import { AUTHOR } from '@giancastle/ui/sites';
+import type { Theme } from '@giancastle/ui/theme';
+import { HOME_CONTENT } from '@/features/home/home.content';
+import { DEFAULT_LOCALE } from '@/i18n';
+import { LLMS_PATH } from '@/routes';
+
+interface Props {
+  locale?: Locale;
+  alternate?: LocaleAlternate;
+  title?: string;
+  forceTheme?: Theme;
+  jsonLd?: Record<string, unknown>;
+}
+
+const { locale = DEFAULT_LOCALE, alternate, title, forceTheme, jsonLd } = Astro.props;
+const { profile } = HOME_CONTENT[locale];
+
+const siteTitle = `${AUTHOR.name} · ${profile.role}`;
+const pageTitle = title ? `${title} · ${AUTHOR.name}` : siteTitle;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ThemeScript force={forceTheme} />
+    <title>{pageTitle}</title>
+    <meta name="description" content={profile.description} />
+    <link rel="canonical" href={canonical} />
+    <HeadAlternates locale={locale} alternate={alternate} defaultLocale={DEFAULT_LOCALE} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <link rel="alternate" type="text/plain" title="llms.txt" href={LLMS_PATH} />
+    <meta property="og:site_name" content={AUTHOR.name} />
+    <meta property="og:type" content="profile" />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={profile.description} />
+    <meta property="og:url" content={canonical} />
+    <meta name="twitter:card" content="summary" />
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

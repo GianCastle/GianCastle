@@ -1,0 +1,63 @@
+---
+import Heavy from './Heavy.astro';
+import Pill from './Pill.astro';
+import Sticker from './Sticker.astro';
+
+interface Props {
+  items: readonly {
+    tag?: string;
+    title: string;
+    body: string;
+    featured?: boolean;
+    cta: { label: string; href: string; download?: boolean };
+  }[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="offers">
+  {items.map((item, index) => (
+    <Sticker as="li" featured={item.featured ?? false} tilt={index % 2 === 0 ? 'left' : 'right'}>
+      <div class="offer">
+        {item.tag && <p class="label tag">{item.tag}</p>}
+        <Heavy as="h3" size="figure">
+          {item.title}
+        </Heavy>
+        <p class="body">{item.body}</p>
+        <Pill href={item.cta.href} download={item.cta.download ?? false}>
+          {item.cta.label}
+        </Pill>
+      </div>
+    </Sticker>
+  ))}
+</ul>
+
+<style>
+  .offers {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+    gap: clamp(1.5rem, 3vw, 3rem);
+    margin: 2.25rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .offer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  .tag {
+    padding: 0.45em 0.8em;
+    background: var(--chip-bg);
+    color: var(--chip-fg);
+  }
+
+  .body {
+    max-width: 34ch;
+    font-size: 1.15rem;
+  }
+</style>

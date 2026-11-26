@@ -1,0 +1,25 @@
+---
+import { DECAL_SHAPE } from '../decals';
+import Decal from './Decal.astro';
+
+interface Props {
+  size?: string;
+  count?: number;
+}
+
+const { size = '0.7em', count = 3 } = Astro.props;
+const items = Array.from({ length: count });
+---
+
+<span class="chevrons" aria-hidden="true">
+  {items.map(() => (
+    <Decal shape={DECAL_SHAPE.chevron} size={size} />
+  ))}
+</span>
+
+<style>
+  .chevrons {
+    display: inline-flex;
+    gap: 0.05em;
+  }
+</style>

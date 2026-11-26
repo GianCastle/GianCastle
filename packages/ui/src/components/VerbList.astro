@@ -1,0 +1,59 @@
+---
+import { DECAL_TINT_VAR, type DecalColor } from '../decals';
+import Heavy from './Heavy.astro';
+
+interface Props {
+  items: readonly { verb: string; rest: string; body: string; color: DecalColor }[];
+}
+
+const { items } = Astro.props;
+---
+
+<ul class="verbs">
+  {items.map(item => (
+    <li class="rule-top">
+      <h3>
+        <span class="verb" style={`color:${DECAL_TINT_VAR[item.color]}`}>
+          <Heavy as="span" size="verb">
+            {item.verb}
+          </Heavy>
+        </span>
+        <span class="rest">{item.rest}</span>
+      </h3>
+      <p>{item.body}</p>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .verbs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 2.5rem clamp(2rem, 5vw, 5rem);
+    margin: clamp(3rem, 6vw, 5rem) 0 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    padding-top: 1.25rem;
+  }
+
+  .verb,
+  .rest {
+    display: block;
+  }
+
+  .rest {
+    margin-top: 0.35rem;
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  p {
+    margin-top: 0.75rem;
+    max-width: 34ch;
+  }
+</style>

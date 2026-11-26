@@ -1,0 +1,100 @@
+---
+import '@/styles/global.css';
+import ActionRow from '@giancastle/ui/components/ActionRow.astro';
+import Closer from '@giancastle/ui/components/Closer.astro';
+import HeadAlternates from '@giancastle/ui/components/HeadAlternates.astro';
+import Masthead from '@giancastle/ui/components/Masthead.astro';
+import Pill from '@giancastle/ui/components/Pill.astro';
+import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
+import ThemeScript from '@giancastle/ui/components/ThemeScript.astro';
+import { otherLocale, type Locale, type LocaleAlternate } from '@giancastle/ui/locale';
+import { AUTHOR } from '@giancastle/ui/sites';
+import { SITE_COPY } from '@/features/posts/posts.labels';
+import { DEFAULT_LOCALE } from '@/i18n';
+import { routesFor, WEB_HOME } from '@/routes';
+
+interface Props {
+  locale: Locale;
+  alternate?: LocaleAlternate;
+  title?: string;
+  description?: string;
+  image?: URL;
+  jsonLd?: Record<string, unknown>;
+  ogType?: 'website' | 'article';
+  masthead?: boolean;
+}
+
+const { locale, title, image, jsonLd, ogType = 'website', masthead = true } = Astro.props;
+const copy = SITE_COPY[locale];
+const routes = routesFor(locale);
+const { description = copy.description } = Astro.props;
+const alternate = Astro.props.alternate ?? {
+  locale: otherLocale(locale),
+  href: routesFor(otherLocale(locale)).home,
+};
+
+const pageTitle = title ? `${title} · ${copy.title}` : copy.title;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const year = new Date().getFullYear();
+const navLinks = [
+  { label: copy.navBlog, href: routes.home },
+  { label: copy.navRss, href: routes.rss },
+  { label: copy.about, href: WEB_HOME[locale] },
+];
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <ThemeScript />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <HeadAlternates locale={locale} alternate={alternate} defaultLocale={DEFAULT_LOCALE} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title={copy.title} href={routes.rss} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta property="og:site_name" content={copy.title} />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:locale" content={locale} />
+    <meta property="og:title" content={title ?? copy.title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    {image && <meta property="og:image" content={image} />}
+    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+  </head>
+  <body>
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-canvas focus:px-3 focus:py-2"
+    >
+      {copy.skipToContent}
+    </a>
+    {masthead && (
+      <Masthead
+        wordmark={AUTHOR.handle}
+        href={routes.home}
+        links={navLinks}
+        locale={locale}
+        alternate={alternate}
+      />
+    )}
+    <main id="content">
+      <slot />
+    </main>
+    <Closer
+      title={copy.closerTitle}
+      tagline={copy.closerTagline}
+      note={`${copy.title} © ${year} · Breathe in life.`}
+    >
+      <ActionRow>
+        <SocialLinks />
+        <a href={routes.rss}>{copy.navRss}</a>
+        <Pill href={WEB_HOME[locale]}>{copy.about}</Pill>
+      </ActionRow>
+    </Closer>
+  </body>
+</html>

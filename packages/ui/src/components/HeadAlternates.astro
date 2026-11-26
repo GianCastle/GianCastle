@@ -1,0 +1,24 @@
+---
+import type { Locale, LocaleAlternate } from '../locale';
+
+interface Props {
+  locale: Locale;
+  alternate?: LocaleAlternate;
+  defaultLocale: Locale;
+}
+
+const { locale, alternate, defaultLocale } = Astro.props;
+const current = new URL(Astro.url.pathname, Astro.site);
+const entries = alternate
+  ? [
+      { locale, href: current.href },
+      { locale: alternate.locale, href: new URL(alternate.href, Astro.site).href },
+    ]
+  : [];
+const fallback = entries.find(entry => entry.locale === defaultLocale);
+---
+
+{entries.map(entry => (
+  <link rel="alternate" hreflang={entry.locale} href={entry.href} />
+))}
+{fallback && <link rel="alternate" hreflang="x-default" href={fallback.href} />}

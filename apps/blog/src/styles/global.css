@@ -1,0 +1,5 @@
+@import 'tailwindcss';
+@import '@giancastle/ui/theme.css';
+@import '@giancastle/ui/prose.css';
+@import '@fontsource-variable/newsreader';
+@import '@fontsource-variable/newsreader/wght-italic.css';

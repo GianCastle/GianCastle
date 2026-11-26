@@ -1,0 +1,34 @@
+---
+import { DECAL_COLOR, DECAL_SHAPE } from '../decals';
+import Dashes from './Dashes.astro';
+import Decal from './Decal.astro';
+
+const PATTERN = [
+  { shape: DECAL_SHAPE.square, color: DECAL_COLOR.orange, rotate: 0 },
+  { shape: DECAL_SHAPE.triangle, color: DECAL_COLOR.teal, rotate: 90 },
+  { shape: DECAL_SHAPE.triangle, color: DECAL_COLOR.pink, rotate: -90 },
+  { shape: DECAL_SHAPE.square, color: DECAL_COLOR.teal, rotate: 0 },
+  { shape: DECAL_SHAPE.chevron, color: undefined, rotate: 0 },
+  { shape: DECAL_SHAPE.chevron, color: undefined, rotate: 0 },
+  { shape: DECAL_SHAPE.triangle, color: DECAL_COLOR.orange, rotate: 180 },
+  { shape: DECAL_SHAPE.square, color: DECAL_COLOR.pink, rotate: 0 },
+  { shape: DECAL_SHAPE.triangle, color: DECAL_COLOR.teal, rotate: 0 },
+] as const;
+---
+
+<div class="strip" aria-hidden="true">
+  {PATTERN.map(item => (
+    <Decal shape={item.shape} color={item.color} rotate={item.rotate} size="1.25rem" />
+  ))}
+  <Dashes size="1.25rem" />
+</div>
+
+<style>
+  .strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    transform: skewX(-12deg);
+    transform-origin: left;
+  }
+</style>

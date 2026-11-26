@@ -1,0 +1,25 @@
+---
+import type { Locale, LocaleAlternate } from '../locale';
+import LanguageSwitch from './LanguageSwitch.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  locale: Locale;
+  alternate?: LocaleAlternate;
+}
+
+const { locale, alternate } = Astro.props;
+---
+
+<div class="controls">
+  {alternate && <LanguageSwitch alternate={alternate} />}
+  <ThemeToggle locale={locale} />
+</div>
+
+<style>
+  .controls {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+</style>
