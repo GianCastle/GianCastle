@@ -19,6 +19,7 @@
     "./stages": "./src/stages.ts",
     "./decals": "./src/decals.ts",
     "./race-numbers": "./src/race-numbers.ts",
+    "./section-plate": "./src/section-plate.ts",
     "./components/*": "./src/components/*"
   },
   "dependencies": {

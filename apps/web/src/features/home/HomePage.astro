@@ -10,6 +10,7 @@ import Pill from '@giancastle/ui/components/Pill.astro';
 import Poster from '@giancastle/ui/components/Poster.astro';
 import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
 import RaceNumbers from '@giancastle/ui/components/RaceNumbers.astro';
+import SectionPlate from '@giancastle/ui/components/SectionPlate.astro';
 import VerbList from '@giancastle/ui/components/VerbList.astro';
 import StageProfile from '@giancastle/ui/components/StageProfile.astro';
 import type { Locale } from '@giancastle/ui/locale';
@@ -24,7 +25,7 @@ interface Props {
 }
 
 const { locale } = Astro.props;
-const { hero, proof, value, process, ways, closer } = HOME_CONTENT[locale];
+const { hero, nav, proof, value, process, ways, closer } = HOME_CONTENT[locale];
 const alternate = alternateFor(PAGE.home, locale);
 ---
 
@@ -38,6 +39,8 @@ const alternate = alternateFor(PAGE.home, locale);
       <Pill href={hero.cta.href}>{hero.cta.label}</Pill>
     </ActionRow>
   </Poster>
+
+  <SectionPlate sections={nav.sections} labels={nav.labels} />
 
   <main>
     <Band id={SECTION_ID.proof} tone="contrast" label={proof.label}>
