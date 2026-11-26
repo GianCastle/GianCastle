@@ -2,20 +2,24 @@
 import {
   PLATE_ATTR,
   PLATE_NUMBER_WIDTH,
+  type PlateHeading,
   type PlateLabels,
   type PlateLink,
   type PlateSection,
 } from '../section-plate';
 import { TONE } from '../theme';
+import CastleMark from './CastleMark.astro';
 
 interface Props {
-  sections: readonly PlateSection[];
+  sections?: readonly PlateSection[];
   labels: PlateLabels;
   links?: readonly PlateLink[];
+  heading?: PlateHeading;
 }
 
-const { sections, labels, links = [] } = Astro.props;
+const { sections = [], labels, links = [], heading } = Astro.props;
 const LIST_ID = 'section-plate-list';
+const MARK_ID = 'section-plate-gate';
 
 const items = sections.map((section, index) => ({
   ...section,
@@ -23,20 +27,27 @@ const items = sections.map((section, index) => ({
   position: labels.position(index + 1, sections.length),
 }));
 const [first] = items;
+const head = first
+  ? { number: first.number, caption: first.position, name: first.label }
+  : heading && { number: undefined, caption: heading.caption, name: heading.name };
 ---
 
-{first && (
+{head && (
   <div class="plate" {...{ [PLATE_ATTR.root]: '' }} data-tone={TONE.contrast} inert>
     <button class="toggle" type="button" aria-expanded="false" aria-controls={LIST_ID}>
       <span class="heavy number" {...{ [PLATE_ATTR.number]: '' }}>
-        {first.number}
+        {head.number ?? (
+          <span class="mark">
+            <CastleMark id={MARK_ID} />
+          </span>
+        )}
       </span>
       <span class="info">
         <span class="label position" {...{ [PLATE_ATTR.position]: '' }}>
-          {first.position}
+          {head.caption}
         </span>
         <span class="label name" {...{ [PLATE_ATTR.name]: '' }}>
-          {first.label}
+          {head.name}
         </span>
       </span>
     </button>
@@ -62,9 +73,11 @@ const [first] = items;
           <i class="arrow" aria-hidden="true" />
         </a>
       ))}
-      <a class="heavy contact" href={labels.contact.href}>
-        {labels.contact.label}
-      </a>
+      {labels.contact && (
+        <a class="heavy contact" href={labels.contact.href}>
+          {labels.contact.label}
+        </a>
+      )}
     </nav>
   </div>
 )}
@@ -133,6 +146,11 @@ const [first] = items;
     padding: 0 1rem;
     background: var(--accent-solid);
     color: var(--on-accent);
+  }
+
+  .mark {
+    display: block;
+    width: 1.9rem;
   }
 
   .position {

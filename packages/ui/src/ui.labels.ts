@@ -6,6 +6,7 @@ type UiCopy = {
   theme: Record<Theme, string>;
   switchTheme: (themeLabel: string) => string;
   primaryNav: string;
+  plate: { sites: string; position: (current: number, total: number) => string };
   footer: {
     nav: string;
     sections: string;
@@ -21,6 +22,10 @@ export const UI_COPY: Record<Locale, UiCopy> = {
     theme: { [THEME.dark]: 'Dark', [THEME.light]: 'Light' },
     switchTheme: themeLabel => `Switch to ${themeLabel.toLowerCase()} theme`,
     primaryNav: 'Primary',
+    plate: {
+      sites: 'Sites',
+      position: (current, total) => `Section ${current} of ${total}`,
+    },
     footer: {
       nav: 'Footer',
       sections: 'On this page',
@@ -38,6 +43,10 @@ export const UI_COPY: Record<Locale, UiCopy> = {
     theme: { [THEME.dark]: 'Oscuro', [THEME.light]: 'Claro' },
     switchTheme: themeLabel => `Cambiar a tema ${themeLabel.toLowerCase()}`,
     primaryNav: 'Principal',
+    plate: {
+      sites: 'Sitios',
+      position: (current, total) => `Sección ${current} de ${total}`,
+    },
     footer: {
       nav: 'Pie de página',
       sections: 'En esta página',

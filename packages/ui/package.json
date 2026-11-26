@@ -22,6 +22,7 @@
     "./section-plate": "./src/section-plate.ts",
     "./site-head": "./src/site-head.ts",
     "./patterns": "./src/patterns.ts",
+    "./site-plate": "./src/site-plate.ts",
     "./components/*": "./src/components/*"
   },
   "dependencies": {
