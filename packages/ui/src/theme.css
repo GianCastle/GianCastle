@@ -1,5 +1,6 @@
 @import '@fontsource-variable/archivo/wdth.css';
 @import '@fontsource/barlow-condensed/900-italic.css';
+@import '@fontsource-variable/newsreader/wght-italic.css';
 
 :root {
   --ice: #dde8ee;
@@ -181,6 +182,14 @@
 }
 
 @layer components {
+  .serif-line {
+    font-family: var(--font-reading);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
   .label-display {
     font-weight: 800;
     font-stretch: 112%;
