@@ -9,3 +9,15 @@ export type PlateLabels = {
 };
 
 export const PLATE_NUMBER_WIDTH = 2;
+
+export const PLATE_ATTR = {
+  root: 'data-section-plate',
+  link: 'data-plate-link',
+  label: 'data-plate-label',
+  number: 'data-plate-number',
+  position: 'data-plate-position',
+  name: 'data-plate-name',
+  itemNumber: 'data-number',
+  itemPosition: 'data-position',
+  visible: 'data-visible',
+} as const;

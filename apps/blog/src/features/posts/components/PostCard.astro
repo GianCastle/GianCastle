@@ -1,5 +1,4 @@
 ---
-import { DECAL_COLOR_VAR } from '@giancastle/ui/decals';
 import Heavy from '@giancastle/ui/components/Heavy.astro';
 import { Image } from 'astro:assets';
 import { routesFor } from '@/routes';
@@ -19,10 +18,7 @@ const href = routesFor(post.locale).post(post.slug);
 const { category } = post.data;
 ---
 
-<article
-  class:list={['card group', { wide }]}
-  style={`--category:${DECAL_COLOR_VAR[CATEGORY_COLOR[category]]}`}
->
+<article class:list={['card group', { wide }]} data-decal={CATEGORY_COLOR[category]}>
   <div class="relative">
     <CategoryLabel category={category} locale={post.locale} taped />
     <a href={href} tabindex="-1" aria-hidden="true" class="photo bg-surface">
@@ -64,7 +60,7 @@ const { category } = post.data;
     content: '';
     position: absolute;
     inset: 0;
-    background: var(--category);
+    background: var(--decal);
     mix-blend-mode: multiply;
     opacity: 0.4;
     transition: opacity 300ms;
@@ -79,7 +75,7 @@ const { category } = post.data;
     flex-direction: column;
     gap: 1rem;
     padding-top: 1rem;
-    border-top: 3px solid var(--category);
+    border-top: 3px solid var(--decal);
   }
 
   @media (min-width: 40rem) {

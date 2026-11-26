@@ -19,7 +19,7 @@ const { wordmark, eyebrow, href, links = [], locale = LOCALE.en, alternate } = A
 
 <header class="masthead" data-tone={TONE.contrast}>
   <a class="brand" href={href} data-castle-host>
-    {eyebrow && <span class="label eyebrow">{eyebrow}</span>}
+    {eyebrow && <span class="label chip eyebrow">{eyebrow}</span>}
     <span class="heavy wordmark">{wordmark}</span>
     <span class="badge">
       <CastleMark />
@@ -54,12 +54,12 @@ const { wordmark, eyebrow, href, links = [], locale = LOCALE.en, alternate } = A
   }
 
   .eyebrow {
+    --chip-pad: 0.35em 0.6em 0.3em;
+    --chip-bg: var(--mark-bg);
+    --chip-fg: var(--mark-fg);
     display: block;
     width: fit-content;
     margin-bottom: 0.3rem;
-    padding: 0.35em 0.6em 0.3em;
-    background: var(--mark-bg);
-    color: var(--mark-fg);
     font-size: 0.6rem;
   }
 

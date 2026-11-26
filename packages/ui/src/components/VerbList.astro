@@ -1,5 +1,5 @@
 ---
-import { DECAL_TINT_VAR, type DecalColor } from '../decals';
+import type { DecalColor } from '../decals';
 import Heavy from './Heavy.astro';
 
 interface Props {
@@ -13,7 +13,7 @@ const { items } = Astro.props;
   {items.map(item => (
     <li class="rule-top">
       <h3>
-        <span class="verb" style={`color:${DECAL_TINT_VAR[item.color]}`}>
+        <span class="verb" data-decal={item.color}>
           <Heavy as="span" size="verb">
             {item.verb}
           </Heavy>
@@ -42,6 +42,10 @@ const { items } = Astro.props;
 
   .verb :global(.heavy) {
     font-size: min(clamp(3rem, 7.5vw, 8rem), 20cqi);
+  }
+
+  .verb {
+    color: var(--decal-tint);
   }
 
   .verb,

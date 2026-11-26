@@ -43,6 +43,8 @@
   --halftone-bottom: var(--ink);
 
   --gutter: clamp(1.25rem, 3vw, 2.75rem);
+  --ease-out: cubic-bezier(0.2, 0.9, 0.2, 1);
+  --clip-chevron: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 45% 50%);
   color-scheme: light;
 }
 
@@ -179,10 +181,49 @@
 }
 
 @layer components {
+  .label-display {
+    font-weight: 800;
+    font-stretch: 112%;
+    font-size: clamp(0.8rem, 1.55vw, 1.5rem);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .chip {
+    padding: var(--chip-pad, 0.4em 0.75em);
+    background: var(--chip-bg, var(--fg));
+    color: var(--chip-fg, var(--bg));
+  }
+
+  .chip-ring {
+    border: 2px solid var(--chip-fg, var(--bg));
+    outline: 2px solid var(--chip-bg, var(--fg));
+  }
+
+  [data-decal='orange'] {
+    --decal: var(--orange);
+    --decal-tint: var(--tint-orange);
+  }
+
+  [data-decal='teal'] {
+    --decal: var(--teal);
+    --decal-tint: var(--tint-teal);
+  }
+
+  [data-decal='pink'] {
+    --decal: var(--pink);
+    --decal-tint: var(--tint-pink);
+  }
+
   .decal {
     display: inline-block;
     flex: none;
-    background: var(--decal-color, currentColor);
+    background: currentColor;
+  }
+
+  .decal[data-decal] {
+    background: var(--decal);
   }
 
   .decal-triangle {
@@ -194,6 +235,6 @@
   }
 
   .decal-chevron {
-    clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 45% 50%);
+    clip-path: var(--clip-chevron);
   }
 }
