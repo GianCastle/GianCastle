@@ -1,5 +1,11 @@
 ---
-const GATE_CLIP_ID = `castle-gate-${Math.random().toString(36).slice(2, 8)}`;
+const DEFAULT_GATE_CLIP_ID = 'castle-gate';
+
+interface Props {
+  id?: string;
+}
+
+const { id: GATE_CLIP_ID = DEFAULT_GATE_CLIP_ID } = Astro.props;
 ---
 
 <svg class="castle" viewBox="0 0 22 20" aria-hidden="true" fill="currentColor">

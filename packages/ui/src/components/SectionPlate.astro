@@ -1,5 +1,6 @@
 ---
 import {
+  PLATE_ATTR,
   PLATE_NUMBER_WIDTH,
   type PlateLabels,
   type PlateLink,
@@ -25,16 +26,16 @@ const [first] = items;
 ---
 
 {first && (
-  <div class="plate" data-section-plate data-tone={TONE.contrast} inert>
+  <div class="plate" {...{ [PLATE_ATTR.root]: '' }} data-tone={TONE.contrast} inert>
     <button class="toggle" type="button" aria-expanded="false" aria-controls={LIST_ID}>
-      <span class="heavy number" data-plate-number>
+      <span class="heavy number" {...{ [PLATE_ATTR.number]: '' }}>
         {first.number}
       </span>
       <span class="info">
-        <span class="label position" data-plate-position>
+        <span class="label position" {...{ [PLATE_ATTR.position]: '' }}>
           {first.position}
         </span>
-        <span class="label name" data-plate-name>
+        <span class="label name" {...{ [PLATE_ATTR.name]: '' }}>
           {first.label}
         </span>
       </span>
@@ -43,12 +44,16 @@ const [first] = items;
       {items.map(item => (
         <a
           href={`#${item.id}`}
-          data-plate-link
-          data-number={item.number}
-          data-position={item.position}
+          {...{
+            [PLATE_ATTR.link]: '',
+            [PLATE_ATTR.itemNumber]: item.number,
+            [PLATE_ATTR.itemPosition]: item.position,
+          }}
         >
           <span class="heavy">{item.number}</span>
-          <span class="label">{item.label}</span>
+          <span class="label" {...{ [PLATE_ATTR.label]: '' }}>
+            {item.label}
+          </span>
         </a>
       ))}
       {links.map(link => (
@@ -65,75 +70,9 @@ const [first] = items;
 )}
 
 <script>
-  const REVEAL_AT = 0.5;
-  const CENTER_LINE = 0.5;
+  import { initSectionPlates } from '../section-plate.client';
 
-  for (const plate of document.querySelectorAll<HTMLElement>('[data-section-plate]')) {
-    const toggle = plate.querySelector('button');
-    const list = plate.querySelector('nav');
-    const links = [...plate.querySelectorAll<HTMLAnchorElement>('[data-plate-link]')];
-    const sections = links.map(link => document.getElementById(link.hash.slice(1)));
-    const [firstSection] = sections;
-    if (!toggle || !list || !firstSection) continue;
-
-    const setOpen = (open: boolean) => {
-      toggle.setAttribute('aria-expanded', String(open));
-      list.hidden = !open;
-    };
-
-    const setCurrent = (index: number) => {
-      const link = links[index];
-      if (!link) return;
-      for (const other of links) other.removeAttribute('aria-current');
-      link.setAttribute('aria-current', 'true');
-      const write = (name: string, text: string) => {
-        const target = plate.querySelector(`[data-plate-${name}]`);
-        if (target) target.textContent = text;
-      };
-      write('number', link.dataset.number ?? '');
-      write('position', link.dataset.position ?? '');
-      write('name', link.querySelector('.label')?.textContent ?? '');
-    };
-
-    let queued = false;
-    const reveal = () => {
-      queued = false;
-      const visible = firstSection.getBoundingClientRect().top < innerHeight * REVEAL_AT;
-      plate.toggleAttribute('data-visible', visible);
-      plate.inert = !visible;
-      if (!visible) setOpen(false);
-      const line = innerHeight * CENTER_LINE;
-      const passed = sections.filter(
-        section => section && section.getBoundingClientRect().top <= line,
-      ).length;
-      setCurrent(Math.max(passed - 1, 0));
-    };
-    addEventListener(
-      'scroll',
-      () => {
-        if (queued) return;
-        queued = true;
-        requestAnimationFrame(reveal);
-      },
-      { passive: true },
-    );
-    reveal();
-
-    toggle.addEventListener('click', () =>
-      setOpen(toggle.getAttribute('aria-expanded') !== 'true'),
-    );
-    list.addEventListener('click', event => {
-      if ((event.target as Element).closest('a')) setOpen(false);
-    });
-    plate.addEventListener('keydown', event => {
-      if (event.key !== 'Escape') return;
-      setOpen(false);
-      toggle.focus();
-    });
-    document.addEventListener('click', event => {
-      if (!plate.contains(event.target as Node)) setOpen(false);
-    });
-  }
+  initSectionPlates();
 </script>
 
 <style>
@@ -150,7 +89,7 @@ const [first] = items;
     rotate: 1.5deg;
     transition:
       opacity 250ms,
-      translate 350ms cubic-bezier(0.2, 0.9, 0.2, 1);
+      translate 350ms var(--ease-out);
   }
 
   .plate[data-visible] {
@@ -245,7 +184,7 @@ const [first] = items;
     width: 0.7rem;
     height: 0.9rem;
     background: currentColor;
-    clip-path: polygon(0 0, 55% 0, 100% 50%, 55% 100%, 0 100%, 45% 50%);
+    clip-path: var(--clip-chevron);
   }
 
   .list .contact {
