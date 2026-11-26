@@ -1,0 +1,20 @@
+---
+import SectionPlate from '@giancastle/ui/components/SectionPlate.astro';
+import type { PlateSection } from '@giancastle/ui/section-plate';
+import { plateHeading, plateLabels, plateSiteLinks } from '@giancastle/ui/site-plate';
+import { SITE, SITE_DEFAULT_LOCALE } from '@giancastle/ui/sites';
+
+interface Props {
+  sections?: readonly PlateSection[];
+}
+
+const { sections } = Astro.props;
+const locale = SITE_DEFAULT_LOCALE[SITE.ui];
+---
+
+<SectionPlate
+  sections={sections}
+  labels={plateLabels(locale)}
+  heading={plateHeading(SITE.ui, locale)}
+  links={plateSiteLinks(SITE.ui, locale)}
+/>

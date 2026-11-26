@@ -18,7 +18,12 @@ import StickerDemo from './demos/StickerDemo.astro';
 import TypeDemo from './demos/TypeDemo.astro';
 import VerbListDemo from './demos/VerbListDemo.astro';
 
-type EntryDemo = { Demo: AstroComponentFactory; tone: Tone; bleed?: boolean };
+type EntryDemo = {
+  Demo: AstroComponentFactory;
+  tone: Tone;
+  bleed?: boolean;
+  showsSections?: boolean;
+};
 
 export const ENTRY_DEMOS: Record<EntryId, EntryDemo> = {
   [FOUNDATION.color]: { Demo: ColorDemo, tone: TONE.contrast },
@@ -26,7 +31,11 @@ export const ENTRY_DEMOS: Record<EntryId, EntryDemo> = {
   [FOUNDATION.shapes]: { Demo: ShapesDemo, tone: TONE.contrast },
   [FOUNDATION.motion]: { Demo: MotionDemo, tone: TONE.contrast },
   [COMPONENT.raceNumbers]: { Demo: RaceNumbersDemo, tone: TONE.contrast },
-  [COMPONENT.sectionPlate]: { Demo: SectionPlateDemo, tone: TONE.contrast },
+  [COMPONENT.sectionPlate]: {
+    Demo: SectionPlateDemo,
+    tone: TONE.contrast,
+    showsSections: true,
+  },
   [COMPONENT.slantBars]: { Demo: SlantBarsDemo, tone: TONE.contrast },
   [COMPONENT.poster]: { Demo: PosterDemo, tone: TONE.plain, bleed: true },
   [COMPONENT.masthead]: { Demo: MastheadDemo, tone: TONE.contrast, bleed: true },

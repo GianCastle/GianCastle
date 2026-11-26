@@ -54,27 +54,32 @@ export const COMPONENT_DOCS: Record<ComponentId, EntryDoc> = {
         body: 'The current section is worked out from scroll position, not from intersection events, so it stays right after a jump link or a resize. It stays inert until the first section reaches the middle of the screen.',
       },
       {
-        heading: 'Leave it out when',
-        body: 'The page has fewer than three sections or already has a visible menu. This page mounts a real one for its own sections: look at the top right corner.',
+        heading: 'Short form',
+        body: 'A page has one or two sections: a counter that says section 1 of 1 reads oddly. Pass a heading and no sections, and the plate becomes a short list of the other sites, which is how the blog and this site use it.',
       },
     ],
     props: [
       {
-        name: 'sections',
-        type: 'readonly PlateSection[]',
-        required: true,
-        description: 'The id and label of each section, in page order. Numbers are derived.',
-      },
-      {
         name: 'labels',
         type: 'PlateLabels',
         required: true,
-        description: 'Navigation name, the position text and the contact link at the bottom.',
+        description:
+          'Navigation name, the position text and an optional contact link at the bottom.',
+      },
+      {
+        name: 'sections',
+        type: 'readonly PlateSection[]',
+        description: 'The id and label of each section, in page order. Numbers are derived.',
       },
       {
         name: 'links',
         type: 'readonly PlateLink[]',
         description: 'Extra links listed after the sections, for places outside the page.',
+      },
+      {
+        name: 'heading',
+        type: 'PlateHeading',
+        description: 'What the plate shows when there are no sections: a caption and a name.',
       },
     ],
   },
