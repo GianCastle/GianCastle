@@ -3,10 +3,12 @@ import { AUTHOR, SITES } from '@giancastle/ui/sites';
 import { NETWORK, NETWORK_LABEL, SOCIAL_LINKS } from '@giancastle/ui/socials';
 import type { APIRoute } from 'astro';
 import { HOME_CONTENT } from '@/features/home/home.content';
+import { PROFILE_CONTENT } from '@/features/profile/profile.content';
 import { DEFAULT_LOCALE } from '@/i18n';
 import { CV_PDF_PATH, CV_PUBLISHED, PAGE, pagePath } from '@/routes';
 
-const { profile, proof, value, process, ways, toolbox } = HOME_CONTENT[DEFAULT_LOCALE];
+const { proof, value, process, ways } = HOME_CONTENT[DEFAULT_LOCALE];
+const { profile, toolbox } = PROFILE_CONTENT[DEFAULT_LOCALE];
 
 const absolute = (path: string) => new URL(path, SITES.web).href;
 

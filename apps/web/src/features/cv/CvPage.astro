@@ -2,7 +2,7 @@
 import LanguageSwitch from '@giancastle/ui/components/LanguageSwitch.astro';
 import Pill from '@giancastle/ui/components/Pill.astro';
 import type { Locale } from '@giancastle/ui/locale';
-import { HOME_CONTENT } from '@/features/home/home.content';
+import { PROFILE_CONTENT } from '@/features/profile/profile.content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { CV_PDF_PATH, PAGE, alternateFor, pagePath } from '@/routes';
 import CvSection from './components/CvSection.astro';
@@ -14,7 +14,7 @@ interface Props {
 
 const { locale } = Astro.props;
 const cv = CV_CONTENT[locale];
-const skills = HOME_CONTENT[locale].toolbox.groups;
+const skills = PROFILE_CONTENT[locale].toolbox.groups;
 const alternate = alternateFor(PAGE.cv, locale);
 ---
 

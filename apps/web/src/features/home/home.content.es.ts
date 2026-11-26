@@ -1,33 +1,14 @@
 import { DECAL_COLOR } from '@giancastle/ui/decals';
 import { LOCALE } from '@giancastle/ui/locale';
 import { STAGE_OWNER } from '@giancastle/ui/stages';
-import { AUTHOR, SITES } from '@giancastle/ui/sites';
+import { AUTHOR, SITE, siteHref } from '@giancastle/ui/sites';
 import { CV_PDF_PATH, CV_PUBLISHED, PAGE, SECTION_ID, pagePath, sectionHref } from '@/routes';
-import { AI_STACK_LINE, CONTACT_HREF, HAS_EMAIL, STACK_LINE, TOOLBOX_ITEMS } from './home.shared';
+import { AI_STACK_LINE, CONTACT_HREF, STACK_LINE } from './home.shared';
 import type { HomeContent } from './home.types';
 
 const locale = LOCALE.es;
 
 export const HOME_ES: HomeContent = {
-  profile: {
-    role: 'Senior Product Engineer',
-    focus: 'Ingeniería de producto con entrega multiplicada por IA',
-    description:
-      'Giancarlos Castillo es un senior product engineer con más de 10 años de experiencia que usa agentes de IA para entregar en semanas lo que los equipos planifican para un año, y construye los flujos de trabajo y harnesses que permiten a todo un equipo hacer lo mismo.',
-    knowsAbout: [
-      'Ingeniería de producto',
-      'Ingeniería de IA',
-      'Diseño de flujos de trabajo con agentes',
-      'Ingeniería de harnesses para agentes',
-      'Desarrollo guiado por specs',
-      'Model Context Protocol',
-      'React',
-      'Next.js',
-      'TypeScript',
-      'Node.js',
-      'AWS',
-    ],
-  },
   hero: {
     heading: `${AUTHOR.name}, senior product engineer`,
     sticker: AUTHOR.name,
@@ -40,14 +21,14 @@ export const HOME_ES: HomeContent = {
     labels: {
       nav: 'Secciones',
       position: (current, total) => `Sección ${current} de ${total}`,
-      contact: { label: HAS_EMAIL ? 'Escríbeme' : 'Contáctame en GitHub', href: CONTACT_HREF },
+      contact: { label: 'Escríbeme', href: CONTACT_HREF },
     },
-    sections: [
-      { id: SECTION_ID.proof, label: 'Resultados' },
-      { id: SECTION_ID.value, label: 'Lo que aporto' },
-      { id: SECTION_ID.process, label: 'Cómo trabajo' },
-      { id: SECTION_ID.ways, label: 'Trabaja conmigo' },
-    ],
+    sectionLabels: {
+      [SECTION_ID.proof]: 'Resultados',
+      [SECTION_ID.value]: 'Lo que aporto',
+      [SECTION_ID.process]: 'Cómo trabajo',
+      [SECTION_ID.ways]: 'Trabaja conmigo',
+    },
   },
   proof: {
     label: 'Mis resultados, carrera tras carrera',
@@ -196,7 +177,7 @@ export const HOME_ES: HomeContent = {
         featured: true,
         title: 'Dame un proyecto',
         body: 'Un proyecto con principio y fin. Construyo la funcionalidad o monto el flujo de agentes en tu código y se lo entrego a tu equipo.',
-        cta: { label: HAS_EMAIL ? 'Escríbeme' : 'Contáctame en GitHub', href: CONTACT_HREF },
+        cta: { label: 'Escríbeme', href: CONTACT_HREF },
       },
       {
         tag: 'Puesto a tiempo completo',
@@ -211,23 +192,11 @@ export const HOME_ES: HomeContent = {
   closer: {
     title: 'A rodar',
     tagline: 'Estoy disponible. Cuéntame qué hay en tu roadmap.',
-    blog: { label: 'Blog', href: `${SITES.blog}/` },
+    blog: { label: 'Blog', href: siteHref(SITE.blog, locale) },
     cv: CV_PUBLISHED
       ? { label: 'Descargar CV', href: CV_PDF_PATH[locale], download: true }
       : undefined,
     note: `${AI_STACK_LINE}, desarrollo guiado por specs. ${STACK_LINE}. Santo Domingo. Remoto. Casi siempre fuera antes del amanecer.`,
     colophon: 'Cuadro: Astro. Grupo: TypeScript. Pintura: de una Scott Foil RC.',
-  },
-  toolbox: {
-    label: 'Herramientas',
-    groups: [
-      {
-        name: 'Desarrollo aumentado con IA',
-        items: [...TOOLBOX_ITEMS.ai, 'Desarrollo guiado por specs', 'Desarrollo de harnesses'],
-      },
-      { name: 'Frontend y full-stack', items: TOOLBOX_ITEMS.frontend },
-      { name: 'Backend y datos', items: TOOLBOX_ITEMS.backend },
-      { name: 'Cloud y entrega', items: TOOLBOX_ITEMS.cloud },
-    ],
   },
 };

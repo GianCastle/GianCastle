@@ -33,6 +33,13 @@ export const SECTION_ID = {
 
 export type SectionId = (typeof SECTION_ID)[keyof typeof SECTION_ID];
 
+export const HOME_SECTIONS = [
+  SECTION_ID.proof,
+  SECTION_ID.value,
+  SECTION_ID.process,
+  SECTION_ID.ways,
+] as const;
+
 export const pagePath = (page: Page, locale: Locale) => localizePath(page, locale, DEFAULT_LOCALE);
 
 export const sectionHref = (id: SectionId, locale: Locale) =>

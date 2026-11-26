@@ -1,0 +1,26 @@
+export const TOOLBOX_ITEMS = {
+  ai: ['Claude Code', 'Cursor', 'Codex', 'Devin', 'Amp', 'OpenCode', 'Gemini', 'MCP'],
+  frontend: [
+    'React',
+    'Next.js',
+    'TypeScript',
+    'React Native',
+    'Node.js',
+    'NestJS',
+    'Tailwind CSS',
+    'React Query',
+    'Zod',
+  ],
+  backend: [
+    'PostgreSQL',
+    'DynamoDB',
+    'MongoDB',
+    'Drizzle ORM',
+    'TypeORM',
+    '.NET',
+    'PHP',
+    'Python',
+    'Java',
+  ],
+  cloud: ['AWS Lambda', 'Amplify', 'S3', 'CloudWatch', 'Docker', 'GitHub Actions', 'pnpm'],
+} as const;
