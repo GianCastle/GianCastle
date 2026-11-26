@@ -110,11 +110,31 @@
   }
 
   .prose ul > li {
+    --marker-top: 0.5em;
+  }
+
+  .prose ul > li + li {
+    margin-top: var(--list-gap);
+  }
+
+  .prose
+    ul:has(
+      > li:first-child > strong:first-child,
+      > li:first-child > p:first-child > strong:first-child
+    ):not(:has(> li > :first-child:not(strong, p)))
+    > li {
+    --marker-top: calc(var(--list-gap) + 0.5em);
+    margin-top: 0;
     padding-block: var(--list-gap);
     border-top: 1px solid var(--line);
   }
 
-  .prose ul > li:last-child {
+  .prose
+    ul:has(
+      > li:first-child > strong:first-child,
+      > li:first-child > p:first-child > strong:first-child
+    ):not(:has(> li > :first-child:not(strong, p)))
+    > li:last-child {
     border-bottom: 1px solid var(--line);
   }
 
@@ -127,7 +147,7 @@
   .prose ul > li::after {
     content: '';
     position: absolute;
-    top: calc(var(--list-gap) + 0.5em);
+    top: var(--marker-top);
     width: 0.62rem;
     height: 0.82rem;
     background: var(--accent);
