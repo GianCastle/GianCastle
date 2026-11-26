@@ -36,7 +36,16 @@ The CV content lives in `apps/web/src/features/cv/cv.data.en.ts` and `cv.data.es
 
 ## Deploy
 
-Each app has its own `wrangler.jsonc`. From the app folder:
+Cloudflare Workers Builds deploys both apps on every push to `master`. Each Worker is connected to this repo with its own root directory, so a push rebuilds both sites. Other branches build as previews.
+
+| Worker            | Root directory | Build command    | Deploy command        |
+| ----------------- | -------------- | ---------------- | --------------------- |
+| `giancastle-web`  | `apps/web`     | `pnpm run build` | `npx wrangler deploy` |
+| `giancastle-blog` | `apps/blog`    | `pnpm run build` | `npx wrangler deploy` |
+
+Both set the build variable `NODE_VERSION=24`. The domain stays registered at GoDaddy and points to Cloudflare's nameservers, where DNS and the iCloud mail records live.
+
+To deploy by hand, from the app folder:
 
 ```bash
 pnpm build && pnpm dlx wrangler deploy
