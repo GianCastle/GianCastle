@@ -69,10 +69,7 @@ const cards = items.map((item, index) => {
             <span class="heavy number">{card.number}</span>
             <span class="band">
               <span class="label sector">{card.sector}</span>
-              <span class="heavy caption">
-                {card.caption}
-                <FlipIcon />
-              </span>
+              <span class="heavy caption">{card.caption}</span>
               <span class="label hint">
                 {labels.turnOver}
                 <FlipIcon />
@@ -81,10 +78,7 @@ const cards = items.map((item, index) => {
           </span>
           <span class="face back">
             <span class="label sector">{card.sector}</span>
-            <span class="heavy title">
-              {card.title}
-              <FlipIcon />
-            </span>
+            <span class="heavy title">{card.title}</span>
             <span class="body">{card.body}</span>
             <span class="label hint">
               {labels.turnBack}
@@ -289,13 +283,6 @@ const cards = items.map((item, index) => {
 
   .hint {
     font-size: 0.65rem;
-  }
-
-  .hint :global(.flip-icon) {
-    width: 1.1em;
-    height: 1.1em;
-    margin-left: 0.4em;
-    vertical-align: -0.2em;
   }
 
   .front .hint {
