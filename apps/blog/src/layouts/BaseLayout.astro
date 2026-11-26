@@ -3,6 +3,8 @@ import '@/styles/global.css';
 import ActionRow from '@giancastle/ui/components/ActionRow.astro';
 import Closer from '@giancastle/ui/components/Closer.astro';
 import Masthead from '@giancastle/ui/components/Masthead.astro';
+import SectionPlate from '@giancastle/ui/components/SectionPlate.astro';
+import { plateHeading, plateLabels, plateSiteLinks } from '@giancastle/ui/site-plate';
 import PatternStrip from '@giancastle/ui/components/PatternStrip.astro';
 import SiteHead from '@giancastle/ui/components/SiteHead.astro';
 import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
@@ -80,6 +82,11 @@ const navLinks = [
         alternate={alternate}
       />
     )}
+    <SectionPlate
+      labels={plateLabels(locale)}
+      heading={plateHeading(SITE.blog, locale)}
+      links={plateSiteLinks(SITE.blog, locale)}
+    />
     <main id="content">
       <slot />
     </main>
