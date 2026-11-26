@@ -1,0 +1,10 @@
+---
+import Heavy from '@giancastle/ui/components/Heavy.astro';
+import SlantBars from '@giancastle/ui/components/SlantBars.astro';
+import { SAMPLE_HEADLINE } from '../catalog.samples';
+---
+
+<Heavy size="step">
+  <span class="block">{SAMPLE_HEADLINE.lead}</span>
+  <SlantBars>{SAMPLE_HEADLINE.accent}</SlantBars>
+</Heavy>

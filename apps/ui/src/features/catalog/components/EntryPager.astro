@@ -1,0 +1,67 @@
+---
+import type { Entry } from '../catalog.types';
+import { SITE_COPY } from '@/site.labels';
+
+interface Props {
+  previous?: Entry;
+  next?: Entry;
+}
+
+const { previous, next } = Astro.props;
+const links = [
+  { entry: previous, label: SITE_COPY.nav.previous, rel: 'prev', end: false },
+  { entry: next, label: SITE_COPY.nav.next, rel: 'next', end: true },
+];
+---
+
+<nav class="pager" aria-label={`${SITE_COPY.nav.previous} / ${SITE_COPY.nav.next}`}>
+  {links.map(({ entry, label, rel, end }) =>
+    entry ? (
+      <a href={entry.href} rel={rel} class:list={[end && 'end']}>
+        <span class="label hint">
+          {label} · {entry.number}
+        </span>
+        <span class="heavy title">{entry.title}</span>
+      </a>
+    ) : (
+      <span />
+    ),
+  )}
+</nav>
+
+<style>
+  .pager {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 4rem;
+    padding-top: 1.5rem;
+    border-top: 3px solid var(--fg);
+  }
+
+  a {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .end {
+    align-items: flex-end;
+    text-align: right;
+  }
+
+  .hint {
+    color: var(--muted);
+    font-size: 0.6875rem;
+  }
+
+  .title {
+    font-size: clamp(1.6rem, 4vw, 2.75rem);
+  }
+
+  a:hover .title {
+    color: var(--accent);
+  }
+</style>

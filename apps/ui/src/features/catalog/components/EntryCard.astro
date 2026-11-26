@@ -1,0 +1,57 @@
+---
+import type { Entry } from '../catalog.types';
+
+interface Props {
+  entry: Entry;
+}
+
+const { entry } = Astro.props;
+---
+
+<a class="card" href={entry.href} data-decal={entry.color}>
+  <span class="heavy number" aria-hidden="true">
+    {entry.number}
+  </span>
+  <span class="label band">{entry.title}</span>
+</a>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    min-height: 13rem;
+    background: var(--fg);
+    color: var(--bg);
+    text-decoration: none;
+    transition:
+      rotate 250ms var(--ease-out),
+      scale 250ms var(--ease-out);
+  }
+
+  .number {
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+    padding: 1rem 0.5rem;
+    font-size: clamp(4.5rem, 9vw, 7.5rem);
+    line-height: 1;
+  }
+
+  .band {
+    padding: 0.8rem 0.9rem;
+    background: var(--decal);
+    color: var(--on-accent);
+  }
+
+  .card:hover,
+  .card:focus-visible {
+    rotate: 0deg;
+    scale: 1.03;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card {
+      transition: none;
+    }
+  }
+</style>

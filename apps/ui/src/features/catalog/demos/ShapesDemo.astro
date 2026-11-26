@@ -1,0 +1,62 @@
+---
+import Decal from '@giancastle/ui/components/Decal.astro';
+import { DECAL_COLORS, DECAL_SHAPE } from '@giancastle/ui/decals';
+
+const SHAPES = Object.values(DECAL_SHAPE);
+---
+
+<table>
+  <thead>
+    <tr class="label">
+      <td></td>
+      {DECAL_COLORS.map(color => (
+        <th scope="col">{color}</th>
+      ))}
+      <th scope="col">text color</th>
+    </tr>
+  </thead>
+  <tbody>
+    {SHAPES.map(shape => (
+      <tr>
+        <th scope="row" class="label">
+          {shape}
+        </th>
+        {DECAL_COLORS.map(color => (
+          <td>
+            <Decal shape={shape} color={color} size="2.75rem" />
+          </td>
+        ))}
+        <td>
+          <Decal shape={shape} size="2.75rem" />
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+<style>
+  table {
+    width: 100%;
+    max-width: 36rem;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  th,
+  td {
+    padding: 0.85rem 0.75rem 0.85rem 0;
+  }
+
+  thead {
+    color: var(--muted);
+    font-size: 0.6875rem;
+  }
+
+  tbody tr {
+    border-top: 2px solid var(--line);
+  }
+
+  tbody td {
+    line-height: 0;
+  }
+</style>

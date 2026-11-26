@@ -1,0 +1,16 @@
+---
+import EntryPage from '@/features/catalog/components/EntryPage.astro';
+import { listEntries } from '@/features/catalog/catalog.query';
+import type { Entry } from '@/features/catalog/catalog.types';
+
+export const getStaticPaths = () =>
+  listEntries().map(entry => ({ params: { entry: entry.id }, props: { entry } }));
+
+interface Props {
+  entry: Entry;
+}
+
+const { entry } = Astro.props;
+---
+
+<EntryPage entry={entry} />

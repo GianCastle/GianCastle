@@ -1,0 +1,77 @@
+---
+import Chevrons from '@giancastle/ui/components/Chevrons.astro';
+import Dashes from '@giancastle/ui/components/Dashes.astro';
+import DecalStrip from '@giancastle/ui/components/DecalStrip.astro';
+
+const ROWS = [
+  { name: 'Chevrons', note: 'Decal repeated, pointing forward.' },
+  { name: 'Dashes', note: 'The same idea with the dash shape.' },
+  { name: 'DecalStrip', note: 'A fixed pattern used as a divider.' },
+] as const;
+const [chevrons, dashes, strip] = ROWS;
+---
+
+<dl class="rows">
+  <div class="row">
+    <dt>
+      <code>{chevrons.name}</code>
+      <span>{chevrons.note}</span>
+    </dt>
+    <dd>
+      <Chevrons size="2rem" count={5} />
+    </dd>
+  </div>
+  <div class="row">
+    <dt>
+      <code>{dashes.name}</code>
+      <span>{dashes.note}</span>
+    </dt>
+    <dd>
+      <Dashes size="2rem" count={6} />
+    </dd>
+  </div>
+  <div class="row">
+    <dt>
+      <code>{strip.name}</code>
+      <span>{strip.note}</span>
+    </dt>
+    <dd>
+      <DecalStrip />
+    </dd>
+  </div>
+</dl>
+
+<style>
+  .row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+    align-items: center;
+    gap: 1rem 2rem;
+    padding: 1.25rem 0;
+    border-top: 2px solid var(--line);
+  }
+
+  .row:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  dt {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    color: var(--accent);
+  }
+
+  dd {
+    min-width: 0;
+    overflow: hidden;
+    font-size: 1.5rem;
+  }
+</style>

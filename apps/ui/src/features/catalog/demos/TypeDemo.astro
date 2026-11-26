@@ -1,0 +1,75 @@
+---
+const SPECIMENS = [
+  {
+    className: 'heavy',
+    token: '--font-heavy',
+    family: 'Barlow Condensed 900 italic',
+    sample: 'People decide.',
+    size: 'clamp(3rem, 8vw, 5.5rem)',
+  },
+  {
+    className: 'label',
+    token: '--font-display',
+    family: 'Archivo 800, width 112',
+    sample: 'Section 02 of 04',
+    size: '0.875rem',
+  },
+  {
+    className: 'serif-line',
+    token: '--font-reading',
+    family: 'Newsreader 400 italic',
+    sample: 'Senior Product Engineer.',
+    size: 'clamp(1.6rem, 3.4vw, 2.5rem)',
+  },
+  {
+    className: 'body',
+    token: '--font-sans',
+    family: 'Archivo 400',
+    sample: 'I own a feature from the spec to production.',
+    size: '1.0625rem',
+  },
+] as const;
+---
+
+<ul>
+  {SPECIMENS.map(specimen => (
+    <li>
+      <p class={specimen.className} style={`font-size:${specimen.size}`}>
+        {specimen.sample}
+      </p>
+      <p class="meta">
+        <code>.{specimen.className}</code>
+        <code>{specimen.token}</code>
+        <span>{specimen.family}</span>
+      </p>
+    </li>
+  ))}
+</ul>
+
+<style>
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.5rem 0;
+    border-top: 2px solid var(--line);
+  }
+
+  li:first-child {
+    border-top: 0;
+    padding-top: 0;
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem 1.25rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    color: var(--accent);
+  }
+</style>

@@ -46,6 +46,31 @@ importers:
         specifier: ^5.9.3
         version: 5.9.3
 
+  apps/ui:
+    dependencies:
+      '@astrojs/sitemap':
+        specifier: ^3.7.6
+        version: 3.7.6
+      '@giancastle/ui':
+        specifier: workspace:*
+        version: link:../../packages/ui
+      astro:
+        specifier: ^7.4.13
+        version: 7.4.13(@types/node@26.6.11)(jiti@2.7.0)(yaml@2.9.1)
+    devDependencies:
+      '@astrojs/check':
+        specifier: ^0.9.12
+        version: 0.9.12(prettier-plugin-astro@1.1.2(prettier@3.10.1))(prettier@3.10.1)(typescript@5.9.3)
+      '@tailwindcss/vite':
+        specifier: ^4.3.5
+        version: 4.3.5(vite@8.3.8(@types/node@26.6.11)(jiti@2.7.0)(yaml@2.9.1))
+      tailwindcss:
+        specifier: ^4.3.5
+        version: 4.3.5
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   apps/web:
     dependencies:
       '@astrojs/sitemap':

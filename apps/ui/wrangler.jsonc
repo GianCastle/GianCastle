@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "giancastle-ui",
+  "compatibility_date": "2026-11-25",
+  "previews": {},
+  "assets": {
+    "directory": "./dist",
+    "not_found_handling": "404-page",
+  },
+}

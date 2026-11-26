@@ -1,0 +1,93 @@
+---
+import Decal from '@giancastle/ui/components/Decal.astro';
+import { DECAL_COLOR, DECAL_SHAPE } from '@giancastle/ui/decals';
+
+const LANES = [
+  { name: '--ease-out', easing: 'var(--ease-out)', color: DECAL_COLOR.orange },
+  { name: 'linear', easing: 'linear', color: DECAL_COLOR.teal },
+] as const;
+const RUN_ATTR = 'data-run';
+---
+
+<div class="motion" data-motion>
+  <button type="button" class="label chip" aria-pressed="false">
+    Send them off
+  </button>
+  {LANES.map(lane => (
+    <div class="lane">
+      <code>{lane.name}</code>
+      <div class="track">
+        <span class="rider" style={`--easing:${lane.easing}`}>
+          <Decal shape={DECAL_SHAPE.chevron} color={lane.color} size="2rem" />
+        </span>
+      </div>
+    </div>
+  ))}
+  <p class="hint">Same distance, same 700ms. Only the curve changes.</p>
+</div>
+
+<script define:vars={{ RUN_ATTR }} is:inline>
+  for (const root of document.querySelectorAll('[data-motion]')) {
+    const button = root.querySelector('button');
+    button?.addEventListener('click', () => {
+      const running = root.toggleAttribute(RUN_ATTR);
+      button.setAttribute('aria-pressed', String(running));
+    });
+  }
+</script>
+
+<style>
+  .motion {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.25rem;
+  }
+
+  button {
+    --chip-bg: var(--accent-solid);
+    --chip-fg: var(--on-accent);
+    min-height: 2.75rem;
+    border: 0;
+    cursor: pointer;
+  }
+
+  .lane {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    color: var(--muted);
+  }
+
+  .track {
+    padding: 0.5rem 0;
+    border-bottom: 2px dashed var(--line);
+    line-height: 0;
+  }
+
+  .rider {
+    display: inline-block;
+    transition: margin-left 700ms var(--easing);
+  }
+
+  [data-run] .rider {
+    margin-left: calc(100% - 2rem);
+  }
+
+  .hint {
+    color: var(--muted);
+    font-size: 0.95rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rider {
+      transition: none;
+    }
+  }
+</style>

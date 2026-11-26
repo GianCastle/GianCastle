@@ -1,0 +1,34 @@
+---
+import CastleMark from '@giancastle/ui/components/CastleMark.astro';
+---
+
+<div class="stage">
+  <span class="host" data-castle-host>
+    <CastleMark />
+  </span>
+  <p class="hint">Hover the badge to drop the gate.</p>
+</div>
+
+<style>
+  .stage {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .host {
+    display: grid;
+    place-items: center;
+    width: 9rem;
+    aspect-ratio: 1;
+    padding: 2rem;
+    border-radius: 50%;
+    background: var(--mark-bg);
+    color: var(--mark-fg);
+  }
+
+  .hint {
+    color: var(--muted);
+  }
+</style>

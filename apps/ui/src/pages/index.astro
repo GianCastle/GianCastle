@@ -1,0 +1,113 @@
+---
+import ThemeToggle from '@giancastle/ui/components/ThemeToggle.astro';
+import { LOCALE } from '@giancastle/ui/locale';
+import { SITE, siteHref } from '@giancastle/ui/sites';
+import { TONE } from '@giancastle/ui/theme';
+import CatalogBrand from '@/features/catalog/components/CatalogBrand.astro';
+import EntryCard from '@/features/catalog/components/EntryCard.astro';
+import { listEntries } from '@/features/catalog/catalog.query';
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import { SITE_COPY } from '@/site.labels';
+
+const entries = listEntries();
+const links = [
+  { label: 'giancastle.com', href: siteHref(SITE.web, LOCALE.en) },
+  { label: 'Blog', href: siteHref(SITE.blog, LOCALE.en) },
+];
+---
+
+<BaseLayout>
+  <div class="cover" data-tone={TONE.contrast}>
+    <header class="top">
+      <CatalogBrand />
+      <nav aria-label={SITE_COPY.nav.menu}>
+        {links.map(link => (
+          <a class="label" href={link.href}>
+            {link.label}
+          </a>
+        ))}
+        <ThemeToggle />
+      </nav>
+    </header>
+    <main>
+      <h1 class="heavy title">{SITE_COPY.cover.title}</h1>
+      <p class="serif-line lede">{SITE_COPY.cover.lede}</p>
+      <ul class="grid">
+        {entries.map(entry => (
+          <li>
+            <EntryCard entry={entry} />
+          </li>
+        ))}
+      </ul>
+      <p class="legend">{SITE_COPY.cover.legend}</p>
+    </main>
+  </div>
+</BaseLayout>
+
+<style>
+  .cover {
+    min-height: 100vh;
+    padding: 1.5rem var(--gutter) 4rem;
+  }
+
+  .top,
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.75rem 1.5rem;
+  }
+
+  .top {
+    justify-content: space-between;
+    margin-bottom: clamp(2.5rem, 6vw, 5rem);
+  }
+
+  nav a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  nav a:hover {
+    color: var(--accent);
+  }
+
+  .title {
+    font-size: clamp(3.4rem, 12vw, 10rem);
+  }
+
+  .lede {
+    margin-top: 0.75rem;
+    font-size: clamp(1.3rem, 2.6vw, 2rem);
+    color: var(--muted);
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 11.5rem), 1fr));
+    gap: 1.5rem;
+    margin-top: clamp(2rem, 5vw, 4rem);
+  }
+
+  .grid li:nth-child(4n + 1) {
+    rotate: -1deg;
+  }
+
+  .grid li:nth-child(4n + 2) {
+    rotate: 1deg;
+  }
+
+  .grid li:nth-child(4n + 3) {
+    rotate: -1.5deg;
+  }
+
+  .grid li:nth-child(4n) {
+    rotate: 1.5deg;
+  }
+
+  .legend {
+    margin-top: 2rem;
+    color: var(--muted);
+    font-size: 0.875rem;
+  }
+</style>

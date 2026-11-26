@@ -1,0 +1,17 @@
+---
+import SectionPlate from '@giancastle/ui/components/SectionPlate.astro';
+import { SAMPLE_PLATE_LABELS, SAMPLE_PLATE_SECTIONS } from '../catalog.samples';
+---
+
+<p class="hint">
+  The plate is live on this page. Scroll a little and it drops in at the top right, numbered with
+  this page’s own sections.
+</p>
+<SectionPlate sections={SAMPLE_PLATE_SECTIONS} labels={SAMPLE_PLATE_LABELS} />
+
+<style>
+  .hint {
+    max-width: 44ch;
+    color: var(--muted);
+  }
+</style>
