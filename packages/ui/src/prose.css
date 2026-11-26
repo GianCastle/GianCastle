@@ -21,9 +21,9 @@
     max-width: 100%;
     margin-top: 2.2em;
     padding: 0.42em 0.6em 0.36em;
-    font-family: var(--font-display);
+    font-family: var(--font-heavy);
     font-weight: 900;
-    font-stretch: 62%;
+    font-style: italic;
     text-transform: uppercase;
     letter-spacing: -0.02em;
     line-height: 0.9;

@@ -1,4 +1,5 @@
 @import '@fontsource-variable/archivo/wdth.css';
+@import '@fontsource/barlow-condensed/900-italic.css';
 
 :root {
   --ice: #dde8ee;
@@ -109,6 +110,7 @@
   --color-accent-ink: var(--on-accent);
   --font-sans: 'Archivo Variable', 'Helvetica Neue', Arial, sans-serif;
   --font-display: 'Archivo Variable', 'Arial Narrow', Arial, sans-serif;
+  --font-heavy: 'Barlow Condensed', 'Arial Narrow', Arial, sans-serif;
   --font-reading: 'Newsreader Variable', ui-serif, Georgia, serif;
   --font-mono: ui-monospace, 'SF Mono', Menlo, monospace;
 }
@@ -147,9 +149,9 @@
 
 @layer components {
   .heavy {
-    font-family: var(--font-display);
+    font-family: var(--font-heavy);
     font-weight: 900;
-    font-stretch: 62%;
+    font-style: italic;
     text-transform: uppercase;
     letter-spacing: -0.03em;
     line-height: 0.82;
