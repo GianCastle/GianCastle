@@ -1,0 +1,49 @@
+---
+import type { HTMLTag } from 'astro/types';
+import { DECAL_COLOR_VAR, type DecalColor } from '../decals';
+
+const TILT = {
+  left: 'left',
+  right: 'right',
+} as const;
+
+type Tilt = (typeof TILT)[keyof typeof TILT];
+
+interface Props {
+  as?: HTMLTag;
+  color?: DecalColor;
+  tilt?: Tilt;
+}
+
+const { as: Tag = 'span', color, tilt = TILT.left } = Astro.props;
+const style = color ? `--sticky-bg:${DECAL_COLOR_VAR[color]};--sticky-fg:var(--ink)` : undefined;
+---
+
+<Tag class:list={['label', 'sticky', tilt]} style={style}>
+  <slot />
+</Tag>
+
+<style>
+  .sticky {
+    display: inline-block;
+    padding: 0.55em 0.9em 0.5em;
+    background: var(--sticky-bg, var(--fg));
+    color: var(--sticky-fg, var(--bg));
+    border: 2px solid var(--sticky-fg, var(--bg));
+    outline: 2px solid var(--sticky-bg, var(--fg));
+  }
+
+  .left {
+    rotate: -2deg;
+  }
+
+  .right {
+    rotate: 1.5deg;
+  }
+
+  .sticky :global(a) {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+</style>

@@ -11,6 +11,7 @@
   },
   "exports": {
     "./theme.css": "./src/theme.css",
+    "./prose.css": "./src/prose.css",
     "./sites": "./src/sites.ts",
     "./socials": "./src/socials.ts",
     "./theme": "./src/theme.ts",

@@ -1,0 +1,101 @@
+---
+import type { HTMLTag } from 'astro/types';
+import { DECAL_COLOR, DECAL_SHAPE } from '../decals';
+import Decal from './Decal.astro';
+
+const TILT = {
+  left: 'left',
+  right: 'right',
+  none: 'none',
+} as const;
+
+type Tilt = (typeof TILT)[keyof typeof TILT];
+
+const PADDING = {
+  regular: 'regular',
+  tight: 'tight',
+} as const;
+
+type Padding = (typeof PADDING)[keyof typeof PADDING];
+
+interface Props {
+  as?: HTMLTag;
+  featured?: boolean;
+  tilt?: Tilt;
+  padding?: Padding;
+}
+
+const CORNER_DECALS = {
+  featured: { triangle: DECAL_COLOR.teal, square: DECAL_COLOR.pink },
+  regular: { triangle: DECAL_COLOR.orange, square: DECAL_COLOR.teal },
+} as const;
+
+const {
+  as: Tag = 'div',
+  featured = false,
+  tilt = TILT.left,
+  padding = PADDING.regular,
+} = Astro.props;
+const decals = featured ? CORNER_DECALS.featured : CORNER_DECALS.regular;
+---
+
+<Tag class:list={['sticker', `tilt-${tilt}`, `pad-${padding}`, featured && 'featured']}>
+  <span class="corner">
+    <Decal shape={DECAL_SHAPE.square} color={decals.square} size="0.9rem" />
+    <Decal shape={DECAL_SHAPE.triangle} color={decals.triangle} size="2.2rem" rotate={20} />
+  </span>
+  <slot />
+</Tag>
+
+<style>
+  .sticker {
+    --chip-bg: var(--fg);
+    --chip-fg: var(--bg);
+    position: relative;
+    padding: clamp(1.5rem, 3vw, 2.75rem);
+    background: var(--raise);
+    border: 3px solid var(--fg);
+    outline: 3px solid var(--bg);
+    outline-offset: -9px;
+  }
+
+  .pad-tight {
+    padding: 0.95rem;
+  }
+
+  .tilt-left {
+    rotate: -1.2deg;
+  }
+
+  .tilt-right {
+    rotate: 0.8deg;
+  }
+
+  .featured {
+    --fg: var(--ink);
+    --muted: color-mix(in srgb, var(--ink) 78%, transparent);
+    --accent: var(--ink);
+    --accent-solid: var(--ink);
+    --on-accent: var(--frost);
+    --chip-bg: var(--ink);
+    --chip-fg: var(--frost);
+    background: var(--orange);
+    color: var(--ink);
+    border-color: var(--ink);
+  }
+
+  .corner {
+    position: absolute;
+    right: clamp(1.25rem, 2.5vw, 2.25rem);
+    top: clamp(1.25rem, 2.5vw, 2.25rem);
+    display: flex;
+    align-items: flex-end;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .sticker {
+      rotate: none;
+    }
+  }
+</style>
