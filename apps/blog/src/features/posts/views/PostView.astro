@@ -8,7 +8,7 @@ import { render } from 'astro:content';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { routesFor } from '@/routes';
 import PostMeta from '../components/PostMeta.astro';
-import TagList from '../components/TagList.astro';
+import CategoryLabel from '../components/CategoryLabel.astro';
 import { buildPostJsonLd } from '../post.jsonld';
 import { excerpt } from '../posts.format';
 import { SITE_COPY } from '../posts.labels';
@@ -45,7 +45,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site);
   <article>
     <Band as="header" tone="contrast" size="compact">
       <div class="flex flex-col gap-6">
-        <TagList tags={post.data.tags} locale={post.locale} />
+        <CategoryLabel category={post.data.category} locale={post.locale} />
         <Heavy as="h1" size="title">
           {post.data.title}
         </Heavy>

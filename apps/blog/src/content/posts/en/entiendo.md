@@ -1,7 +1,7 @@
 ---
 title: 'I Understand'
 date: 2021-01-03 22:05:00
-tags: ['Abstract']
+category: verses
 draft: false
 image: ../img/rainbow.jpg
 translated: true

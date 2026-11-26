@@ -1,7 +1,7 @@
 ---
 title: 'Loneliness'
 date: 2019-05-07 22:03:57
-tags: ["Inductive"]
+category: essays
 draft: false
 image: ../img/soledad.jpg
 translated: true

@@ -3,7 +3,7 @@ draft: false
 
 title: 'The influence of social media'
 date: 2020-06-06
-tags: ["Analytical"]
+category: opinion
 image: ../img/social-media.jpg
 translated: true
 ---

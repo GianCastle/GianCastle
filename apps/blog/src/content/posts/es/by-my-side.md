@@ -1,7 +1,7 @@
 ---
 title: 'A Tu Lado'
 date: 2021-02-16 00:06:15
-tags: ["Abstracto", "Amor", "English"]
+category: verses
 draft: false
 image: ../img/by-my-side.jpg
 translated: true

@@ -1,7 +1,7 @@
 ---
 title: 'El burnout en mi carrera: ¿como he salido de el?'
 date: 2020-06-12 00:11:32
-tags: ['Engineering']
+category: engineering
 draft: false
 image: ../img/burnout.jpg
 ---

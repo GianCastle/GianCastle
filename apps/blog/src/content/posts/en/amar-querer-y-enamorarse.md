@@ -1,7 +1,7 @@
 ---
 title: 'Loving, caring and falling in love'
 date: 2019-03-27 00:06:15
-tags: ["Soft"]
+category: essays
 draft: false
 image: ../img/fall_in_love.jpeg
 translated: true

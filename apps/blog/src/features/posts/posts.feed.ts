@@ -2,6 +2,7 @@ import rss from '@astrojs/rss';
 import type { Locale } from '@giancastle/ui/locale';
 import type { APIContext } from 'astro';
 import { routesFor } from '@/routes';
+import { CATEGORY_LABEL } from './posts.categories';
 import { excerpt } from './posts.format';
 import { SITE_COPY } from './posts.labels';
 import { getPublishedPosts } from './posts.query';
@@ -18,7 +19,7 @@ export const buildFeed = async (locale: Locale, context: APIContext) => {
       title: post.data.title,
       pubDate: post.data.date,
       description: excerpt(post.body ?? ''),
-      categories: post.data.tags,
+      categories: [CATEGORY_LABEL[locale][post.data.category]],
       link: routes.post(post.slug),
     })),
   });

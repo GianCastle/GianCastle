@@ -1,9 +1,10 @@
---- 
+---
+
 draft: false
 
 title: 'El sobrepensamiento'
 date: 2019-04-07 22:34:47
-tags: ["Divergente"]
+category: body-and-mind
 image: ../img/overthink.jpg
 ---
 

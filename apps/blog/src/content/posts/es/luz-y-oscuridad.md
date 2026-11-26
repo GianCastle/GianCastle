@@ -1,7 +1,7 @@
 ---
 title: 'Luz y Oscuridad'
 date: 2019-03-27 00:06:15
-tags: ["Magico"]
+category: verses
 draft: false
 image: ../img/lvso.jpg
 

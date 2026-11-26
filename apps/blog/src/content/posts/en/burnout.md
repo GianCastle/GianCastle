@@ -1,7 +1,7 @@
 ---
 title: 'Burnout in my career: how have I gotten out of it?'
 date: 2020-06-12 00:11:32
-tags: ['Engineering']
+category: engineering
 draft: false
 image: ../img/burnout.jpg
 translated: true

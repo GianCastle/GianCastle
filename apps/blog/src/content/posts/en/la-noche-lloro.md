@@ -1,7 +1,7 @@
 ---
 title: 'The Night Cried'
 date: 2019-05-07 22:03:57
-tags: ["Magic"]
+category: verses
 draft: false
 image: ../img/scaping-stars.jpg
 translated: true

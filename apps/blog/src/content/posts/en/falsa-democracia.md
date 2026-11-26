@@ -1,7 +1,7 @@
 ---
 title: 'False Democracy'
 date: 2020-02-22 00:06:15
-tags: ['Analytical']
+category: opinion
 draft: false
 image: ../img/democracia.png
 translated: true

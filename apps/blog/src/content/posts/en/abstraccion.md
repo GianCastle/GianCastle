@@ -1,7 +1,7 @@
 ---
 title: 'Abstraction'
 date: 2019-08-16 00:06:15
-tags: ['Abstract']
+category: engineering
 draft: false
 image: ../img/abstraction.jpg
 translated: true

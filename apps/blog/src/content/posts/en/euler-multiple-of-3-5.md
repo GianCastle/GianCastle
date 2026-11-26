@@ -1,7 +1,7 @@
 ---
 title: 'Project Euler: Multiples of 3 and 5'
 date: 2020-06-10 00:06:15
-tags: ['Engineering']
+category: engineering
 draft: true
 image: ../img/code-repeat.jpg
 translated: true

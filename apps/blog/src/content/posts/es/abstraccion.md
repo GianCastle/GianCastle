@@ -1,7 +1,7 @@
 ---
 title: 'Abstracción'
 date: 2019-08-16 00:06:15
-tags: ['Abstracto']
+category: engineering
 draft: false
 image: ../img/abstraction.jpg
 ---

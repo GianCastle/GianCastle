@@ -1,9 +1,10 @@
---- 
+---
+
 draft: false
 
 title: 'La influencia de las redes sociales'
 date: 2020-06-06
-tags: ["Analitico"]
+category: opinion
 image: ../img/social-media.jpg
 ---
 Sin lugar a dudas, las redes social juegan un papel fundamental en nuestras vidas hasta innecesario. Por lo menos, si crees en las estadísticas, es una gran parte de nuestras vidas. Déjame y te muestro un poco de ellas

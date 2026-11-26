@@ -1,0 +1,65 @@
+---
+import { DECAL_COLOR_VAR, DECAL_TINT_VAR } from '@giancastle/ui/decals';
+import type { Locale } from '@giancastle/ui/locale';
+import { routesFor } from '@/routes';
+import {
+  CATEGORY_COLOR,
+  CATEGORY_FILL_OF,
+  CATEGORY_LABEL,
+  type Category,
+} from '../posts.categories';
+import { tagSlug } from '../posts.format';
+
+interface Props {
+  category: Category;
+  locale: Locale;
+  taped?: boolean;
+}
+
+const { category, locale, taped = false } = Astro.props;
+const label = CATEGORY_LABEL[locale][category];
+const color = CATEGORY_COLOR[category];
+const style = `--category:${DECAL_COLOR_VAR[color]};--category-tint:${DECAL_TINT_VAR[color]}`;
+---
+
+<a
+  href={routesFor(locale).tag(tagSlug(label))}
+  class:list={['label', 'category', CATEGORY_FILL_OF[category], { taped }]}
+  style={style}
+>
+  {label}
+</a>
+
+<style>
+  .category {
+    display: inline-block;
+    width: fit-content;
+    padding: 0.5em 0.8em 0.45em;
+    border: 2px solid var(--category);
+    text-decoration: none;
+    rotate: -2deg;
+    transition: rotate 200ms;
+  }
+
+  .category:hover {
+    rotate: 0deg;
+  }
+
+  .solid {
+    background: var(--category);
+    color: var(--pop-fg);
+  }
+
+  .outline {
+    background: var(--bg);
+    color: var(--category-tint);
+  }
+
+  .taped {
+    position: absolute;
+    z-index: 1;
+    left: -0.5rem;
+    top: 0.9rem;
+    rotate: -3deg;
+  }
+</style>

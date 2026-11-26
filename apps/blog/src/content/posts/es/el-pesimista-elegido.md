@@ -1,7 +1,7 @@
 ---
 title: 'El Pesimista Elegido'
 date: 2023-02-10 22:05:00
-tags: ['Inductivo']
+category: verses
 draft: false
 image: ../img/pessimist.jpg
 ---

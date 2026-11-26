@@ -1,4 +1,5 @@
 import { AUTHOR, SITES } from '@giancastle/ui/sites';
+import { CATEGORY_LABEL } from './posts.categories';
 import type { Post } from './posts.query';
 
 export const buildPostJsonLd = (post: Post, url: URL, imageUrl: URL) => ({
@@ -9,6 +10,6 @@ export const buildPostJsonLd = (post: Post, url: URL, imageUrl: URL) => ({
   inLanguage: post.locale,
   image: imageUrl.href,
   mainEntityOfPage: url.href,
-  keywords: post.data.tags.join(', '),
+  articleSection: CATEGORY_LABEL[post.locale][post.data.category],
   author: { '@type': 'Person', name: AUTHOR.name, url: SITES.web },
 });

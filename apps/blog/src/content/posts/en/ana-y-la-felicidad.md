@@ -1,7 +1,7 @@
 ---
 title: 'Ana And Happiness'
 date: 2023-02-17 22:05:00
-tags: ['Abstract']
+category: stories
 draft: false
 image: ../img/sand-happy.jpg
 translated: true

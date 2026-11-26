@@ -1,7 +1,7 @@
 ---
 title: 'La Autoconfianza'
 date: 2019-03-27 00:06:15
-tags: ["Inductivo"]
+category: essays
 draft: false
 image: ../img/autoconfianza.jpg
 
