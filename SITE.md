@@ -26,7 +26,7 @@ Both sites are in English and Spanish. The business site opens in English with S
 
 ## Writing posts
 
-Posts are markdown files in `apps/blog/src/content/posts/es` and `apps/blog/src/content/posts/en`. A post and its translation share the same filename, and cover images live in the shared `img` folder next to those two. Set `translated: true` on the version that is a translation so the page links back to the original. The frontmatter is validated by `apps/blog/src/content.config.ts` and the build fails on an unknown or missing field.
+Posts are markdown files in `apps/blog/src/content/posts/es` and `apps/blog/src/content/posts/en`. A post and its translation share the same filename, and cover images live in the shared `img` folder next to those two. Set `translated: true` on the version that is a translation so the page links back to the original. Each post has one `category` from the list in `apps/blog/src/features/posts/posts.categories.ts`, and `draft: true` keeps it off the live site. The frontmatter is validated by `apps/blog/src/content.config.ts` and the build fails on an unknown or missing field.
 
 To edit in the browser, open `/admin/index.html`. Locally, choose "Work with Local Repository" in a Chromium browser. In production, sign in with a GitHub fine-grained token that has Contents read and write on this repo.
 

@@ -7,7 +7,7 @@ backend:
 
 site_url: https://blog.giancastle.com
 media_folder: /apps/blog/src/content/posts/img
-public_folder: ../img
+public_folder: /apps/blog/src/content/posts/img
 
 i18n:
   structure: multiple_folders
@@ -19,6 +19,8 @@ collections:
     label: Entradas
     label_singular: Entrada
     folder: apps/blog/src/content/posts
+    media_folder: ../img
+    public_folder: ../img
     extension: md
     format: yaml-frontmatter
     create: true
