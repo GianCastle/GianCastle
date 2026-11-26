@@ -34,11 +34,17 @@ collections:
           format: 'YYYY-MM-DD HH:mm:ss',
           i18n: duplicate,
         }
-      - name: tags
-        label: Etiquetas
-        widget: list
-        i18n: true
-        field: { name: tag, label: Etiqueta, widget: string }
+      - name: category
+        label: Categoría
+        widget: select
+        i18n: duplicate
+        options:
+          - { label: Versos, value: verses }
+          - { label: Ensayos, value: essays }
+          - { label: Opinión, value: opinion }
+          - { label: Cuerpo y mente, value: body-and-mind }
+          - { label: Ingeniería, value: engineering }
+          - { label: Relatos, value: stories }
       - { name: draft, label: Borrador, widget: boolean, default: false, i18n: duplicate }
       - { name: translated, label: Es una traducción, widget: boolean, default: false, i18n: true }
       - { name: image, label: Portada, widget: image, i18n: duplicate }

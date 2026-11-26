@@ -27,7 +27,11 @@ const posts = await getPublishedPosts(locale);
 ---
 
 <BaseLayout locale={locale} alternate={alternate} masthead={false}>
-  <Poster lines={AUTHOR.wordmarkLines} sticker={copy.posterSticker} heading={copy.title}>
+  <Poster
+    lines={AUTHOR.wordmarkLines}
+    eyebrow={copy.lockupLead}
+    heading={`${copy.lockupLead} ${copy.title}`}
+  >
     <Controls slot="corner" locale={locale} alternate={alternate} />
     <Fragment slot="tagline">{copy.statement}</Fragment>
     <ActionRow slot="actions">

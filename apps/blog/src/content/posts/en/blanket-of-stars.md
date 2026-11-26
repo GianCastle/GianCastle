@@ -1,7 +1,7 @@
 ---
 title: 'Blanket Of Stars'
 date: 2021-01-11 00:06:15
-tags: ["Abstract", "Love", "English"]
+category: verses
 draft: false
 image: ../img/stars.jpg
 

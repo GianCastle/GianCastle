@@ -1,7 +1,7 @@
 ---
 title: 'Perdí 30 libras en 12 semanas. Esto fue lo que hice (intro)'
 date: 2020-01-07 00:06:15
-tags: ["Divergente"]
+category: body-and-mind
 draft: false
 image: ../img/dominada.jpeg
 ---

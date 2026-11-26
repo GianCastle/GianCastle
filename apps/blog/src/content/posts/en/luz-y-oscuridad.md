@@ -1,7 +1,7 @@
 ---
 title: 'Light and Darkness'
 date: 2019-03-27 00:06:15
-tags: ["Magic"]
+category: verses
 draft: false
 image: ../img/lvso.jpg
 translated: true

@@ -1,10 +1,10 @@
 ---
 import { LOCALE } from '@giancastle/ui/locale';
-import { getPublishedPosts, groupByTag, type Tag } from '@/features/posts/posts.query';
+import { getPublishedPosts, groupByCategory, type Tag } from '@/features/posts/posts.query';
 import TagView from '@/features/posts/views/TagView.astro';
 
 export const getStaticPaths = async () => {
-  const tags = groupByTag(await getPublishedPosts(LOCALE.en));
+  const tags = groupByCategory(await getPublishedPosts(LOCALE.en), LOCALE.en);
   return tags.map(tag => ({ params: { tag: tag.slug }, props: { tag } }));
 };
 

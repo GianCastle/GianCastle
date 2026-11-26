@@ -1,7 +1,7 @@
 ---
 title: 'Deseo'
 date: 2019-07-07 00:11:32
-tags: ["Inductivo"]
+category: essays
 draft: false
 image: ../img/deseo.jpg
 

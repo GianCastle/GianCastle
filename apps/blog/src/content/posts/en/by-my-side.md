@@ -1,7 +1,7 @@
 ---
 title: 'By Your side'
 date: 2021-02-16 00:06:15
-tags: ["Abstract", "Love", "English"]
+category: verses
 draft: false
 image: ../img/by-my-side.jpg
 

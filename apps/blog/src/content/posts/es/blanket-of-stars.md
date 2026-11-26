@@ -1,7 +1,7 @@
 ---
 title: 'Manto De Estrellas'
 date: 2021-01-11 00:06:15
-tags: ["Abstracto", "Amor", "English"]
+category: verses
 draft: false
 image: ../img/stars.jpg
 translated: true

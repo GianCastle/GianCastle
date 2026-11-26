@@ -1,7 +1,7 @@
 ---
 title: 'Mi proposito para este nuevo año'
 date: 2020-01-01 00:02:01
-tags: ["Suave"]
+category: essays
 draft: false
 image: ../img/new-year.jpg
 

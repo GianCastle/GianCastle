@@ -1,7 +1,7 @@
 ---
 title: 'Entiendo'
 date: 2021-01-03 22:05:00
-tags: ['Abstracto']
+category: verses
 draft: false
 image: ../img/rainbow.jpg
 ---

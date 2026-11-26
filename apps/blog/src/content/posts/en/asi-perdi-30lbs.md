@@ -1,7 +1,7 @@
 ---
 title: "I Lost 30 Pounds in 12 Weeks. Here's What I Did (intro)"
 date: 2020-01-07 00:06:15
-tags: ["Divergent"]
+category: body-and-mind
 draft: false
 image: ../img/dominada.jpeg
 translated: true

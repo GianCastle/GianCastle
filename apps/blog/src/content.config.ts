@@ -2,6 +2,7 @@ import { LOCALES } from '@giancastle/ui/locale';
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
+import { CATEGORIES } from './features/posts/posts.categories';
 import { POSTS_COLLECTION } from './features/posts/posts.constants';
 
 const posts = defineCollection({
@@ -11,7 +12,7 @@ const posts = defineCollection({
       .object({
         title: z.string().min(1),
         date: z.coerce.date(),
-        tags: z.array(z.string()).default([]),
+        category: z.enum(CATEGORIES),
         draft: z.boolean().default(false),
         translated: z.boolean().default(false),
         image: image(),

@@ -1,7 +1,7 @@
 ---
 title: 'My Resolution for This New Year'
 date: 2020-01-01 00:02:01
-tags: ["Soft"]
+category: essays
 draft: false
 image: ../img/new-year.jpg
 translated: true

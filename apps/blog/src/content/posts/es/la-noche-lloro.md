@@ -1,7 +1,7 @@
 ---
 title: 'La Noche Lloró'
 date: 2019-05-07 22:03:57
-tags: ["Magico"]
+category: verses
 draft: false
 image: ../img/scaping-stars.jpg
 

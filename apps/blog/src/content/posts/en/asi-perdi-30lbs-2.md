@@ -1,7 +1,7 @@
 ---
 title: "I lost 30 pounds in 12 weeks. Here's what I did (part 2)"
 date: 2020-01-21 00:00:15
-tags: ["Divergent"]
+category: body-and-mind
 draft: false
 image: ../img/running.jpg
 translated: true

@@ -1,7 +1,7 @@
 ---
 title: 'Adicción'
 date: 2020-12-28 00:00:00
-tags: ['Abstracto']
+category: verses
 draft: false
 image: ../img/adiccion.jpg
 ---

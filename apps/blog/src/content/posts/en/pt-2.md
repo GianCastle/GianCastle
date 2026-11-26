@@ -1,7 +1,7 @@
 ---
 title: 'Pt.2'
 date: 2021-12-23 22:05:00
-tags: ['Inductivo']
+category: verses
 draft: false
 image: ../img/dark-sea.png
 ---

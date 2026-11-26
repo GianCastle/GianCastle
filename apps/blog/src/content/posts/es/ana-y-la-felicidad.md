@@ -1,7 +1,7 @@
 ---
 title: 'Ana Y La Felicidad'
 date: 2023-02-17 22:05:00
-tags: ['Abstracto']
+category: stories
 draft: false
 image: ../img/sand-happy.jpg
 ---

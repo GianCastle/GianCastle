@@ -1,6 +1,7 @@
 import { LOCALES, otherLocale, type Locale, type LocaleAlternate } from '@giancastle/ui/locale';
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { routesFor } from '@/routes';
+import { CATEGORIES, CATEGORY_LABEL } from './posts.categories';
 import { POSTS_COLLECTION } from './posts.constants';
 import { tagSlug } from './posts.format';
 
@@ -40,15 +41,12 @@ export const getPostAlternate = async (post: Post): Promise<LocaleAlternate> => 
   return { locale, href: counterpart ? routes.post(counterpart.slug) : routes.home };
 };
 
-export const groupByTag = (posts: Post[]): Tag[] => {
-  const tags = new Map<string, Tag>();
-  for (const post of posts) {
-    for (const name of post.data.tags) {
-      const slug = tagSlug(name);
-      const tag = tags.get(slug) ?? { name, slug, posts: [] };
-      tag.posts.push(post);
-      tags.set(slug, tag);
-    }
-  }
-  return [...tags.values()];
-};
+export const groupByCategory = (posts: Post[], locale: Locale): Tag[] =>
+  CATEGORIES.map(category => {
+    const name = CATEGORY_LABEL[locale][category];
+    return {
+      name,
+      slug: tagSlug(name),
+      posts: posts.filter(post => post.data.category === category),
+    };
+  }).filter(tag => tag.posts.length > 0);

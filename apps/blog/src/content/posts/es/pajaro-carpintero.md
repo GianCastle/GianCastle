@@ -1,7 +1,7 @@
 ---
 title: 'La Enseñanza De Un Pajaro Carpintero'
 date: 2019-03-27 00:06:15
-tags: ["Suave"]
+category: essays
 draft: false
 image: ../img/pajaro-carpintero.jpg
 

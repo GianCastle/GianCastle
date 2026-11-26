@@ -1,7 +1,7 @@
 ---
 title: 'La Soledad'
 date: 2019-05-07 22:03:57
-tags: ["Inductivo"]
+category: essays
 draft: false
 image: ../img/soledad.jpg
 

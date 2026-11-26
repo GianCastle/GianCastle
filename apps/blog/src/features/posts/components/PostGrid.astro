@@ -1,4 +1,5 @@
 ---
+import { WIDE_CARD_INTERVAL } from '../posts.constants';
 import type { Post } from '../posts.query';
 import FeaturedPost from './FeaturedPost.astro';
 import PostCard from './PostCard.astro';
@@ -12,11 +13,13 @@ const { posts, featureFirst = false } = Astro.props;
 const [first, ...rest] = posts;
 const featured = featureFirst ? first : undefined;
 const gridPosts = featureFirst ? rest : posts;
+const wideOffset = featureFirst ? WIDE_CARD_INTERVAL - 1 : 0;
+const isWide = (index: number) => index % WIDE_CARD_INTERVAL === wideOffset;
 ---
 
 {featured && <FeaturedPost post={featured} />}
 <div class="grid gap-x-10 gap-y-16 pt-16 sm:grid-cols-2 lg:grid-cols-3">
-  {gridPosts.map(post => (
-    <PostCard post={post} />
+  {gridPosts.map((post, index) => (
+    <PostCard post={post} wide={isWide(index)} />
   ))}
 </div>

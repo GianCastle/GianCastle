@@ -1,7 +1,7 @@
 ---
 title: 'The Chosen Pessimist'
 date: 2023-02-10 22:05:00
-tags: ['Inductive']
+category: verses
 draft: false
 image: ../img/pessimist.jpg
 translated: true

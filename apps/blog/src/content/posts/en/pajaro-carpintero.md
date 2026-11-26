@@ -1,7 +1,7 @@
 ---
 title: "A Woodpecker's Lesson"
 date: 2019-03-27 00:06:15
-tags: ["Soft"]
+category: essays
 draft: false
 image: ../img/pajaro-carpintero.jpg
 translated: true

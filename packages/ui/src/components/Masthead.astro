@@ -7,17 +7,19 @@ import Controls from './Controls.astro';
 
 interface Props {
   wordmark: string;
+  eyebrow?: string;
   href: string;
   links?: readonly { label: string; href: string }[];
   locale?: Locale;
   alternate?: LocaleAlternate;
 }
 
-const { wordmark, href, links = [], locale = LOCALE.en, alternate } = Astro.props;
+const { wordmark, eyebrow, href, links = [], locale = LOCALE.en, alternate } = Astro.props;
 ---
 
 <header class="masthead" data-tone={TONE.contrast}>
   <a class="brand" href={href} data-castle-host>
+    {eyebrow && <span class="label eyebrow">{eyebrow}</span>}
     <span class="heavy wordmark">{wordmark}</span>
     <span class="badge">
       <CastleMark />
@@ -49,6 +51,16 @@ const { wordmark, href, links = [], locale = LOCALE.en, alternate } = Astro.prop
     margin: 0.45rem 1.6rem 0.2rem 0;
     text-decoration: none;
     rotate: -5deg;
+  }
+
+  .eyebrow {
+    display: block;
+    width: fit-content;
+    margin-bottom: 0.3rem;
+    padding: 0.35em 0.6em 0.3em;
+    background: var(--mark-bg);
+    color: var(--mark-fg);
+    font-size: 0.6rem;
   }
 
   .wordmark {

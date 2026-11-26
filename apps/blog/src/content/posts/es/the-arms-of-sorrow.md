@@ -1,7 +1,7 @@
 ---
 title: 'The Arms of Sorrow'
 date: 2025-11-18 10:00:00
-tags: ['Abstracto']
+category: stories
 draft: false
 image: ../img/falling.webp
 ---

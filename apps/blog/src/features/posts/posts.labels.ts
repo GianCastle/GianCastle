@@ -18,7 +18,7 @@ type SiteCopy = {
   closerTagline: string;
   translatedNote: string;
   readOriginal: string;
-  posterSticker: string;
+  lockupLead: string;
   readPosts: string;
   readingTime: (minutes: number) => string;
 };
@@ -42,7 +42,7 @@ export const SITE_COPY: Record<Locale, SiteCopy> = {
     closerTagline: 'Escribo cuando la cabeza pesa. Lo demás lo construyo.',
     translatedNote: 'Traducido del inglés.',
     readOriginal: 'Leer el original',
-    posterSticker: 'Blog personal',
+    lockupLead: 'El blog de',
     readPosts: 'Leer',
     readingTime: minutes => `${minutes} min de lectura`,
   },
@@ -64,7 +64,7 @@ export const SITE_COPY: Record<Locale, SiteCopy> = {
     closerTagline: 'I write when my head gets heavy. The rest I build.',
     translatedNote: 'Translated from Spanish.',
     readOriginal: 'Read the original',
-    posterSticker: 'Personal blog',
+    lockupLead: 'The blog of',
     readPosts: 'Read',
     readingTime: minutes => `${minutes} min read`,
   },

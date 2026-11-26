@@ -3,7 +3,7 @@ draft: false
 
 title: 'Overthinking'
 date: 2019-04-07 22:34:47
-tags: ["Divergent"]
+category: body-and-mind
 image: ../img/overthink.jpg
 translated: true
 ---

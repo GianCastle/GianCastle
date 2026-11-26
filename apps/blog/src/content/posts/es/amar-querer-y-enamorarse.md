@@ -1,7 +1,7 @@
 ---
 title: 'Amar, querer y enamorarse'
 date: 2019-03-27 00:06:15
-tags: ["Suave"]
+category: essays
 draft: false
 image: ../img/fall_in_love.jpeg
 

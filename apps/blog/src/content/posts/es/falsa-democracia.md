@@ -1,7 +1,7 @@
 ---
 title: 'Falsa democracia'
 date: 2020-02-22 00:06:15
-tags: ['Analitico']
+category: opinion
 draft: false
 image: ../img/democracia.png
 ---
