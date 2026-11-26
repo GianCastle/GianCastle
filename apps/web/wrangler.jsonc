@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "giancastle-web",
   "compatibility_date": "2026-11-25",
+  "previews": {},
   "assets": {
     "directory": "./dist",
     "not_found_handling": "404-page",
