@@ -1,4 +1,5 @@
-import { LOCALE, localizePath, type Locale } from './locale';
+import { DECAL_COLOR, type DecalColor } from './decals';
+import { LOCALE, LOCALES, localizePath, type Locale } from './locale';
 
 export const SITE = {
   web: 'web',
@@ -20,8 +21,25 @@ export const SITE_DEFAULT_LOCALE: Record<Site, Locale> = {
   [SITE.ui]: LOCALE.en,
 };
 
-export const siteHref = (site: Site, locale: Locale, path = '/') =>
-  `${SITES[site]}${localizePath(path, locale, SITE_DEFAULT_LOCALE[site])}`;
+export const SITE_LOCALES: Record<Site, readonly Locale[]> = {
+  [SITE.web]: LOCALES,
+  [SITE.blog]: LOCALES,
+  [SITE.ui]: [LOCALE.en],
+};
+
+export const SITE_ORDER = [SITE.web, SITE.blog, SITE.ui] as const;
+
+export const SITE_COLOR: Record<Site, DecalColor> = {
+  [SITE.web]: DECAL_COLOR.orange,
+  [SITE.blog]: DECAL_COLOR.pink,
+  [SITE.ui]: DECAL_COLOR.teal,
+};
+
+export const siteHref = (site: Site, locale: Locale, path = '/') => {
+  const defaultLocale = SITE_DEFAULT_LOCALE[site];
+  const served = SITE_LOCALES[site].includes(locale) ? locale : defaultLocale;
+  return `${SITES[site]}${localizePath(path, served, defaultLocale)}`;
+};
 
 export const AUTHOR = {
   name: 'Giancarlos Castillo',

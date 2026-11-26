@@ -1,0 +1,140 @@
+---
+import type { Locale } from '../locale';
+import { PLATE_NUMBER_WIDTH, type PlateSection } from '../section-plate';
+import { SITE_COLOR, SITE_ORDER, siteHref, type Site } from '../sites';
+import { UI_COPY } from '../ui.labels';
+
+interface Props {
+  site: Site;
+  locale: Locale;
+  sections?: readonly PlateSection[];
+}
+
+const { site, locale, sections = [] } = Astro.props;
+const copy = UI_COPY[locale].footer;
+
+const numbered = sections.map((section, index) => ({
+  ...section,
+  number: String(index + 1).padStart(PLATE_NUMBER_WIDTH, '0'),
+}));
+const sites = SITE_ORDER.map(id => ({
+  ...copy.site[id],
+  href: siteHref(id, locale),
+  color: SITE_COLOR[id],
+  current: id === site,
+}));
+---
+
+<nav class="footer-nav" aria-label={copy.nav}>
+  {numbered.length > 0 && (
+    <div class="column">
+      <p class="label title">{copy.sections}</p>
+      <ol>
+        {numbered.map(section => (
+          <li>
+            <a href={`#${section.id}`}>
+              <span class="heavy number">{section.number}</span>
+              {section.label}
+            </a>
+          </li>
+        ))}
+      </ol>
+    </div>
+  )}
+  <div class="column">
+    <p class="label title">{copy.sites}</p>
+    <ul>
+      {sites.map(item => (
+        <li>
+          <a
+            href={item.href}
+            aria-current={item.current ? 'page' : undefined}
+            data-decal={item.color}
+          >
+            <i class="dot" aria-hidden="true" />
+            <span class="name">{item.label}</span>
+            {item.current ? (
+              <span class="label here">{copy.here}</span>
+            ) : (
+              <span class="serif-line note">{item.note}</span>
+            )}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+  {Astro.slots.has('default') && (
+    <div class="column">
+      <p class="label title">{copy.contact}</p>
+      <slot />
+    </div>
+  )}
+</nav>
+
+<style>
+  .footer-nav {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    gap: 2.5rem clamp(2rem, 5vw, 4rem);
+    padding-top: 1.5rem;
+    border-top: 3px solid var(--fg);
+  }
+
+  .title {
+    margin-bottom: 0.75rem;
+    color: var(--muted);
+    font-size: 0.6875rem;
+  }
+
+  ol,
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.85rem;
+    min-height: 2.75rem;
+    padding: 0.45rem 0;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:hover .name,
+  ol a:hover {
+    color: var(--accent);
+  }
+
+  .number {
+    width: 2.1rem;
+    font-size: 1.85rem;
+    line-height: 1;
+    color: var(--accent);
+  }
+
+  .dot {
+    align-self: center;
+    width: 0.75rem;
+    height: 0.75rem;
+    background: var(--decal);
+  }
+
+  a[aria-current] .name {
+    font-weight: 800;
+  }
+
+  .here {
+    padding: 0.2rem 0.4rem;
+    background: var(--decal);
+    color: var(--on-accent);
+    font-size: 0.5625rem;
+  }
+
+  .note {
+    color: var(--muted);
+  }
+</style>

@@ -1,17 +1,24 @@
 ---
+import type { Locale } from '../locale';
+import type { PlateSection } from '../section-plate';
+import type { Site } from '../sites';
 import { TONE } from '../theme';
 import Band from './Band.astro';
 import DecalStrip from './DecalStrip.astro';
+import FooterNav from './FooterNav.astro';
 import Heavy from './Heavy.astro';
 
 interface Props {
+  site: Site;
+  locale: Locale;
+  sections?: readonly PlateSection[];
   title: string;
   tagline?: string;
   note?: string;
   colophon?: string;
 }
 
-const { title, tagline, note, colophon } = Astro.props;
+const { site, locale, sections, title, tagline, note, colophon } = Astro.props;
 ---
 
 <Band as="footer" tone={TONE.contrast}>
@@ -22,11 +29,13 @@ const { title, tagline, note, colophon } = Astro.props;
     {title}
     <sup>*</sup>
   </Heavy>
-  <div class="row">
-    {tagline && <p class="lede tagline">{tagline}</p>}
-    <slot />
+  {tagline && <p class="lede tagline">{tagline}</p>}
+  <div class="nav">
+    <FooterNav site={site} locale={locale} sections={sections}>
+      <slot />
+    </FooterNav>
   </div>
-  {note && <p class="note rule-top">{note}</p>}
+  {note && <p class="note">{note}</p>}
   {colophon && <p class="label colophon">{colophon}</p>}
 </Band>
 
@@ -42,22 +51,17 @@ const { title, tagline, note, colophon } = Astro.props;
     color: var(--accent);
   }
 
-  .row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: flex-end;
-    justify-content: space-between;
-    gap: 2rem;
+  .tagline {
+    max-width: 22ch;
     margin-top: clamp(2rem, 5vw, 4rem);
   }
 
-  .tagline {
-    max-width: 22ch;
+  .nav {
+    margin-top: clamp(2.5rem, 6vw, 5rem);
   }
 
   .note {
-    margin-top: clamp(3rem, 7vw, 6rem);
-    padding-top: 1.25rem;
+    margin-top: clamp(2.5rem, 6vw, 4.5rem);
     max-width: 70ch;
     font-size: 0.95rem;
     color: var(--muted);
