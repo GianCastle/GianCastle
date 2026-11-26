@@ -66,15 +66,17 @@ const cards = items.map((item, index) => {
             <span class="scatter" style={card.placement.dashes}>
               <Dashes size="0.75rem" />
             </span>
-            <span class="label sector">{card.sector}</span>
             <span class="heavy number">{card.number}</span>
-            <span class="heavy caption">
-              {card.caption}
-              <FlipIcon />
-            </span>
-            <span class="label hint">
-              {labels.turnOver}
-              <FlipIcon />
+            <span class="band">
+              <span class="label sector">{card.sector}</span>
+              <span class="heavy caption">
+                {card.caption}
+                <FlipIcon />
+              </span>
+              <span class="label hint">
+                {labels.turnOver}
+                <FlipIcon />
+              </span>
             </span>
           </span>
           <span class="face back">
@@ -253,27 +255,39 @@ const cards = items.map((item, index) => {
     display: flex;
   }
 
-  .front .sector {
-    padding: 0.75rem 2.25rem;
+  .band {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: auto;
+    padding: 0.85rem 1.9rem 0.8rem;
     background: var(--sector);
     color: var(--pop-fg);
   }
 
+  .front .sector {
+    font-size: 0.65rem;
+  }
+
+  .front .pin.bottom {
+    background: var(--pop-fg);
+  }
+
   .number {
-    padding-top: 0.5rem;
+    margin-block: auto;
+    padding-top: 0.6rem;
     font-size: min(43cqi, 9.75rem);
     line-height: 0.95;
   }
 
   .caption {
-    padding-inline: 1.9rem;
     font-size: min(7.7cqi, 1.75rem);
     line-height: 1;
     text-wrap: balance;
   }
 
   .hint {
-    margin-top: auto;
     font-size: 0.65rem;
   }
 
@@ -285,8 +299,7 @@ const cards = items.map((item, index) => {
   }
 
   .front .hint {
-    padding-bottom: 0.75rem;
-    opacity: 0.7;
+    opacity: 0.75;
   }
 
   .back .sector {
@@ -308,6 +321,7 @@ const cards = items.map((item, index) => {
   }
 
   .back .hint {
+    margin-top: auto;
     color: var(--muted);
   }
 
