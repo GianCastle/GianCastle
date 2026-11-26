@@ -352,4 +352,47 @@ export const COMPONENT_DOCS: Record<ComponentId, EntryDoc> = {
       },
     ],
   },
+  [COMPONENT.footerNav]: {
+    title: 'Footer nav',
+    lede: 'A route sheet at the end of the page: where you are and where else you can go.',
+    source: 'components/FooterNav.astro',
+    notes: [
+      {
+        heading: 'Why it exists',
+        body: 'There are three sites and each one ends on the same question, what else is there. The footer answers it the same way everywhere: the sections of this page, the three sites with the current one marked, and a way to reach me.',
+      },
+      {
+        heading: 'How it adapts',
+        body: 'The sections column only renders when a page passes sections, and the contact column only when something is slotted in. The sites come from one record, and a link falls back to a site default language when that site is not translated.',
+      },
+      {
+        heading: 'Leave it out when',
+        body: 'It is not the last thing on the page. It is a footer, not a menu, and the section plate already covers getting around while you scroll.',
+      },
+    ],
+    props: [
+      {
+        name: 'site',
+        type: 'Site',
+        required: true,
+        description: 'The site this page belongs to. It gets the marker.',
+      },
+      {
+        name: 'locale',
+        type: 'Locale',
+        required: true,
+        description: 'Language of the labels and of the links to the other sites.',
+      },
+      {
+        name: 'sections',
+        type: 'readonly PlateSection[]',
+        description: 'Sections of this page, numbered in order. Omit to drop the column.',
+      },
+      {
+        name: 'slot',
+        type: 'default',
+        description: 'Contact content: social links, a button, a feed link.',
+      },
+    ],
+  },
 };

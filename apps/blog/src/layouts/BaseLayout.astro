@@ -3,7 +3,7 @@ import '@/styles/global.css';
 import ActionRow from '@giancastle/ui/components/ActionRow.astro';
 import Closer from '@giancastle/ui/components/Closer.astro';
 import Masthead from '@giancastle/ui/components/Masthead.astro';
-import Pill from '@giancastle/ui/components/Pill.astro';
+import PatternStrip from '@giancastle/ui/components/PatternStrip.astro';
 import SiteHead from '@giancastle/ui/components/SiteHead.astro';
 import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
 import {
@@ -83,7 +83,10 @@ const navLinks = [
     <main id="content">
       <slot />
     </main>
+    <PatternStrip />
     <Closer
+      site={SITE.blog}
+      locale={locale}
       title={copy.closerTitle}
       tagline={copy.closerTagline}
       note={`${copy.title} © ${year} · Breathe in life.`}
@@ -91,7 +94,6 @@ const navLinks = [
       <ActionRow>
         <SocialLinks />
         <a href={routes.rss}>{copy.navRss}</a>
-        <Pill href={siteHref(SITE.web, locale)}>{copy.about}</Pill>
       </ActionRow>
     </Closer>
   </body>

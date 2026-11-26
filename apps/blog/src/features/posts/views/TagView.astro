@@ -1,4 +1,5 @@
 ---
+import PatternStrip from '@giancastle/ui/components/PatternStrip.astro';
 import Band from '@giancastle/ui/components/Band.astro';
 import Heavy from '@giancastle/ui/components/Heavy.astro';
 import Kicker from '@giancastle/ui/components/Kicker.astro';
@@ -27,6 +28,7 @@ const alternate = await getTagAlternate(tag, locale);
       </Heavy>
     </div>
   </Band>
+  <PatternStrip />
   <Band size="compact">
     <PostGrid posts={tag.posts} />
   </Band>

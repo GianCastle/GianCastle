@@ -1,0 +1,18 @@
+---
+import FooterNav from '@giancastle/ui/components/FooterNav.astro';
+import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
+import { SITE, SITE_DEFAULT_LOCALE } from '@giancastle/ui/sites';
+---
+
+<footer class="footer">
+  <FooterNav site={SITE.ui} locale={SITE_DEFAULT_LOCALE[SITE.ui]}>
+    <SocialLinks />
+  </FooterNav>
+</footer>
+
+<style>
+  .footer {
+    max-width: 68rem;
+    margin-top: clamp(4rem, 9vw, 7rem);
+  }
+</style>

@@ -16,7 +16,7 @@ import SectionPlate from '@giancastle/ui/components/SectionPlate.astro';
 import VerbList from '@giancastle/ui/components/VerbList.astro';
 import StageProfile from '@giancastle/ui/components/StageProfile.astro';
 import type { Locale } from '@giancastle/ui/locale';
-import { AUTHOR } from '@giancastle/ui/sites';
+import { AUTHOR, SITE } from '@giancastle/ui/sites';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { buildProfileJsonLd } from '@/lib/seo/profile.jsonld';
 import { HOME_SECTIONS, PAGE, SECTION_ID, alternateFor } from '@/routes';
@@ -85,6 +85,9 @@ const sections = HOME_SECTIONS.map(id => ({ id, label: nav.sectionLabels[id] }))
   </main>
 
   <Closer
+    site={SITE.web}
+    locale={locale}
+    sections={sections}
     title={closer.title}
     tagline={closer.tagline}
     note={closer.note}
@@ -92,7 +95,6 @@ const sections = HOME_SECTIONS.map(id => ({ id, label: nav.sectionLabels[id] }))
   >
     <ActionRow>
       <SocialLinks />
-      <a href={closer.blog.href}>{closer.blog.label}</a>
       {closer.cv ? (
         <Pill href={closer.cv.href} download>
           {closer.cv.label}
