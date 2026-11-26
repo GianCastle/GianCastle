@@ -1,5 +1,5 @@
 ---
-import { DECAL_COLOR_VAR, DECAL_COLORS, DECAL_SHAPE } from '../decals';
+import { DECAL_COLORS, DECAL_SHAPE } from '../decals';
 import {
   RACE_NUMBER_ID,
   RACE_NUMBER_PLACEMENTS,
@@ -35,11 +35,7 @@ const cards = items.map((item, index) => {
     ids,
     placement,
     corner: index % 2 === 0 ? [first, second] : [second, first],
-    style: [
-      `--sector:${DECAL_COLOR_VAR[item.color]}`,
-      `--tilt:${placement.tilt}deg`,
-      `--delay:${index * RACE_NUMBER_STAGGER_MS}ms`,
-    ].join(';'),
+    style: [`--tilt:${placement.tilt}deg`, `--delay:${index * RACE_NUMBER_STAGGER_MS}ms`].join(';'),
   };
 });
 ---
@@ -51,6 +47,7 @@ const cards = items.map((item, index) => {
         class="card"
         type="button"
         aria-pressed="false"
+        data-decal={card.color}
         aria-labelledby={`${card.ids.number} ${card.ids.caption} ${card.ids.title}`}
         aria-describedby={card.ids.body}
         style={card.style}
@@ -91,7 +88,7 @@ const cards = items.map((item, index) => {
             </span>
           </span>
           <span class="face back">
-            <span class="label sector">{card.sector}</span>
+            <span class="label chip sector">{card.sector}</span>
             <span id={card.ids.title} class="heavy title">
               {card.title}
             </span>
@@ -183,7 +180,7 @@ const cards = items.map((item, index) => {
     translate: 0 0;
     transition:
       opacity 500ms var(--delay),
-      translate 600ms cubic-bezier(0.2, 0.9, 0.2, 1) var(--delay);
+      translate 600ms var(--ease-out) var(--delay);
   }
 
   .inner {
@@ -221,7 +218,7 @@ const cards = items.map((item, index) => {
     gap: 0.75rem;
     padding: 1.4rem 1.5rem;
     background: var(--raise);
-    border: 3px solid var(--sector);
+    border: 3px solid var(--decal);
     transform: rotateY(180deg);
   }
 
@@ -277,7 +274,7 @@ const cards = items.map((item, index) => {
     gap: 0.3rem;
     margin-top: auto;
     padding: 0.85rem 1.9rem 0.8rem;
-    background: var(--sector);
+    background: var(--decal);
     color: var(--pop-fg);
   }
 
@@ -311,10 +308,10 @@ const cards = items.map((item, index) => {
   }
 
   .back .sector {
+    --chip-pad: 0.2rem 0.5rem;
+    --chip-bg: var(--decal);
+    --chip-fg: var(--pop-fg);
     align-self: flex-start;
-    padding: 0.2rem 0.5rem;
-    background: var(--sector);
-    color: var(--pop-fg);
   }
 
   .title {

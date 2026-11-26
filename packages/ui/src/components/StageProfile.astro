@@ -61,14 +61,14 @@ const markers = stages.map((stage, index) => {
       <i class="marker" style={`left:${marker.left};top:${marker.top};background:${marker.fill}`} />
     ))}
     <div class="finish">
-      <span class="label flag">{finishLabel}</span>
+      <span class="label chip flag">{finishLabel}</span>
       <i class="post"></i>
     </div>
   </div>
   <ol class="stages">
     {stages.map(stage => (
       <li>
-        <span class="label tag" style={`background:${STAGE_OWNER_FILL[stage.owner]}`}>
+        <span class="label chip tag" style={`--chip-bg:${STAGE_OWNER_FILL[stage.owner]}`}>
           {stage.tag}
         </span>
         <Heavy as="h3" size="step">
@@ -127,9 +127,8 @@ const markers = stages.map((stage, index) => {
   }
 
   .flag {
-    padding: 0.4em 0.75em;
-    background: var(--fg);
-    color: var(--bg);
+    --chip-bg: var(--fg);
+    --chip-fg: var(--bg);
     white-space: nowrap;
   }
 
@@ -159,10 +158,9 @@ const markers = stages.map((stage, index) => {
   }
 
   .tag {
+    --chip-fg: var(--ink);
     display: inline-block;
     margin-bottom: 0.8rem;
-    padding: 0.4em 0.75em;
-    color: var(--ink);
   }
 
   p {

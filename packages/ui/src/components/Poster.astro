@@ -111,14 +111,14 @@ const SHARDS = [
         </span>
       ))}
       <span class="arrows">
-        {eyebrow && <span class="eyebrow">{eyebrow}</span>}
+        {eyebrow && <span class="chip label-display eyebrow">{eyebrow}</span>}
         <Chevrons size="clamp(1rem, 2.4vw, 2.2rem)" />
         <Dashes size="clamp(1.1rem, 2.6vw, 2.4rem)" />
       </span>
       <span class="mark" data-castle-host>
         <CastleMark />
       </span>
-      {sticker && <span class="sticker">*{sticker}</span>}
+      {sticker && <span class="chip chip-ring label-display sticker">*{sticker}</span>}
     </div>
   </div>
   <h1 class="sr-only">{heading}</h1>
@@ -188,12 +188,12 @@ const SHARDS = [
 
   .half-top .word {
     top: calc(100% - var(--word-line) * var(--seam-cut));
-    animation: slide-left 900ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+    animation: slide-left 900ms var(--ease-out) both;
   }
 
   .half-bottom .word {
     top: calc(var(--word-line) * var(--seam-cut) * -1);
-    animation: slide-right 900ms cubic-bezier(0.2, 0.9, 0.2, 1) both;
+    animation: slide-right 900ms var(--ease-out) both;
   }
 
   @keyframes slide-left {
@@ -258,34 +258,20 @@ const SHARDS = [
   }
 
   .eyebrow {
-    padding: 0.5em 0.9em 0.45em;
-    background: var(--mark-bg);
-    color: var(--mark-fg);
-    font-weight: 800;
-    font-stretch: 112%;
-    font-size: clamp(0.8rem, 1.55vw, 1.5rem);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    white-space: nowrap;
+    --chip-pad: 0.5em 0.9em 0.45em;
+    --chip-bg: var(--mark-bg);
+    --chip-fg: var(--mark-fg);
     rotate: -2deg;
   }
 
   .sticker {
+    --chip-pad: 0.55em 1em 0.5em;
+    --chip-bg: var(--pop-bg);
+    --chip-fg: var(--pop-fg);
     position: absolute;
     left: 50%;
     top: 0;
     transform: translate(-50%, -50%) rotate(-2deg);
-    padding: 0.55em 1em 0.5em;
-    background: var(--pop-bg);
-    color: var(--pop-fg);
-    border: 2px solid var(--pop-fg);
-    outline: 2px solid var(--pop-bg);
-    font-weight: 800;
-    font-stretch: 112%;
-    font-size: clamp(0.8rem, 1.55vw, 1.5rem);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    white-space: nowrap;
     animation: stamp 500ms 700ms cubic-bezier(0.2, 1.4, 0.4, 1) both;
   }
 

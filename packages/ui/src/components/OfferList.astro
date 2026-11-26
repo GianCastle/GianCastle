@@ -20,7 +20,7 @@ const { items } = Astro.props;
   {items.map((item, index) => (
     <Sticker as="li" featured={item.featured ?? false} tilt={index % 2 === 0 ? 'left' : 'right'}>
       <div class="offer">
-        {item.tag && <p class="label tag">{item.tag}</p>}
+        {item.tag && <p class="label chip tag">{item.tag}</p>}
         <Heavy as="h3" size="figure">
           {item.title}
         </Heavy>
@@ -51,9 +51,7 @@ const { items } = Astro.props;
   }
 
   .tag {
-    padding: 0.45em 0.8em;
-    background: var(--chip-bg);
-    color: var(--chip-fg);
+    --chip-pad: 0.45em 0.8em;
   }
 
   .body {

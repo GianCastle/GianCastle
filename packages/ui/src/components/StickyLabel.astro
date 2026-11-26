@@ -1,6 +1,6 @@
 ---
 import type { HTMLTag } from 'astro/types';
-import { DECAL_COLOR_VAR, type DecalColor } from '../decals';
+import type { DecalColor } from '../decals';
 
 const TILT = {
   left: 'left',
@@ -16,21 +16,23 @@ interface Props {
 }
 
 const { as: Tag = 'span', color, tilt = TILT.left } = Astro.props;
-const style = color ? `--sticky-bg:${DECAL_COLOR_VAR[color]};--sticky-fg:var(--ink)` : undefined;
 ---
 
-<Tag class:list={['label', 'sticky', tilt]} style={style}>
+<Tag class:list={['label', 'chip', 'chip-ring', 'sticky', tilt]} data-decal={color}>
   <slot />
 </Tag>
 
 <style>
   .sticky {
+    --chip-pad: 0.55em 0.9em 0.5em;
+    --chip-bg: var(--fg);
+    --chip-fg: var(--bg);
     display: inline-block;
-    padding: 0.55em 0.9em 0.5em;
-    background: var(--sticky-bg, var(--fg));
-    color: var(--sticky-fg, var(--bg));
-    border: 2px solid var(--sticky-fg, var(--bg));
-    outline: 2px solid var(--sticky-bg, var(--fg));
+  }
+
+  .sticky[data-decal] {
+    --chip-bg: var(--decal);
+    --chip-fg: var(--ink);
   }
 
   .left {
