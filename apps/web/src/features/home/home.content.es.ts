@@ -57,9 +57,17 @@ export const HOME_ES: HomeContent = {
         sector: 'Salud digital',
         number: '8',
         caption: 'semanas, no 12 meses',
-        title: 'Un año de roadmap en dos meses',
-        body: 'Lideré un rediseño de backoffice planificado para un año y lo entregamos en unos dos meses. Mismo equipo: 19 microservicios migrados en 72 horas con paridad estricta, con agentes trabajando a partir de mis specs.',
+        title: 'Un año de roadmap en 8 semanas',
+        body: 'Lideré el rediseño técnico de un backoffice planificado para un año. Lo entregamos en unas 8 semanas, con entrega asistida por IA y una librería de UI propia.',
         color: DECAL_COLOR.teal,
+      },
+      {
+        sector: 'Salud digital',
+        number: '72',
+        caption: 'horas, 19 microservicios',
+        title: 'Una migración en tres días',
+        body: 'Migré 19 microservicios y renové sus endpoints en 72 horas, con agentes autónomos trabajando a partir de specs que escribí y paridad estricta entre lo viejo y lo nuevo.',
+        color: DECAL_COLOR.orange,
       },
       {
         sector: 'Salud digital',
@@ -74,7 +82,7 @@ export const HOME_ES: HomeContent = {
         number: '3',
         caption: 'feeds que aprenden',
         title: 'Un sistema de recomendación',
-        body: 'Reemplacé un feed de inicio aleatorio por un motor de ranking en Para ti, A continuación y Creadores sugeridos. Ordena según a quién sigues y cómo ves, y exploré estrategias bandit como Thompson sampling para que los videos nuevos también se vean.',
+        body: 'Diseñé un motor de ranking que alimenta tres superficies del producto y puntúa cada video con señales de afinidad (a quién sigues) y de visualización (inicio, progreso, finalización y abandono). Encima, una capa de exploración con boost a contenido poco expuesto y estrategias bandit como Thompson sampling equilibra relevancia y descubrimiento.',
         color: DECAL_COLOR.orange,
       },
       {
@@ -99,6 +107,14 @@ export const HOME_ES: HomeContent = {
         caption: 'entradas, una sola ingesta',
         title: 'Un sistema de ingesta de medios',
         body: 'Subidas multiparte que reintentan, vuelven a firmar partes vencidas y continúan aunque salgas de la página, importación desde nubes y enlaces pegados, y workflows en segundo plano que transcodifican y publican.',
+        color: DECAL_COLOR.teal,
+      },
+      {
+        sector: 'Streaming',
+        number: '5',
+        caption: 'categorías de riesgo, cada video auditado',
+        title: 'Un sistema de clearance de derechos',
+        body: 'Integré clearinghouses que escanean cada video al terminar la ingesta en busca de música y material con derechos de autor. Los hallazgos caen en una línea de tiempo por categoría, un veredicto marcado retiene la distribución y cada decisión, automática o humana, queda en un registro de auditoría.',
         color: DECAL_COLOR.teal,
       },
       {
@@ -191,7 +207,7 @@ export const HOME_ES: HomeContent = {
     ],
   },
   closer: {
-    title: 'A entregar',
+    title: 'A rodar',
     tagline: 'Estoy disponible. Cuéntame qué hay en tu roadmap.',
     blog: { label: 'Blog', href: `${SITES.blog}/` },
     cv: { label: 'Descargar CV', href: CV_PDF_PATH[locale], download: true },

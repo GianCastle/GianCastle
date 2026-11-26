@@ -56,9 +56,17 @@ export const HOME_EN: HomeContent = {
         sector: 'Healthtech',
         number: '8',
         caption: 'weeks, not 12 months',
-        title: 'A year of roadmap in two months',
-        body: 'I led a back-office redesign planned for a year and shipped it in about two months. Same team: 19 microservices migrated in 72 hours with strict parity, by agents running from my specs.',
+        title: 'A year of roadmap in 8 weeks',
+        body: 'I led the technical redesign of a back-office system planned for a year. We shipped it in about 8 weeks, with AI-assisted delivery and a custom UI library.',
         color: DECAL_COLOR.teal,
+      },
+      {
+        sector: 'Healthtech',
+        number: '72',
+        caption: 'hours, 19 microservices',
+        title: 'A migration in three days',
+        body: 'I migrated 19 microservices and overhauled their endpoints in 72 hours, with autonomous agents working from specs I wrote and strict parity between old and new.',
+        color: DECAL_COLOR.orange,
       },
       {
         sector: 'Healthtech',
@@ -73,7 +81,7 @@ export const HOME_EN: HomeContent = {
         number: '3',
         caption: 'feeds that learn',
         title: 'A recommendation system',
-        body: 'I replaced a random-shuffle home feed with a ranking engine across For You, Up Next and Suggested Creators. It ranks on follows and watch signals, and I explored bandit strategies such as Thompson sampling so new videos still get seen.',
+        body: 'I designed a ranking engine that feeds three product surfaces and scores each video on affinity signals (who you follow) and watch signals (start, progress, completion, abandonment). An exploration layer on top, with a boost for underexposed content and bandit strategies such as Thompson sampling, balances relevance and discovery.',
         color: DECAL_COLOR.orange,
       },
       {
@@ -98,6 +106,14 @@ export const HOME_EN: HomeContent = {
         caption: 'ways in, one ingest',
         title: 'A media ingest system',
         body: 'Multipart uploads that retry, re-sign expired parts and resume after you leave the page, imports from cloud drives and pasted links, and background workflows that transcode and publish.',
+        color: DECAL_COLOR.teal,
+      },
+      {
+        sector: 'Streaming',
+        number: '5',
+        caption: 'risk categories, every upload audited',
+        title: 'A rights clearance system',
+        body: 'I integrated clearinghouses that scan each video once ingest finishes, looking for music and copyrighted material. Findings land on a timeline by category, a flagged verdict holds distribution, and every decision, automatic or human, goes to an audit trail.',
         color: DECAL_COLOR.teal,
       },
       {
