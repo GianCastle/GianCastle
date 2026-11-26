@@ -1,5 +1,4 @@
 ---
-import { DECAL_COLOR_VAR, DECAL_TINT_VAR } from '@giancastle/ui/decals';
 import type { Locale } from '@giancastle/ui/locale';
 import { routesFor } from '@/routes';
 import {
@@ -19,13 +18,12 @@ interface Props {
 const { category, locale, taped = false } = Astro.props;
 const label = CATEGORY_LABEL[locale][category];
 const color = CATEGORY_COLOR[category];
-const style = `--category:${DECAL_COLOR_VAR[color]};--category-tint:${DECAL_TINT_VAR[color]}`;
 ---
 
 <a
   href={routesFor(locale).tag(tagSlug(label))}
   class:list={['label', 'category', CATEGORY_FILL_OF[category], { taped }]}
-  style={style}
+  data-decal={color}
 >
   {label}
 </a>
@@ -35,7 +33,7 @@ const style = `--category:${DECAL_COLOR_VAR[color]};--category-tint:${DECAL_TINT
     display: inline-block;
     width: fit-content;
     padding: 0.5em 0.8em 0.45em;
-    border: 2px solid var(--category);
+    border: 2px solid var(--decal);
     text-decoration: none;
     rotate: -2deg;
     transition: rotate 200ms;
@@ -46,13 +44,13 @@ const style = `--category:${DECAL_COLOR_VAR[color]};--category-tint:${DECAL_TINT
   }
 
   .solid {
-    background: var(--category);
+    background: var(--decal);
     color: var(--pop-fg);
   }
 
   .outline {
     background: var(--bg);
-    color: var(--category-tint);
+    color: var(--decal-tint);
   }
 
   .taped {

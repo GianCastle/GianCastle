@@ -1,5 +1,5 @@
 ---
-import { DECAL_COLOR_VAR, DECAL_SHAPE, type DecalColor, type DecalShape } from '../decals';
+import { DECAL_SHAPE, type DecalColor, type DecalShape } from '../decals';
 
 interface Props {
   shape?: DecalShape;
@@ -9,14 +9,7 @@ interface Props {
 }
 
 const { shape = DECAL_SHAPE.square, color, size = '0.6em', rotate = 0 } = Astro.props;
-const style = [
-  `width:${size}`,
-  `height:${size}`,
-  `rotate:${rotate}deg`,
-  color && `--decal-color:${DECAL_COLOR_VAR[color]}`,
-]
-  .filter(Boolean)
-  .join(';');
+const style = `width:${size};height:${size};rotate:${rotate}deg`;
 ---
 
-<i class:list={['decal', `decal-${shape}`]} style={style} aria-hidden="true"></i>
+<i class:list={['decal', `decal-${shape}`]} data-decal={color} style={style} aria-hidden="true"></i>
