@@ -1,4 +1,5 @@
 ---
+import PatternStrip from '@giancastle/ui/components/PatternStrip.astro';
 import Band from '@giancastle/ui/components/Band.astro';
 import Heavy from '@giancastle/ui/components/Heavy.astro';
 import Sticker from '@giancastle/ui/components/Sticker.astro';
@@ -52,6 +53,7 @@ const pageUrl = new URL(Astro.url.pathname, Astro.site);
         <PostMeta post={post} />
       </div>
     </Band>
+    <PatternStrip />
     <Band as="div" size="compact">
       <div class="mx-auto w-full max-w-5xl">
         <Sticker as="figure" tilt="right" padding="tight">
