@@ -4,7 +4,7 @@ import { NETWORK, NETWORK_LABEL, SOCIAL_LINKS } from '@giancastle/ui/socials';
 import type { APIRoute } from 'astro';
 import { HOME_CONTENT } from '@/features/home/home.content';
 import { DEFAULT_LOCALE } from '@/i18n';
-import { CV_PDF_PATH, PAGE, pagePath } from '@/routes';
+import { CV_PDF_PATH, CV_PUBLISHED, PAGE, pagePath } from '@/routes';
 
 const { profile, proof, value, process, ways, toolbox } = HOME_CONTENT[DEFAULT_LOCALE];
 
@@ -47,9 +47,13 @@ const buildLlmsTxt = () =>
     ...section('Links', [
       `- [Home](${absolute(pagePath(PAGE.home, LOCALE.en))}): proof, what you get, process and ways to work together`,
       `- [Home in Spanish](${absolute(pagePath(PAGE.home, LOCALE.es))})`,
-      `- [CV](${absolute(pagePath(PAGE.cv, LOCALE.en))}): experience, skills and education`,
-      `- [CV as PDF](${absolute(CV_PDF_PATH[LOCALE.en])})`,
-      `- [CV in Spanish as PDF](${absolute(CV_PDF_PATH[LOCALE.es])})`,
+      ...(CV_PUBLISHED
+        ? [
+            `- [CV](${absolute(pagePath(PAGE.cv, LOCALE.en))}): experience, skills and education`,
+            `- [CV as PDF](${absolute(CV_PDF_PATH[LOCALE.en])})`,
+            `- [CV in Spanish as PDF](${absolute(CV_PDF_PATH[LOCALE.es])})`,
+          ]
+        : []),
       ...profileLinks,
     ]),
     ...section('Optional', [

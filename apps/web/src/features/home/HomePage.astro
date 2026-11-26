@@ -35,7 +35,7 @@ const alternate = alternateFor(PAGE.home, locale);
     <Fragment slot="tagline">{hero.tagline}</Fragment>
     <ActionRow slot="actions">
       <SocialLinks />
-      <a href={hero.cv.href}>{hero.cv.label}</a>
+      {hero.cv && <a href={hero.cv.href}>{hero.cv.label}</a>}
       <Pill href={hero.cta.href}>{hero.cta.label}</Pill>
     </ActionRow>
   </Poster>
@@ -83,9 +83,13 @@ const alternate = alternateFor(PAGE.home, locale);
     <ActionRow>
       <SocialLinks />
       <a href={closer.blog.href}>{closer.blog.label}</a>
-      <Pill href={closer.cv.href} download>
-        {closer.cv.label}
-      </Pill>
+      {closer.cv ? (
+        <Pill href={closer.cv.href} download>
+          {closer.cv.label}
+        </Pill>
+      ) : (
+        <Pill href={nav.labels.contact.href}>{nav.labels.contact.label}</Pill>
+      )}
     </ActionRow>
   </Closer>
 </BaseLayout>

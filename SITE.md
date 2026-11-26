@@ -32,6 +32,8 @@ To edit in the browser, open `/admin/index.html`. Locally, choose "Work with Loc
 
 ## CV
 
+The CV is hidden for now: `CV_PUBLISHED` in `apps/web/src/routes.ts` is `false`, so nothing links to it, `/cv/` redirects home and the PDFs sit in `apps/web/unpublished/`, which is not served. To bring it back, set the switch to `true` and move the two PDFs into `apps/web/public/`.
+
 The CV content lives in `apps/web/src/features/cv/cv.data.en.ts` and `cv.data.es.ts`. After changing either, regenerate both PDFs with `pnpm cv:pdf` (needs Google Chrome, or set `CHROME_PATH`) and commit the result.
 
 ## Deploy

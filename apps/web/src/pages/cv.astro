@@ -1,6 +1,9 @@
 ---
 import { LOCALE } from '@giancastle/ui/locale';
 import CvPage from '@/features/cv/CvPage.astro';
+import { CV_PUBLISHED, PAGE, pagePath } from '@/routes';
+
+if (!CV_PUBLISHED) return Astro.redirect(pagePath(PAGE.home, LOCALE.en));
 ---
 
 <CvPage locale={LOCALE.en} />

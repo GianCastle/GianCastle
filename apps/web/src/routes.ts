@@ -17,6 +17,8 @@ export type Page = (typeof PAGE)[keyof typeof PAGE];
 
 export const LLMS_PATH = '/llms.txt';
 
+export const CV_PUBLISHED = false;
+
 export const CV_PDF_PATH: Record<Locale, string> = {
   [LOCALE.en]: '/giancarlos-castillo-cv.pdf',
   [LOCALE.es]: '/giancarlos-castillo-cv-es.pdf',
