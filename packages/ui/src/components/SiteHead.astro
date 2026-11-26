@@ -1,0 +1,56 @@
+---
+import { OG_LOCALE, type Locale, type LocaleAlternate } from '../locale';
+import { FAVICON_PATH, OG_TYPE, SITEMAP_PATH, type OgType } from '../site-head';
+import type { Theme } from '../theme';
+import HeadAlternates from './HeadAlternates.astro';
+import ThemeScript from './ThemeScript.astro';
+
+interface Props {
+  locale: Locale;
+  defaultLocale: Locale;
+  alternate?: LocaleAlternate;
+  title: string;
+  ogTitle?: string;
+  description: string;
+  siteName: string;
+  ogType?: OgType;
+  image?: URL;
+  forceTheme?: Theme;
+  jsonLd?: Record<string, unknown>;
+}
+
+const {
+  locale,
+  defaultLocale,
+  alternate,
+  title,
+  ogTitle = title,
+  description,
+  siteName,
+  ogType = OG_TYPE.website,
+  image,
+  forceTheme,
+  jsonLd,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<ThemeScript force={forceTheme} />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<HeadAlternates locale={locale} alternate={alternate} defaultLocale={defaultLocale} />
+<link rel="icon" type="image/svg+xml" href={FAVICON_PATH} />
+<link rel="sitemap" href={SITEMAP_PATH} />
+<slot />
+<meta property="og:site_name" content={siteName} />
+<meta property="og:type" content={ogType} />
+<meta property="og:locale" content={OG_LOCALE[locale]} />
+<meta property="og:title" content={ogTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+{image && <meta property="og:image" content={image} />}
+<meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
+{jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}

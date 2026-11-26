@@ -1,5 +1,5 @@
 ---
-import type { Locale, LocaleAlternate } from '../locale';
+import { ALTERNATE_KIND, type Locale, type LocaleAlternate } from '../locale';
 
 interface Props {
   locale: Locale;
@@ -9,12 +9,13 @@ interface Props {
 
 const { locale, alternate, defaultLocale } = Astro.props;
 const current = new URL(Astro.url.pathname, Astro.site);
-const entries = alternate
-  ? [
-      { locale, href: current.href },
-      { locale: alternate.locale, href: new URL(alternate.href, Astro.site).href },
-    ]
-  : [];
+const entries =
+  alternate?.kind === ALTERNATE_KIND.equivalent
+    ? [
+        { locale, href: current.href },
+        { locale: alternate.locale, href: new URL(alternate.href, Astro.site).href },
+      ]
+    : [];
 const fallback = entries.find(entry => entry.locale === defaultLocale);
 ---
 

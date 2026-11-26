@@ -47,3 +47,4 @@ export const RACE_NUMBER_PLACEMENTS: readonly [Placement, ...Placement[]] = [
 ];
 
 export const RACE_NUMBER_STAGGER_MS = 90;
+export const RACE_NUMBER_ID = 'race-number';

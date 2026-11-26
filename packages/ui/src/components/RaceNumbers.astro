@@ -1,6 +1,7 @@
 ---
 import { DECAL_COLOR_VAR, DECAL_COLORS, DECAL_SHAPE } from '../decals';
 import {
+  RACE_NUMBER_ID,
   RACE_NUMBER_PLACEMENTS,
   RACE_NUMBER_STAGGER_MS,
   type RaceNumber,
@@ -14,16 +15,24 @@ import FlipIcon from './FlipIcon.astro';
 interface Props {
   items: readonly RaceNumber[];
   labels: RaceNumberLabels;
+  id?: string;
 }
 
-const { items, labels } = Astro.props;
+const { items, labels, id = RACE_NUMBER_ID } = Astro.props;
 
 const cards = items.map((item, index) => {
   const placement =
     RACE_NUMBER_PLACEMENTS[index % RACE_NUMBER_PLACEMENTS.length] ?? RACE_NUMBER_PLACEMENTS[0];
   const [first, second] = DECAL_COLORS.filter(color => color !== item.color);
+  const ids = {
+    number: `${id}-${index}-number`,
+    caption: `${id}-${index}-caption`,
+    title: `${id}-${index}-title`,
+    body: `${id}-${index}-body`,
+  };
   return {
     ...item,
+    ids,
     placement,
     corner: index % 2 === 0 ? [first, second] : [second, first],
     style: [
@@ -42,7 +51,8 @@ const cards = items.map((item, index) => {
         class="card"
         type="button"
         aria-pressed="false"
-        aria-label={`${card.number} ${card.caption}. ${card.title}`}
+        aria-labelledby={`${card.ids.number} ${card.ids.caption} ${card.ids.title}`}
+        aria-describedby={card.ids.body}
         style={card.style}
       >
         <span class="inner">
@@ -66,10 +76,14 @@ const cards = items.map((item, index) => {
             <span class="scatter" style={card.placement.dashes}>
               <Dashes size="0.75rem" />
             </span>
-            <span class="heavy number">{card.number}</span>
+            <span id={card.ids.number} class="heavy number">
+              {card.number}
+            </span>
             <span class="band">
               <span class="label sector">{card.sector}</span>
-              <span class="heavy caption">{card.caption}</span>
+              <span id={card.ids.caption} class="heavy caption">
+                {card.caption}
+              </span>
               <span class="label hint">
                 {labels.turnOver}
                 <FlipIcon />
@@ -78,8 +92,12 @@ const cards = items.map((item, index) => {
           </span>
           <span class="face back">
             <span class="label sector">{card.sector}</span>
-            <span class="heavy title">{card.title}</span>
-            <span class="body">{card.body}</span>
+            <span id={card.ids.title} class="heavy title">
+              {card.title}
+            </span>
+            <span id={card.ids.body} class="body">
+              {card.body}
+            </span>
             <span class="label hint">
               {labels.turnBack}
               <FlipIcon />
@@ -242,6 +260,12 @@ const cards = items.map((item, index) => {
     display: flex;
     align-items: flex-end;
     gap: 0.4rem;
+  }
+
+  @media (max-width: 39.99rem) {
+    .corner {
+      right: -0.25rem;
+    }
   }
 
   .scatter {

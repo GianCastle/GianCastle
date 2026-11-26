@@ -20,6 +20,7 @@
     "./decals": "./src/decals.ts",
     "./race-numbers": "./src/race-numbers.ts",
     "./section-plate": "./src/section-plate.ts",
+    "./site-head": "./src/site-head.ts",
     "./components/*": "./src/components/*"
   },
   "dependencies": {

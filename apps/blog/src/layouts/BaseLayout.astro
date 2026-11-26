@@ -2,12 +2,17 @@
 import '@/styles/global.css';
 import ActionRow from '@giancastle/ui/components/ActionRow.astro';
 import Closer from '@giancastle/ui/components/Closer.astro';
-import HeadAlternates from '@giancastle/ui/components/HeadAlternates.astro';
 import Masthead from '@giancastle/ui/components/Masthead.astro';
 import Pill from '@giancastle/ui/components/Pill.astro';
+import SiteHead from '@giancastle/ui/components/SiteHead.astro';
 import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
-import ThemeScript from '@giancastle/ui/components/ThemeScript.astro';
-import { otherLocale, type Locale, type LocaleAlternate } from '@giancastle/ui/locale';
+import {
+  fallbackPage,
+  otherLocale,
+  type Locale,
+  type LocaleAlternate,
+} from '@giancastle/ui/locale';
+import { OG_TYPE, type OgType } from '@giancastle/ui/site-head';
 import { AUTHOR } from '@giancastle/ui/sites';
 import { SITE_COPY } from '@/features/posts/posts.labels';
 import { DEFAULT_LOCALE } from '@/i18n';
@@ -20,21 +25,18 @@ interface Props {
   description?: string;
   image?: URL;
   jsonLd?: Record<string, unknown>;
-  ogType?: 'website' | 'article';
+  ogType?: OgType;
   masthead?: boolean;
 }
 
-const { locale, title, image, jsonLd, ogType = 'website', masthead = true } = Astro.props;
+const { locale, title, image, jsonLd, ogType = OG_TYPE.website, masthead = true } = Astro.props;
 const copy = SITE_COPY[locale];
 const routes = routesFor(locale);
 const { description = copy.description } = Astro.props;
-const alternate = Astro.props.alternate ?? {
-  locale: otherLocale(locale),
-  href: routesFor(otherLocale(locale)).home,
-};
+const alternate =
+  Astro.props.alternate ?? fallbackPage(otherLocale(locale), routesFor(otherLocale(locale)).home);
 
 const pageTitle = title ? `${title} · ${copy.title}` : copy.title;
-const canonical = new URL(Astro.url.pathname, Astro.site);
 const year = new Date().getFullYear();
 const navLinks = [
   { label: copy.navBlog, href: routes.home },
@@ -46,25 +48,20 @@ const navLinks = [
 <!doctype html>
 <html lang={locale}>
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <ThemeScript />
-    <title>{pageTitle}</title>
-    <meta name="description" content={description} />
-    <link rel="canonical" href={canonical} />
-    <HeadAlternates locale={locale} alternate={alternate} defaultLocale={DEFAULT_LOCALE} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="alternate" type="application/rss+xml" title={copy.title} href={routes.rss} />
-    <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta property="og:site_name" content={copy.title} />
-    <meta property="og:type" content={ogType} />
-    <meta property="og:locale" content={locale} />
-    <meta property="og:title" content={title ?? copy.title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={canonical} />
-    {image && <meta property="og:image" content={image} />}
-    <meta name="twitter:card" content={image ? 'summary_large_image' : 'summary'} />
-    {jsonLd && <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />}
+    <SiteHead
+      locale={locale}
+      defaultLocale={DEFAULT_LOCALE}
+      alternate={alternate}
+      title={pageTitle}
+      ogTitle={title ?? copy.title}
+      description={description}
+      siteName={copy.title}
+      ogType={ogType}
+      image={image}
+      jsonLd={jsonLd}
+    >
+      <link rel="alternate" type="application/rss+xml" title={copy.title} href={routes.rss} />
+    </SiteHead>
   </head>
   <body>
     <a

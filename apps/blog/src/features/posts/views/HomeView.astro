@@ -5,7 +5,7 @@ import Controls from '@giancastle/ui/components/Controls.astro';
 import Kicker from '@giancastle/ui/components/Kicker.astro';
 import Pill from '@giancastle/ui/components/Pill.astro';
 import Poster from '@giancastle/ui/components/Poster.astro';
-import { otherLocale, type Locale } from '@giancastle/ui/locale';
+import { equivalentPage, otherLocale, type Locale } from '@giancastle/ui/locale';
 import { AUTHOR } from '@giancastle/ui/sites';
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import { routesFor, WEB_HOME } from '@/routes';
@@ -22,7 +22,7 @@ interface Props {
 const { locale } = Astro.props;
 const copy = SITE_COPY[locale];
 const routes = routesFor(locale);
-const alternate = { locale: otherLocale(locale), href: routesFor(otherLocale(locale)).home };
+const alternate = equivalentPage(otherLocale(locale), routesFor(otherLocale(locale)).home);
 const posts = await getPublishedPosts(locale);
 ---
 
