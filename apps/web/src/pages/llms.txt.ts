@@ -26,7 +26,7 @@ const buildLlmsTxt = () =>
     '',
     ...section(
       proof.label,
-      proof.items.map(item => `- **${item.lead} / ${item.trail}**: ${item.body}`),
+      proof.items.map(item => `- **${item.title}** (${item.sector}): ${item.body}`),
     ),
     ...section(
       value.label,

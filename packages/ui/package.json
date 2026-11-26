@@ -18,10 +18,12 @@
     "./locale": "./src/locale.ts",
     "./stages": "./src/stages.ts",
     "./decals": "./src/decals.ts",
+    "./race-numbers": "./src/race-numbers.ts",
     "./components/*": "./src/components/*"
   },
   "dependencies": {
-    "@fontsource-variable/archivo": "^5.3.0"
+    "@fontsource-variable/archivo": "^5.3.0",
+    "@fontsource/barlow-condensed": "^5.3.0"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.12",

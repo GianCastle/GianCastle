@@ -1,4 +1,5 @@
 import type { DecalColor } from '@giancastle/ui/decals';
+import type { RaceNumber, RaceNumberLabels } from '@giancastle/ui/race-numbers';
 import type { Stage } from '@giancastle/ui/stages';
 
 type Cta = { label: string; href: string; download?: boolean };
@@ -6,7 +7,7 @@ type Cta = { label: string; href: string; download?: boolean };
 export type HomeContent = {
   profile: { role: string; focus: string; description: string; knowsAbout: readonly string[] };
   hero: { heading: string; sticker: string; tagline: string; cv: Cta; cta: Cta };
-  proof: { label: string; items: readonly { lead: string; trail: string; body: string }[] };
+  proof: { label: string; labels: RaceNumberLabels; items: readonly RaceNumber[] };
   value: {
     label: string;
     statement: readonly string[];
