@@ -12,8 +12,8 @@ export const HOME_ES: HomeContent = {
   hero: {
     heading: `${AUTHOR.name}, senior product engineer`,
     sticker: AUTHOR.name,
-    tagline:
-      'senior product engineer. Uso IA para entregar en semanas lo que los equipos planifican para un año.',
+    role: 'Senior Product Engineer.',
+    tagline: 'Uso IA para entregar en semanas lo que los equipos planifican para un año.',
     cv: CV_PUBLISHED ? { label: 'CV', href: pagePath(PAGE.cv, locale) } : undefined,
     cta: { label: 'Ver las pruebas', href: sectionHref(SECTION_ID.proof, locale) },
   },

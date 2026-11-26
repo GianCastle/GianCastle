@@ -8,6 +8,7 @@ import Kicker from '@giancastle/ui/components/Kicker.astro';
 import OfferList from '@giancastle/ui/components/OfferList.astro';
 import Pill from '@giancastle/ui/components/Pill.astro';
 import Poster from '@giancastle/ui/components/Poster.astro';
+import SlantBars from '@giancastle/ui/components/SlantBars.astro';
 import SocialLinks from '@giancastle/ui/components/SocialLinks.astro';
 import RaceNumbers from '@giancastle/ui/components/RaceNumbers.astro';
 import SectionPlate from '@giancastle/ui/components/SectionPlate.astro';
@@ -33,7 +34,10 @@ const sections = HOME_SECTIONS.map(id => ({ id, label: nav.sectionLabels[id] }))
 <BaseLayout locale={locale} alternate={alternate} jsonLd={buildProfileJsonLd(locale)}>
   <Poster lines={AUTHOR.wordmarkLines} sticker={hero.sticker} heading={hero.heading}>
     <Controls slot="corner" locale={locale} alternate={alternate} />
-    <Fragment slot="tagline">{hero.tagline}</Fragment>
+    <Fragment slot="tagline">
+      <span class="serif-line mb-2 block text-[1.2em] leading-none">{hero.role}</span>
+      {hero.tagline}
+    </Fragment>
     <ActionRow slot="actions">
       <SocialLinks />
       {hero.cv && <a href={hero.cv.href}>{hero.cv.label}</a>}
@@ -63,7 +67,7 @@ const sections = HOME_SECTIONS.map(id => ({ id, label: nav.sectionLabels[id] }))
       <div class="mt-5">
         <Heavy as="h2" size="title">
           <span class="block">{process.headline.lead}</span>
-          <span class="block text-accent">{process.headline.accent}</span>
+          <SlantBars>{process.headline.accent}</SlantBars>
         </Heavy>
       </div>
       <StageProfile stages={process.items} finishLabel={process.finish} />
