@@ -17,9 +17,15 @@ Over time I've used different coffees that come my way, but the usual one has a 
 
 ## So, what coffee is it?
 
+![The E'te Café logo, a kid walking with a bag over his shoulder](../img/ete-cafe-logo.png)
+
+It's roasted by **E'te Café**, a Dominican specialty coffee shop and roastery in Cambita, San Cristóbal, on the second floor of an old house. Heads up, they only open on weekends. 100% recommended if you want to spend an afternoon hanging out, joking around and drinking coffee with cookies (I'm still not over the cookies I had the last time I went).
+
+And it's not just me saying it. They placed among the 100 best coffee shops in North America, Central America and the Caribbean, at number 87, and they're one of four Dominican shops on that list. You'll find them on Instagram as [@ete.cafe](https://www.instagram.com/ete.cafe/).
+
 ![The Rancho Arriba bag from E'te Café with its card for farm, altitude, process, notes and roast](../img/espresso-rancho-arriba-bag.jpg)
 
-E'te Café is a coffee shop and roaster in Cambita, San Cristóbal, and this is their coffee from Rancho Arriba. Rancho Arriba sits in San José de Ocoa, up in the mountains of the Dominican Republic, and the bag tells you the rest. It comes from the Café Samir farm in Mahoma, at 1000 meters. It's a washed blend, medium roast, with **fruity and chocolate** notes.
+The one I use is their Rancho Arriba. Rancho Arriba sits in San José de Ocoa, up in the mountains of the Dominican Republic, and the bag tells you the rest. It comes from the Café Samir farm in Mahoma, at 1000 meters. It's a washed blend, medium roast, with **fruity and chocolate** notes.
 
 Those two notes are the whole story. Chocolate is what you want to stay in the cup. Fruity means acidity, and acidity handled badly is the first thing that scares off someone who doesn't drink coffee.
 
@@ -98,16 +104,6 @@ With the Silvia there's one more detail. It has a single boiler, so you can't pu
 Well steamed milk brings sweetness and body, but it also covers things up. That's why the espresso had to get there first. The latte I pull today is **very sweet without being too milky**, and you can still feel the coffee behind it.
 
 She, by the way, prefers it with oat milk, and it makes sense. Oat milk is much more neutral and lets the flavor and the notes of the espresso come through.
-
-## Go visit E'te Café
-
-![The E'te Café logo, a kid walking with a bag over his shoulder](../img/ete-cafe-logo.png)
-
-If this coffee made you curious, you have to meet the people who roast it. **E'te Café** is a Dominican specialty coffee shop and roastery in Cambita, San Cristóbal, on the second floor of an old house. Heads up, they only open on weekends. 100% recommended if you want to spend an afternoon hanging out, joking around and drinking coffee with cookies (I'm still not over the cookies I had the last time I went).
-
-And it's not just me saying it. They placed among the 100 best coffee shops in North America, Central America and the Caribbean, at number 87, and they're one of four Dominican shops on that list.
-
-You'll find them on Instagram as [@ete.cafe](https://www.instagram.com/ete.cafe/).
 
 ## That's it
 
