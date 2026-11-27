@@ -50,9 +50,9 @@ El otro cambio grande fue el molino. Con el Sculptor pude por fin mover la molie
 
 ## La receta
 
-![La receta, 19.3 gramos de café, agua a 100 grados y 38 segundos de extracción](../img/espresso-recipe-es.svg)
+![La receta, 19.3 gramos de café, 38.6 gramos en taza, agua a 100 grados y 38 segundos de extracción](../img/espresso-recipe-es.svg)
 
-Son 19.3 gramos de café en una canasta plana, agua a 100° y **38 segundos** de extracción, sin preinfusión. <mark>Cuántos gramos salen en la taza.</mark>
+Son 19.3 gramos de café en una canasta plana, agua a 100° y **38 segundos** de extracción, sin preinfusión. En la taza quedan 38.6 gramos, o sea un ratio de 1 a 2 clavado.
 
 Treinta y ocho segundos es más de lo que recomienda casi cualquier guía, y es a propósito.
 

@@ -51,9 +51,9 @@ The other big change was the grinder. With the Sculptor I could finally move the
 
 ## The recipe
 
-![The recipe, 19.3 grams of coffee, water at 100 degrees and 38 seconds of extraction](../img/espresso-recipe-en.svg)
+![The recipe, 19.3 grams of coffee, 38.6 grams in the cup, water at 100 degrees and 38 seconds of extraction](../img/espresso-recipe-en.svg)
 
-It's 19.3 grams of coffee in a flat basket, water at 100° and **38 seconds** of extraction, with no pre-infusion. <mark>How many grams end up in the cup.</mark>
+It's 19.3 grams of coffee in a flat basket, water at 100° and **38 seconds** of extraction, with no pre-infusion. The cup ends up with 38.6 grams, so an exact 1 to 2 ratio.
 
 Thirty-eight seconds is longer than almost any guide recommends, and that's on purpose.
 
