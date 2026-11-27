@@ -3,78 +3,94 @@ title: 'El espresso que por fin aguantó la leche'
 date: 2026-11-27 12:00:00
 category: coffee
 draft: false
-image: ../img/espresso-rancho-arriba.png
+image: ../img/espresso-setup.jpg
 ---
 
-En mi casa pasa algo curioso. La gente llega "a saludar" y a los cinco minutos ya está preguntando si hay café. Y no hablo solo de los cafeteros... hablo de gente que te dice de frente que el café no le gusta (y aun así se toma el suyo, y a veces repite).
+En mi casa pasa algo curioso. La gente llega "a saludar" y a los cinco minutos ya está preguntando si hay café. Y no hablo solo de los cafeteros... hablo de gente que te dice de frente que el café no le gusta (y aun así se toma el suyo).
 
-Ese café tiene nombre. Es el **Rancho Arriba de Été Café**, y en este post te cuento cómo lo llevé a un espresso dulce y suave, lo bastante noble como para que por fin pudiera echarle leche y hacer un latte o un cappuccino sin que se me perdiera en el camino.
+Ese café tiene nombre. Es el **Rancho Arriba de Été Café**, y en este post te cuento cómo llegué a un espresso dulce y suave, lo bastante noble como para echarle leche y servir un latte sin que el café se pierda. Te adelanto algo... no fue rápido ni fue bonito.
 
-> Aviso de borrador. Todo lo que ves marcado <mark>así</mark> es un dato que todavía tengo que llenar yo, y los gráficos con la etiqueta rosada son de ejemplo.
+> Aviso de borrador. Lo que ves marcado <mark>así</mark> todavía me falta por llenar, y el gráfico del perfil es un ejemplo.
 
 ## A ver, ¿qué café es?
 
-Rancho Arriba queda en San José de Ocoa, en plena zona de montaña, y es una de las zonas cafetaleras conocidas del país. De ahí viene este café.
+![La funda del Rancho Arriba de Été Café con su ficha de finca, altura, proceso, notas y tueste](../img/espresso-rancho-arriba-bag.jpg)
 
-<mark>P1 · Lo que dice la funda. Nivel de tueste, notas de cata, proceso, variedad y altura.</mark>
+Rancho Arriba queda en San José de Ocoa, en plena zona de montaña, y la funda te cuenta el resto. Viene de la finca Café Samir, en Mahoma, a 1000 metros de altura. Es un blend de proceso lavado y tueste medio, con notas **frutales y de chocolate**.
 
-Lo que me atrapó fue <mark>P1 · por qué elegí este café y no otro</mark>.
+Esas dos notas son toda la historia. El chocolate es lo que quieres que se quede en la taza. Lo frutal es acidez, y una acidez mal llevada es lo primero que espanta a alguien que no toma café.
 
-## El problema con un espresso claro
+## Con qué lo hago
 
-Míralo así. Un espresso es agua caliente pasando a presión por café molido durante unos segundos, y en ese rato tiene que llevarse lo bueno del grano. Si se lleva muy poco, la taza queda **ácida** y flaca. Si se lleva demasiado, queda **amarga** y seca. Lo dulce vive en el medio.
+Mi máquina es una Rancilio Silvia. El molino es un Timemore Sculptor 064S y la balanza una Timemore mini, que me muestra el peso y el flujo en el tiempo.
 
-![El mapa de una taza, de aguada a fuerte y de ácida a amarga, con lo dulce en el centro](../img/espresso-map-es.svg)
+Antes del Sculptor usaba un Baratza Encore. Es un buen molino para empezar y para el café de todos los días, pero para afinar un espresso se me quedaba corto.
 
-Con un café de tueste claro el reto es mayor, porque el grano es más denso y suelta menos de lo suyo en el mismo tiempo. Por eso es tan fácil terminar en la esquina ácida del mapa. Y ahí la leche no perdona. Un tiro ácido con leche no sabe a latte, sabe a que algo salió mal.
+## Los primeros tiros fueron horribles
 
-Eso fue lo que me pasó al principio. <mark>P5 · Cómo sabían mis primeros tiros y qué pasaba cuando les echaba leche.</mark>
+No lo voy a adornar. El primero tardó una eternidad en salir y sabía a **carbón**.
 
-## La receta
+Míralo así. Un espresso es agua caliente pasando a presión por café molido, y en ese rato tiene que llevarse lo bueno del grano. Si se lleva muy poco, la taza queda ácida y flaca. Si se lleva demasiado, queda amarga y seca. Lo dulce vive en el medio.
 
-Después de varios intentos, esta es la receta con la que me quedé.
+![El mapa de una taza, de aguada a fuerte y de ácida a amarga, con lo dulce en el centro y mis primeros tiros en la esquina amarga](../img/espresso-map-es.svg)
 
-![La receta en cuatro números, dosis, rendimiento, ratio y tiempo](../img/espresso-recipe-es.svg)
+Un tiro que tarda una eternidad se lleva demasiado. Por eso mis primeros tiros vivían en la esquina amarga del mapa, bien lejos del centro.
 
-<mark>P3 · Dosis, gramos en taza, tiempo y temperatura. También la canasta que uso.</mark>
-
-¿Por qué esos números? <mark>P3 · La razón detrás de la receta, por ejemplo un ratio más largo o agua más caliente.</mark>
-
-## El perfil del tiro
-
-Una receta te dice dónde terminó el tiro. El perfil te dice **cómo llegó**. Es la presión, el flujo y el peso segundo a segundo, y es el gráfico con el que el mundo del espresso se explica a sí mismo.
-
-![El perfil de un tiro con la presión, el flujo y el peso en el tiempo](../img/espresso-profile-es.svg)
-
-<mark>P2 · Mi máquina, mi molino y mi balanza, y si alguno me da esta curva.</mark>
-
-<mark>P4 · Si hago preinfusión o algún truco con la presión o el flujo, y qué le hace a la taza.</mark>
+Hubo días en que me rendí. Probé a ponerle azúcar de caña a la leche y hasta intenté espressos cubanos, que al final es otra forma de arreglarlo con azúcar. Y en el camino boté unas cuantas libras de Rancho Arriba. Bastantes.
 
 ## Afinar es depurar
 
 Aquí es donde el ingeniero se me sale. Afinar un espresso es lo mismo que depurar un bug. Cambias **una sola cosa**, corres la prueba, lees el resultado y decides el próximo cambio. Si cambias tres cosas a la vez no aprendes nada (igualito que en el código).
 
-![El tiempo de cada tiro frente al objetivo mientras ajusto la molienda](../img/espresso-dial-in-es.svg)
+Lo que más me costó fue la presión. La tuve que medir y ajustar a mano en la máquina, por recomendación de un amigo, y me tomó un buen rato entenderla porque es un proceso muy visual y muy artesanal. Aquí no hay un log que leer, hay que mirar el tiro. <mark>A qué presión la dejé, si tengo el número.</mark>
 
-<mark>P6 · Qué fui cambiando, en qué orden y cuántos tiros me tomó llegar.</mark>
+El otro cambio grande fue el molino. Con el Sculptor pude por fin mover la molienda en pasos pequeños, y eso es lo que te deja acercarte al centro del mapa en vez de saltarlo de un lado a otro.
 
 > Mide, no asumas. Vale para un contraste de color y vale para una taza de café.
+
+## La receta
+
+![La receta, 19.3 gramos de café, agua a 100 grados y 38 segundos de extracción](../img/espresso-recipe-es.svg)
+
+Son 19.3 gramos de café en una canasta plana, agua a 100° y **38 segundos** de extracción, sin preinfusión. <mark>Cuántos gramos salen en la taza.</mark>
+
+Treinta y ocho segundos es más de lo que recomienda casi cualquier guía, y es a propósito.
+
+Al dejar correr la extracción unos segundos más, no es que elimines el ácido que ya cayó en la taza, sino que lo diluyes y lo equilibras extrayendo más cuerpo y amargor. Para alguien que no está acostumbrado al espresso (que suele asociar la acidez con algo agrio o desagradable), esto hace que la bebida sea mucho más amigable.
+
+Ahí está el truco para la gente que "no toma café". No les cambié el café, **les quité el susto**.
+
+## El perfil del tiro
+
+Una receta te dice dónde terminó el tiro. El perfil te dice cómo llegó. Mi balanza dibuja el peso y el flujo segundo a segundo, y esa curva es la forma más honesta de saber si dos tiros fueron de verdad iguales.
+
+![El perfil de un tiro con el flujo y el peso en el tiempo hasta el corte a los 38 segundos](../img/espresso-profile-es.svg)
+
+<mark>Aquí va la curva real de mi balanza. La de arriba es un ejemplo.</mark>
 
 ## Dulce y suave
 
 ¿Y cómo sé que llegué? Porque la taza cambió de forma.
 
-![El primer tiro frente al bueno en dulzor, acidez, cuerpo, amargor, retrogusto y balance](../img/espresso-cup-es.svg)
+![Los primeros tiros frente al de hoy en dulzor, acidez, cuerpo, amargor, retrogusto y balance](../img/espresso-cup-es.svg)
 
-<mark>P7 · Cómo sabe ahora, con mis palabras, y una nota del 1 al 10 en cada atributo para el primer tiro y para el bueno.</mark>
+Esto no es una cata con puntajes, es mi memoria dibujada. Los primeros eran puro amargor y casi nada de dulce. El de hoy es dulce y suave, con el chocolate al frente y lo frutal acompañando sin pelear.
 
 ## Y por fin, la leche
 
-Esta era la meta desde el principio. La leche vaporizada pone dulzor y cuerpo, pero también tapa. Si el espresso llega flojo, desaparece. Si llega ácido, pelea con ella. Tiene que llegar dulce y con suficiente carácter para que se sienta **detrás** de la leche.
+La leche sigue siendo un trabajo en progreso. Estoy probando literalmente todas las que encuentro, y la que mejor me ha funcionado hasta ahora es la <mark>President (confirmar el nombre exacto de la marca)</mark>.
 
-<mark>P8 · Qué leche uso, cuánta, si es latte o cappuccino, y qué fue lo que antes no me salía.</mark>
+La leche vaporizada pone dulzor y cuerpo, pero también tapa. Por eso el espresso tenía que llegar primero. El latte que me sale hoy es **muy dulce sin ser demasiado lechoso**, y el café todavía se siente detrás.
 
-Y aquí vuelve la gente del principio. <mark>P9 · La anécdota de alguien que no toma café y se tomó el mío, y lo que dijo.</mark>
+Mi esposa lo prefiere con leche de avena, y tiene sentido. La avena es mucho más neutra y deja pasar mejor el sabor y las notas del espresso.
+
+## La gente
+
+Tengo un amigo que nunca ha sido de café. Cada vez que me visita me pide uno, y siempre me dice lo mismo, que el mío sí se lo puede tomar sin problema. Para mí no hay mejor puntaje para una taza.
+
+Y está mi esposa. El día de nuestra boda le prometí que le iba a servir un latte todos los días, porque el café fue una de las cosas que nos unió. He tratado de cumplirlo (obviamente ha habido días en que no se ha podido).
+
+> Visto así, las libras botadas, el molino nuevo y los 38 segundos también son parte de esa promesa.
 
 ## En fin
 
