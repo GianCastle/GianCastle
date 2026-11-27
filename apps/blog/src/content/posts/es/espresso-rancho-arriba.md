@@ -1,5 +1,5 @@
 ---
-title: 'El espresso que por fin aguantó la leche'
+title: 'De carbón a latte'
 date: 2026-11-27 12:00:00
 category: coffee
 draft: false
