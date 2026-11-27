@@ -1,5 +1,5 @@
 ---
-title: 'The espresso that finally stood up to milk'
+title: 'From charcoal to latte'
 date: 2026-11-27 12:00:00
 category: coffee
 draft: false
