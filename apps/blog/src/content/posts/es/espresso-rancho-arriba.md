@@ -16,9 +16,15 @@ Con el tiempo he ido usando varios cafés que me llegan, pero el de siempre tien
 
 ## A ver, ¿qué café es?
 
+![El logo de E'te Café, un muchacho caminando con su bulto al hombro](../img/ete-cafe-logo.png)
+
+Lo tuesta **E'te Café**, una cafetería y tostaduría de café de especialidad dominicano en Cambita, San Cristóbal, en el segundo piso de un casón. Ojo, abren solo los fines de semana. 100% recomendados si quieres pasarte una tarde en vacanería, chercha y café con galletas (todavía no supero las galletas que probé la última vez que fui).
+
+Y no lo digo solo yo. Quedaron entre las 100 mejores cafeterías de Norteamérica, Centroamérica y el Caribe, en el puesto 87, y son una de las cuatro dominicanas de esa lista. Los encuentras en Instagram como [@ete.cafe](https://www.instagram.com/ete.cafe/).
+
 ![La funda del Rancho Arriba de E'te Café con su ficha de finca, altura, proceso, notas y tueste](../img/espresso-rancho-arriba-bag.jpg)
 
-E'te Café es una cafetería y tostadora de Cambita, San Cristóbal, y este es su café de Rancho Arriba. Rancho Arriba queda en San José de Ocoa, en plena zona de montaña, y la funda te cuenta el resto. Viene de la finca Café Samir, en Mahoma, a 1000 metros de altura. Es un blend de proceso lavado y tueste medio, con notas **frutales y de chocolate**.
+El que yo uso es su Rancho Arriba. Rancho Arriba queda en San José de Ocoa, en plena zona de montaña, y la funda te cuenta el resto. Viene de la finca Café Samir, en Mahoma, a 1000 metros de altura. Es un blend de proceso lavado y tueste medio, con notas **frutales y de chocolate**.
 
 Esas dos notas son toda la historia. El chocolate es lo que quieres que se quede en la taza. Lo frutal es acidez, y una acidez mal llevada es lo primero que espanta a alguien que no toma café.
 
@@ -97,16 +103,6 @@ Con la Silvia hay un detalle más. Tiene una sola caldera, así que no puedes sa
 Una leche bien cremada pone dulzor y cuerpo, pero también tapa. Por eso el espresso tenía que llegar primero. El latte que me sale hoy es **muy dulce sin ser demasiado lechoso**, y el café todavía se siente detrás.
 
 Ella, por cierto, lo prefiere con leche de avena, y tiene sentido. La avena es mucho más neutra y deja pasar mejor el sabor y las notas del espresso.
-
-## Pásate por E'te Café
-
-![El logo de E'te Café, un muchacho caminando con su bulto al hombro](../img/ete-cafe-logo.png)
-
-Si este café te dio curiosidad, tienes que conocer a quienes lo tuestan. **E'te Café** es una cafetería y tostaduría de café de especialidad dominicano en Cambita, San Cristóbal, en el segundo piso de un casón. Ojo, abren solo los fines de semana. 100% recomendados si quieres pasarte una tarde en vacanería, chercha y café con galletas (todavía no supero las galletas que probé la última vez que fui).
-
-Y no lo digo solo yo. Quedaron entre las 100 mejores cafeterías de Norteamérica, Centroamérica y el Caribe, en el puesto 87, y son una de las cuatro dominicanas de esa lista.
-
-Los encuentras en Instagram como [@ete.cafe](https://www.instagram.com/ete.cafe/).
 
 ## En fin
 
