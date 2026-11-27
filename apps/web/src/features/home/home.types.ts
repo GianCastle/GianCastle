@@ -25,5 +25,5 @@ export type HomeContent = {
     label: string;
     items: readonly { tag: string; title: string; body: string; featured?: boolean; cta: Cta }[];
   };
-  closer: { title: string; tagline: string; blog: Cta; cv?: Cta; note: string; colophon: string };
+  closer: { title: string; tagline: string; blog: Cta; cv?: Cta; colophon: string };
 };
