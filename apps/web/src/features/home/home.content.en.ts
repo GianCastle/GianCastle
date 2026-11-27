@@ -3,7 +3,7 @@ import { LOCALE } from '@giancastle/ui/locale';
 import { STAGE_OWNER } from '@giancastle/ui/stages';
 import { AUTHOR, SITE, siteHref } from '@giancastle/ui/sites';
 import { CV_PDF_PATH, CV_PUBLISHED, PAGE, SECTION_ID, pagePath, sectionHref } from '@/routes';
-import { AI_STACK_LINE, CONTACT_HREF, STACK_LINE } from './home.shared';
+import { CONTACT_HREF } from './home.shared';
 import type { HomeContent } from './home.types';
 
 const locale = LOCALE.en;
@@ -196,7 +196,7 @@ export const HOME_EN: HomeContent = {
     cv: CV_PUBLISHED
       ? { label: 'Download CV', href: CV_PDF_PATH[locale], download: true }
       : undefined,
-    note: `${AI_STACK_LINE}, spec-driven development. ${STACK_LINE}. Santo Domingo. Remote. Usually out before sunrise.`,
+    note: 'Santo Domingo, working remote. Most mornings I’m on the bike before the sun’s up.',
     colophon: 'Frame: Astro. Groupset: TypeScript. Paint: off a Scott Foil RC.',
   },
 };

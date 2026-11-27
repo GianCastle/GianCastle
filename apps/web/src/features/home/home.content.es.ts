@@ -3,7 +3,7 @@ import { LOCALE } from '@giancastle/ui/locale';
 import { STAGE_OWNER } from '@giancastle/ui/stages';
 import { AUTHOR, SITE, siteHref } from '@giancastle/ui/sites';
 import { CV_PDF_PATH, CV_PUBLISHED, PAGE, SECTION_ID, pagePath, sectionHref } from '@/routes';
-import { AI_STACK_LINE, CONTACT_HREF, STACK_LINE } from './home.shared';
+import { CONTACT_HREF } from './home.shared';
 import type { HomeContent } from './home.types';
 
 const locale = LOCALE.es;
@@ -196,7 +196,7 @@ export const HOME_ES: HomeContent = {
     cv: CV_PUBLISHED
       ? { label: 'Descargar CV', href: CV_PDF_PATH[locale], download: true }
       : undefined,
-    note: `${AI_STACK_LINE}, desarrollo guiado por specs. ${STACK_LINE}. Santo Domingo. Remoto. Casi siempre fuera antes del amanecer.`,
+    note: 'Desde Santo Domingo, en remoto. Casi todas las mañanas ya voy rodando antes del amanecer.',
     colophon: 'Cuadro: Astro. Grupo: TypeScript. Pintura: de una Scott Foil RC.',
   },
 };
