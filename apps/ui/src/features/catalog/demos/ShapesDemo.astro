@@ -5,38 +5,46 @@ import { DECAL_COLORS, DECAL_SHAPE } from '@giancastle/ui/decals';
 const SHAPES = Object.values(DECAL_SHAPE);
 ---
 
-<table>
-  <thead>
-    <tr class="label">
-      <td></td>
-      {DECAL_COLORS.map(color => (
-        <th scope="col">{color}</th>
-      ))}
-      <th scope="col">text color</th>
-    </tr>
-  </thead>
-  <tbody>
-    {SHAPES.map(shape => (
-      <tr>
-        <th scope="row" class="label">
-          {shape}
-        </th>
+<div class="scroller" role="region" aria-label="Shapes by color" tabindex="0">
+  <table>
+    <thead>
+      <tr class="label">
+        <td></td>
         {DECAL_COLORS.map(color => (
-          <td>
-            <Decal shape={shape} color={color} size="2.75rem" />
-          </td>
+          <th scope="col">{color}</th>
         ))}
-        <td>
-          <Decal shape={shape} size="2.75rem" />
-        </td>
+        <th scope="col">text color</th>
       </tr>
-    ))}
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      {SHAPES.map(shape => (
+        <tr>
+          <th scope="row" class="label">
+            {shape}
+          </th>
+          {DECAL_COLORS.map(color => (
+            <td>
+              <Decal shape={shape} color={color} size="2.75rem" />
+            </td>
+          ))}
+          <td>
+            <Decal shape={shape} size="2.75rem" />
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
 
 <style>
+  .scroller {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
   table {
     width: 100%;
+    min-width: max-content;
     max-width: 36rem;
     border-collapse: collapse;
     text-align: left;
