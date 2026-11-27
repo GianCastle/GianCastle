@@ -196,6 +196,7 @@ export const HOME_EN: HomeContent = {
     cv: CV_PUBLISHED
       ? { label: 'Download CV', href: CV_PDF_PATH[locale], download: true }
       : undefined,
+    note: 'Santo Domingo, working remote. Most mornings I’m on the bike before the sun’s up.',
     colophon: 'Frame: Astro. Groupset: TypeScript. Paint: off a Scott Foil RC.',
   },
 };

@@ -196,6 +196,7 @@ export const HOME_ES: HomeContent = {
     cv: CV_PUBLISHED
       ? { label: 'Descargar CV', href: CV_PDF_PATH[locale], download: true }
       : undefined,
+    note: 'Desde Santo Domingo, en remoto. Casi todas las mañanas ya voy rodando antes del amanecer.',
     colophon: 'Cuadro: Astro. Grupo: TypeScript. Pintura: de una Scott Foil RC.',
   },
 };
