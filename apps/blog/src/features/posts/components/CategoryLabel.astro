@@ -1,6 +1,8 @@
 ---
 import type { Locale } from '@giancastle/ui/locale';
+import SteamingCup from './SteamingCup.astro';
 import {
+  CATEGORY,
   CATEGORY_COLOR,
   CATEGORY_FILL_OF,
   CATEGORY_LABEL,
@@ -24,6 +26,7 @@ const color = CATEGORY_COLOR[category];
   class:list={['label', 'category', CATEGORY_FILL_OF[category], { taped }]}
   data-decal={color}
 >
+  {category === CATEGORY.coffee && <SteamingCup />}
   {label}
 </a>
 
