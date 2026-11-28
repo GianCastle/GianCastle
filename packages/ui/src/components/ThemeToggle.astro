@@ -86,4 +86,14 @@ const config = {
     background: var(--accent);
     box-shadow: inset -0.22em 0 0 currentColor;
   }
+
+  @media (max-width: 30rem) {
+    .theme-toggle {
+      padding-inline: 0.75em;
+    }
+
+    [data-theme-toggle-label] {
+      display: none;
+    }
+  }
 </style>
