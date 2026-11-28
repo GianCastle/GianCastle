@@ -41,7 +41,7 @@ I won't dress it up. The first one took forever to come out and tasted like **ch
 
 Look at it this way. An espresso is hot water pushed through ground coffee, and in that time it has to take the good stuff out of the bean. Take too little and the cup turns sour and thin. Take too much and it turns bitter and dry. Sweet lives in the middle.
 
-![The map of a cup, from watery to strong and from sour to bitter, with sweet in the center and my first shots in the bitter corner](../img/espresso-map-en.svg)
+![The map of a cup, from watery to strong and from sour to bitter, with sweet in the center and my first shots in the bitter corner](../img/espresso-map-en.svg)![The map of a cup, from watery to strong and from sour to bitter, with sweet in the center and my first shots in the bitter corner](../img/espresso-map-en-light.svg)
 
 A shot that takes forever takes too much. That's why my first shots lived in the bitter corner of the map, far from the center.
 
@@ -59,7 +59,7 @@ The other big change was the grinder. With the Sculptor I could finally move the
 
 ## The recipe
 
-![The recipe, 19.3 grams of coffee, 38.6 grams in the cup, water at 100 degrees and 38 seconds of extraction](../img/espresso-recipe-en.svg)
+![The recipe, 19.3 grams of coffee, 38.6 grams in the cup, water at 100 degrees and 38 seconds of extraction](../img/espresso-recipe-en.svg)![The recipe, 19.3 grams of coffee, 38.6 grams in the cup, water at 100 degrees and 38 seconds of extraction](../img/espresso-recipe-en-light.svg)
 
 It's 19.3 grams of coffee in a flat basket, water at 100° and **38 seconds** of extraction, with no pre-infusion. The cup ends up with 38.6 grams, so an exact 1 to 2 ratio.
 
@@ -75,7 +75,7 @@ I have a friend who has never been a coffee person. Every time he visits he asks
 
 A recipe tells you where the shot ended. The profile tells you how it got there. My scale shows weight and flow second by second, and that is the most honest way to know whether two shots were really the same.
 
-![The shot rebuilt from the recipe, 38.6 grams in 38 seconds at one gram per second on average](../img/espresso-profile-en.svg)
+![The shot rebuilt from the recipe, 38.6 grams in 38 seconds at one gram per second on average](../img/espresso-profile-en.svg)![The shot rebuilt from the recipe, 38.6 grams in 38 seconds at one gram per second on average](../img/espresso-profile-en-light.svg)
 
 I didn't save the curve from the scale, so I rebuilt this one from the recipe. The endpoints are real, 38.6 grams at 38 seconds, which gives an average flow of roughly **one gram per second**. A real shot doesn't come out in a straight line (it starts slow and opens up), but it works as a reference. If the next shot reaches 38.6 grams much earlier or much later, something changed.
 
@@ -83,7 +83,7 @@ I didn't save the curve from the scale, so I rebuilt this one from the recipe. T
 
 And how do I know I got there? Because the cup changed shape.
 
-![The first shots against today in sweetness, acidity, body, bitterness, aftertaste and balance](../img/espresso-cup-en.svg)
+![The first shots against today in sweetness, acidity, body, bitterness, aftertaste and balance](../img/espresso-cup-en.svg)![The first shots against today in sweetness, acidity, body, bitterness, aftertaste and balance](../img/espresso-cup-en-light.svg)
 
 This isn't a scored cupping, it's my memory drawn out. The first ones were all bitterness and almost no sweetness. Today's is sweet and soft, with chocolate up front and the fruit tagging along without a fight.
 
@@ -97,7 +97,7 @@ Steaming milk (here we call it _cremar_) looks easy until you try it. Learning t
 
 The idea is to let air in at the start, with the tip of the wand just under the surface (it sounds like paper tearing), and then sink it a little so the milk spins in a whirlpool and those bubbles turn into a fine cream. Too much air and you get pure foam, too much heat and the milk loses its sweetness. I started with a thermometer, but over time I learned to read the temperature with my hand.
 
-![Milk temperature while steaming, air first up to 37 degrees and then a whirlpool until you stop between 60 and 65](../img/espresso-milk-en.svg)
+![Milk temperature while steaming, air first up to 37 degrees and then a whirlpool until you stop between 60 and 65](../img/espresso-milk-en.svg)![Milk temperature while steaming, air first up to 37 degrees and then a whirlpool until you stop between 60 and 65](../img/espresso-milk-en-light.svg)
 
 With the Silvia there's one more detail. It has a single boiler, so you can't pull the shot and steam at the same time. I pull the shot first and steam after.
 

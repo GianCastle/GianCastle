@@ -35,7 +35,7 @@ What I cared about wasn't following a trend, but understanding **why** it works 
 
 ## From frame to tokens
 
-![The palette tokens, five neutrals for the frame and three colors with their variants](../img/design-language-palette.svg)
+![The palette tokens, five neutrals for the frame and three colors with their variants](../img/design-language-palette.svg)![The palette tokens, five neutrals for the frame and three colors with their variants](../img/design-language-palette-light.svg)
 
 The bike gave me the mapping almost for free. The white of the frame became the `plain` tone and the carbon became the `contrast` tone. Every section declares which one it lives in, and components never pick their own background, they just read `--bg` and `--fg` from the tone they land in. The decision has a cost (you can't paint a component "just because") but in exchange the same component works on a light band, a dark band and in both themes without a single condition.
 
@@ -43,7 +43,7 @@ Now, here's the part nobody tells you. Paint doesn't translate straight into CSS
 
 Does it actually work? I measured it for this post.
 
-![WCAG contrast of each variant on the light and the dark surface](../img/design-language-contrast.svg)
+![WCAG contrast of each variant on the light and the dark surface](../img/design-language-contrast.svg)![WCAG contrast of each variant on the light and the dark surface](../img/design-language-contrast-light.svg)
 
 The bright variants go from 5.63 to 8.80 on the dark surface, well above the 4.5 WCAG AA asks for. The deep ones on the light surface pass too... now. When I first measured, deep teal (`#0e7480`) landed at **4.40**, just under the line. I found it while writing this post.
 
@@ -59,7 +59,7 @@ I copied that structure as is, no shame. Barlow Condensed in black italic for th
 
 Colors were the start, but I wanted to go further. So I sat down to study the visual language of the NSN team on Instagram, how they put together their announcements, their kits and their race numbers. Not to copy anything, but to understand which devices they kept repeating and why they worked.
 
-![From the kit to the system, each piece of the bike and the jersey with the component that came out of it](../img/design-language-map-en.svg)
+![From the kit to the system, each piece of the bike and the jersey with the component that came out of it](../img/design-language-map-en.svg)![From the kit to the system, each piece of the bike and the jersey with the component that came out of it](../img/design-language-map-en-light.svg)
 
 Four pieces came out of that, and they're components now.
 
@@ -77,7 +77,7 @@ Four pieces came out of that, and they're components now.
 
 As an engineer, what mattered most to me was that this didn't end up as a CSS file full of loose colors (we've all seen one of those). The rule was simple. **One source of truth**, and let the compiler defend it.
 
-![A shared package the three sites consume, with the type check before every deploy](../img/design-language-system.svg)
+![A shared package the three sites consume, with the type check before every deploy](../img/design-language-system.svg)![A shared package the three sites consume, with the type check before every deploy](../img/design-language-system-light.svg)
 
 Everything lives in a shared package the three sites consume. Colors, shapes, labels and sites are typed records, so if tomorrow I add a new site it shows up on its own in the plate and the footer of all three.
 
