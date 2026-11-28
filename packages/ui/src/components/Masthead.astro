@@ -31,8 +31,10 @@ const { wordmark, eyebrow, href, links = [], locale = LOCALE.en, alternate } = A
         {link.label}
       </a>
     ))}
-    <Controls locale={locale} alternate={alternate} />
   </nav>
+  <div class="controls">
+    <Controls locale={locale} alternate={alternate} />
+  </div>
 </header>
 
 <style>
@@ -40,8 +42,7 @@ const { wordmark, eyebrow, href, links = [], locale = LOCALE.en, alternate } = A
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem 2rem;
+    gap: 0.75rem 1.5rem;
     padding: 1rem var(--gutter);
   }
 
@@ -65,7 +66,7 @@ const { wordmark, eyebrow, href, links = [], locale = LOCALE.en, alternate } = A
 
   .wordmark {
     display: block;
-    font-size: 2.6rem;
+    font-size: clamp(1.9rem, 9.5vw, 2.6rem);
     line-height: 0.82;
     color: transparent;
     background: linear-gradient(to bottom, var(--fg) 0 46%, var(--orange) 46% 100%);
@@ -92,6 +93,23 @@ const { wordmark, eyebrow, href, links = [], locale = LOCALE.en, alternate } = A
     flex-wrap: wrap;
     align-items: center;
     gap: 0.75rem 1.5rem;
+    margin-left: auto;
+  }
+
+  .controls {
+    display: flex;
+  }
+
+  @media (max-width: 56rem) {
+    nav {
+      order: 1;
+      flex-basis: 100%;
+      margin-left: 0;
+    }
+
+    .controls {
+      margin-left: auto;
+    }
   }
 
   nav a.label {
