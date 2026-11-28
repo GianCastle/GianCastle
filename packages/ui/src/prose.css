@@ -205,6 +205,12 @@
     rotate: 0.9deg;
   }
 
+  /* A chart with a baked background ships as a pair, name.svg followed by name-light.svg. */
+  :root[data-theme='light'] .prose img:has(+ img[src*='-light.']),
+  :root[data-theme='dark'] .prose img[src*='-light.'] {
+    display: none;
+  }
+
   .prose hr {
     height: 0.8rem;
     margin-block: 3em;

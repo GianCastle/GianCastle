@@ -34,7 +34,7 @@ Lo que me interesaba no era seguir una tendencia, sino entender **por qué** fun
 
 ## Del cuadro a los tokens
 
-![Los tokens de la paleta, cinco neutrales para el cuadro y tres colores con sus variantes](../img/design-language-palette.svg)
+![Los tokens de la paleta, cinco neutrales para el cuadro y tres colores con sus variantes](../img/design-language-palette.svg)![Los tokens de la paleta, cinco neutrales para el cuadro y tres colores con sus variantes](../img/design-language-palette-light.svg)
 
 La bici me dio el mapeo casi gratis. El blanco del cuadro se volvió el tono `plain` y el carbono se volvió el tono `contrast`. Cada sección declara en cuál vive, y los componentes nunca eligen su fondo, simplemente leen `--bg` y `--fg` del tono donde caen. La decisión tiene un costo (no puedes pintar un componente "porque sí") pero a cambio el mismo componente funciona en una banda clara, en una oscura y en los dos temas sin una sola condición.
 
@@ -42,7 +42,7 @@ Ahora, aquí viene la parte que nadie te cuenta. La pintura no se traduce direct
 
 ¿Y eso funciona de verdad? Lo medí para este post.
 
-![Contraste WCAG de cada variante sobre el fondo claro y sobre el oscuro](../img/design-language-contrast.svg)
+![Contraste WCAG de cada variante sobre el fondo claro y sobre el oscuro](../img/design-language-contrast.svg)![Contraste WCAG de cada variante sobre el fondo claro y sobre el oscuro](../img/design-language-contrast-light.svg)
 
 Las variantes brillantes van de 5.63 a 8.80 sobre el fondo oscuro, muy por encima del 4.5 que pide WCAG AA. Las profundas sobre el fondo claro también pasan... ahora. Cuando lo medí por primera vez, el turquesa profundo (`#0e7480`) se quedaba en **4.40**, apenas por debajo de la línea. Lo encontré escribiendo este post.
 
@@ -58,7 +58,7 @@ Copié esa estructura tal cual, sin pena. Barlow Condensed en negra cursiva para
 
 Los colores eran el comienzo, pero quería ir más allá. Así que me senté a estudiar el lenguaje visual del equipo NSN en Instagram, cómo arman sus anuncios, sus kits y sus dorsales. No para copiar nada, sino para entender qué recursos repetían una y otra vez y por qué funcionaban.
 
-![Del kit al sistema, cada pieza de la bici y del maillot con el componente que salió de ella](../img/design-language-map-es.svg)
+![Del kit al sistema, cada pieza de la bici y del maillot con el componente que salió de ella](../img/design-language-map-es.svg)![Del kit al sistema, cada pieza de la bici y del maillot con el componente que salió de ella](../img/design-language-map-es-light.svg)
 
 De ahí salieron cuatro piezas que hoy son componentes.
 
@@ -76,7 +76,7 @@ De ahí salieron cuatro piezas que hoy son componentes.
 
 Como ingeniero, lo que más me importaba era que esto no terminara en un archivo de CSS lleno de colores sueltos (todos hemos visto uno de esos). La regla fue simple. **Una sola fuente de verdad**, y que el compilador la defienda.
 
-![Un paquete compartido que consumen los tres sitios, con el chequeo de tipos antes de cada despliegue](../img/design-language-system.svg)
+![Un paquete compartido que consumen los tres sitios, con el chequeo de tipos antes de cada despliegue](../img/design-language-system.svg)![Un paquete compartido que consumen los tres sitios, con el chequeo de tipos antes de cada despliegue](../img/design-language-system-light.svg)
 
 Todo vive en un paquete compartido que consumen los tres sitios. Los colores, las formas, las etiquetas y los sitios son registros tipados, así que si mañana agrego un sitio nuevo aparece solito en la placa y en el pie de página de los tres.
 

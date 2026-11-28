@@ -40,7 +40,7 @@ No lo voy a adornar. El primero tardó una eternidad en salir y sabía a **carb�
 
 Míralo así. Un espresso es agua caliente pasando a presión por café molido, y en ese rato tiene que llevarse lo bueno del grano. Si se lleva muy poco, la taza queda ácida y flaca. Si se lleva demasiado, queda amarga y seca. Lo dulce vive en el medio.
 
-![El mapa de una taza, de aguada a fuerte y de ácida a amarga, con lo dulce en el centro y mis primeros tiros en la esquina amarga](../img/espresso-map-es.svg)
+![El mapa de una taza, de aguada a fuerte y de ácida a amarga, con lo dulce en el centro y mis primeros tiros en la esquina amarga](../img/espresso-map-es.svg)![El mapa de una taza, de aguada a fuerte y de ácida a amarga, con lo dulce en el centro y mis primeros tiros en la esquina amarga](../img/espresso-map-es-light.svg)
 
 Un tiro que tarda una eternidad se lleva demasiado. Por eso mis primeros tiros vivían en la esquina amarga del mapa, bien lejos del centro.
 
@@ -58,7 +58,7 @@ El otro cambio grande fue el molino. Con el Sculptor pude por fin mover la molie
 
 ## La receta
 
-![La receta, 19.3 gramos de café, 38.6 gramos en taza, agua a 100 grados y 38 segundos de extracción](../img/espresso-recipe-es.svg)
+![La receta, 19.3 gramos de café, 38.6 gramos en taza, agua a 100 grados y 38 segundos de extracción](../img/espresso-recipe-es.svg)![La receta, 19.3 gramos de café, 38.6 gramos en taza, agua a 100 grados y 38 segundos de extracción](../img/espresso-recipe-es-light.svg)
 
 Son 19.3 gramos de café en una canasta plana, agua a 100° y **38 segundos** de extracción, sin preinfusión. En la taza quedan 38.6 gramos, o sea un ratio de 1 a 2 clavado.
 
@@ -74,7 +74,7 @@ Tengo un amigo que nunca ha sido de café. Cada vez que me visita me pide uno, y
 
 Una receta te dice dónde terminó el tiro. El perfil te dice cómo llegó. Mi balanza muestra el peso y el flujo segundo a segundo, y esa es la forma más honesta de saber si dos tiros fueron de verdad iguales.
 
-![El tiro reconstruido de la receta, 38.6 gramos en 38 segundos a un gramo por segundo en promedio](../img/espresso-profile-es.svg)
+![El tiro reconstruido de la receta, 38.6 gramos en 38 segundos a un gramo por segundo en promedio](../img/espresso-profile-es.svg)![El tiro reconstruido de la receta, 38.6 gramos en 38 segundos a un gramo por segundo en promedio](../img/espresso-profile-es-light.svg)
 
 No guardé la curva de la balanza, así que esta la reconstruí de la receta. Los extremos son reales, 38.6 gramos a los 38 segundos, y eso da un flujo promedio de más o menos **un gramo por segundo**. Un tiro de verdad no sale en línea recta (arranca lento y se va soltando), pero como referencia me sirve. Si el próximo tiro llega a los 38.6 gramos mucho antes o mucho después, algo cambió.
 
@@ -82,7 +82,7 @@ No guardé la curva de la balanza, así que esta la reconstruí de la receta. Lo
 
 ¿Y cómo sé que llegué? Porque la taza cambió de forma.
 
-![Los primeros tiros frente al de hoy en dulzor, acidez, cuerpo, amargor, retrogusto y balance](../img/espresso-cup-es.svg)
+![Los primeros tiros frente al de hoy en dulzor, acidez, cuerpo, amargor, retrogusto y balance](../img/espresso-cup-es.svg)![Los primeros tiros frente al de hoy en dulzor, acidez, cuerpo, amargor, retrogusto y balance](../img/espresso-cup-es-light.svg)
 
 Esto no es una cata con puntajes, es mi memoria dibujada. Los primeros eran puro amargor y casi nada de dulce. El de hoy es dulce y suave, con el chocolate al frente y lo frutal acompañando sin pelear.
 
@@ -96,7 +96,7 @@ Cremar la leche parece fácil hasta que lo intentas. A mí me costó muchísimo 
 
 La idea es meterle aire al principio, con la punta de la lanceta apenas debajo de la superficie (suena como papel rasgándose), y después hundirla un poco para que la leche gire en remolino y esas burbujas se vuelvan una crema fina. Si te pasas de aire te queda pura espuma, y si te pasas de calor la leche pierde el dulzor. Yo empecé con un termómetro, pero con el tiempo logré leer la temperatura con la mano.
 
-![La temperatura de la leche al cremar, primero aire hasta los 37 grados y después remolino hasta parar entre 60 y 65](../img/espresso-milk-es.svg)
+![La temperatura de la leche al cremar, primero aire hasta los 37 grados y después remolino hasta parar entre 60 y 65](../img/espresso-milk-es.svg)![La temperatura de la leche al cremar, primero aire hasta los 37 grados y después remolino hasta parar entre 60 y 65](../img/espresso-milk-es-light.svg)
 
 Con la Silvia hay un detalle más. Tiene una sola caldera, así que no puedes sacar el tiro y cremar al mismo tiempo. Yo saco primero el tiro y después cremo.
 
